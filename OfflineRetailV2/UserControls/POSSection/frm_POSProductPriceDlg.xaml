@@ -1,0 +1,85 @@
+﻿<Window x:Class="OfflineRetailV2.UserControls.POSSection.frm_POSProductPriceDlg"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:OfflineRetailV2.UserControls.POSSection"
+       xmlns:cc="clr-namespace:OfflineRetailV2.Controls"
+        xmlns:lm="clr-namespace:OfflineRetailV2.LayoutManager"
+        xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+        xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+        xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid" 
+        xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars"
+        AllowsTransparency="True" WindowStyle="None" Background="Transparent" WindowStartupLocation="CenterScreen"
+        Title="" Foreground="White"   Width="700" Height="300">
+    <cc:ModalWindow  x:Name="ModalWindow">
+        <Grid Margin="9">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="9"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="Title"  x:Name="Title" VerticalAlignment="Center" Style="{DynamicResource BlueHeading}" />
+                <Grid Grid.Column="1" HorizontalAlignment="Right" Margin="0,0,20,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition Width="9"></ColumnDefinition>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition Width="9"></ColumnDefinition>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <Button IsTabStop="False" Focusable="False" Grid.Column="0" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Content="KEYBOARD" Visibility="Collapsed"
+                                 FontFamily="{StaticResource OSSemiBold}" Style="{DynamicResource GeneralButtonStyle}" Height="35" Width="120" x:Name="FullKbd" Click="FullKbd_Click"/>
+                    <Button IsTabStop="False" Focusable="False" Grid.Column="4" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Content="CLOSE"
+                                 FontFamily="{StaticResource OSSemiBold}" Style="{DynamicResource CancelButtonStyle}" x:Name="btnClose"  Height="35" Width="120" Click="btnClose_Click" />
+
+                    <Button IsTabStop="False" Focusable="False" Grid.Column="2" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Content="UPDATE"
+                                 FontFamily="{StaticResource OSSemiBold}" Style="{DynamicResource SaveButtonStyle}" x:Name="btnUpdate" Height="35" Width="120" Click="btnUpdate_Click"/>
+                </Grid>
+            </Grid>
+            <Rectangle Grid.Row="1" Style="{DynamicResource DefaultLineStyle}"  VerticalAlignment="Center"  Margin="-9,0"/>
+
+            <Grid Grid.Row="2" Margin="0,9,0,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="21"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="6"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="6"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="6"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="6"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="6"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    
+                    <TextBlock  Grid.Row="0" Text="Price A"/>
+                    <dxe:TextEdit Grid.Row="2" x:Name="numPriceA"  InputScope="Number" Mask="f2" MaskType="Numeric" MaskUseAsDisplayFormat="True"
+                                  Text="0.00"  EditValueChanged="numPriceA_EditValueChanged" SelectAllOnGotFocus="True" GotFocus="Num_GotFocus" LostFocus="Num_LostFocus"/>
+
+                    <TextBlock  Grid.Row="4" Text="Price B"/>
+                    <dxe:TextEdit Grid.Row="6"  Grid.Column="2" x:Name="numPriceB"  InputScope="Number"
+                                  Text="0.00" Mask="f2" MaskType="Numeric" MaskUseAsDisplayFormat="True" EditValueChanged="numPriceA_EditValueChanged" SelectAllOnGotFocus="True" GotFocus="Num_GotFocus" LostFocus="Num_LostFocus"/>
+
+                    <TextBlock Grid.Column="0" Grid.Row="8" Text="Price C"/>
+                    <dxe:TextEdit Grid.Row="10"  Grid.Column="2" x:Name="numPriceC"  InputScope="Number"
+                                  Text="0.00" Mask="f2" MaskType="Numeric" MaskUseAsDisplayFormat="True"  EditValueChanged="numPriceA_EditValueChanged" SelectAllOnGotFocus="True" GotFocus="Num_GotFocus" LostFocus="Num_LostFocus"/>
+                </Grid>
+            </Grid>
+            
+        </Grid>
+    </cc:ModalWindow>
+</Window>

@@ -1,0 +1,54 @@
+﻿<Window x:Class="OfflineRetailV2.UserControls.POSSection.frm_VersionUpdateDlg"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:OfflineRetailV2.UserControls.POSSection"
+        xmlns:cc="clr-namespace:OfflineRetailV2.Controls"
+        xmlns:lm="clr-namespace:OfflineRetailV2.LayoutManager"
+           xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+         xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+         xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid" 
+             xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars"
+        AllowsTransparency="True" WindowStyle="None" Background="Transparent" WindowStartupLocation="CenterScreen"
+        Title="" Foreground="White"    
+        Width="460" Height="115"  Loaded="Window_Loaded">
+    <cc:ModalWindow  x:Name="ModalWindow">
+        <Grid Margin="-9">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                
+            </Grid.RowDefinitions>
+            <Border VerticalAlignment="Center" HorizontalAlignment="Center" Width="423" BorderThickness="0"
+                    Background="#1D212E" CornerRadius="9" x:Name="pnlAutoUpdate">
+
+                <Grid Margin="0,0,0,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="9"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="9"/>
+                        <RowDefinition Height="Auto"/>
+                       
+                        <RowDefinition Height="*"/>
+
+                    </Grid.RowDefinitions>
+                    <TextBlock HorizontalAlignment="Center" FontSize="20" x:Name="txtVersionUpdateCaption"
+                               Text="Downloading XEPOS Retail 2024" Style="{DynamicResource DefaultText}"/>
+
+
+
+                    <dxe:ProgressBarEdit Grid.Row="2" x:Name="barProgress" ContentDisplayMode="Value" Value="0" IsPercent="False" DisplayFormatString="{}{0}%" Background="#1D212E" ProgressBrush="DodgerBlue" Height="30" >
+                        <dxe:ProgressBarEdit.ContentTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding}" Foreground="White" HorizontalAlignment="Center"/>
+                            </DataTemplate>
+                        </dxe:ProgressBarEdit.ContentTemplate>
+                    </dxe:ProgressBarEdit>
+                    <TextBlock HorizontalAlignment="Center" FontSize="12" Grid.Row="4" x:Name="lblProgress"
+                               Text="" Style="{DynamicResource DefaultText}"/>
+                </Grid>
+
+            </Border>
+
+        </Grid>
+    </cc:ModalWindow>
+</Window>

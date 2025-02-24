@@ -1,0 +1,38 @@
+﻿<UserControl x:Class="OfflineRetailV2.UserControls.POSSection.frm_SerialBrwPOS"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:OfflineRetailV2.UserControls.POSSection"
+        xmlns:cc="clr-namespace:OfflineRetailV2.Controls"
+        xmlns:lm="clr-namespace:OfflineRetailV2.LayoutManager"
+           xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+         xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+         xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid" 
+        Foreground="White"   
+         Loaded="Window_Loaded">
+    
+        <Grid Margin="1">
+            <Grid.RowDefinitions>
+                
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="2"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+        <ScrollViewer  x:Name="sv" Grid.Row="0" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" PanningMode="Both" PanningRatio="1" PanningDeceleration="2" ManipulationBoundaryFeedback="ScrlViewer_ManipulationBoundaryFeedback">
+            <local:frm_SerialBrwUC Grid.Row="0" x:Name="frm_SerialBrwUC"/>
+        </ScrollViewer>
+            
+            <Grid Grid.Row="4"  x:Name="pnlbottom">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="9"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+            <dxe:ToggleSwitch ContentPlacement="Far" HorizontalAlignment="Left"  CheckedStateContent="Allow new serial no. to be added in POS" UncheckedStateContent="Allow new serial no. to be added in POS" x:Name="chkPOS" />
+                <Button Grid.Column="2" Content="OK" Height="35" Width="100" FontFamily="{StaticResource OSSemiBold}" 
+                        Style="{DynamicResource SaveButtonStyle}" x:Name="btnOK" Click="BtnOK_Click" HorizontalAlignment="Left"/>
+            </Grid>
+        <Grid Background="#3D000000"  Grid.RowSpan="5" x:Name="blurGrid" Visibility="Collapsed"/>
+    </Grid>
+
+</UserControl>

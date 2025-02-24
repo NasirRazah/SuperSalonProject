@@ -1,0 +1,130 @@
+﻿<Window x:Class="OfflineRetailV2.UserControls.frm_CloseoutReprintDlg"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:OfflineRetailV2.UserControls"
+        mc:Ignorable="d"
+         xmlns:cc="clr-namespace:OfflineRetailV2.Controls"
+        xmlns:lm="clr-namespace:OfflineRetailV2.LayoutManager"
+        xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+        xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+        xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid" 
+        xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars"
+        AllowsTransparency="True" WindowStyle="None" Background="Transparent" WindowStartupLocation="CenterScreen"
+        Title="" Foreground="White"    Width="850" Height="600" Loaded="Window_Loaded" >
+    <cc:ModalWindow  x:Name="ModalWindow">
+        <Grid Margin="9">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="9"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="9"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="9"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="3"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="Reprint Closeout"  x:Name="Title" VerticalAlignment="Center" Style="{DynamicResource BlueHeading}" />
+                <Grid Grid.Column="1" HorizontalAlignment="Right" Margin="0,0,20,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition Width="9"></ColumnDefinition>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition Width="9"></ColumnDefinition>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition Width="9"></ColumnDefinition>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <Button Grid.Column="0" Content="EMAIL" Height="35" Width="120" FontFamily="{StaticResource OSRegular}" 
+                        Style="{DynamicResource GeneralButtonStyle}" x:Name="btnEmail" Click="BtnEmail_Click" />
+                    <Button Grid.Column="4" Content="PRINT" Height="35" Width="120" FontFamily="{StaticResource OSRegular}" 
+                        Style="{DynamicResource PrintButtonStyle}" x:Name="btnPrint" Click="BtnPrint_Click" />
+                    <Button Grid.Column="2" Content="PREVIEW" Height="35" Width="120" FontFamily="{StaticResource OSRegular}" 
+                        Style="{DynamicResource GeneralButtonStyle}" x:Name="btnPreview" Click="BtnPreview_Click" Grid.ColumnSpan="2" Margin="0.4,0,8.4,0" VerticalAlignment="Top" />
+                    <Button Grid.Column="6" Content="CANCEL" Height="35" Width="120" FontFamily="{StaticResource OSRegular}" 
+                        Style="{DynamicResource CancelButtonStyle}" x:Name="btnCancel" Click="BtnCancel_Click_1" />
+                </Grid>
+            </Grid>
+            <Rectangle Grid.Row="1" Style="{DynamicResource DefaultLineStyle}"  VerticalAlignment="Center"  Margin="-9,0"/>
+
+
+            <Rectangle Grid.Row="1" Style="{DynamicResource DefaultLineStyle}" Height="2" VerticalAlignment="Center"  Margin="-9,0"/>
+            <Grid Grid.Row="6">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="9"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="9"></RowDefinition>
+                </Grid.RowDefinitions>
+                
+                <Grid Grid.Row="2">
+                    
+                    <dxg:GridControl ShowBorder="True" EnableSmartColumnsGeneration="False" x:Name="grdCloseout">
+                        
+                        <dxg:GridControl.View>
+                            <dxg:TableView x:Name="gridView1" ShowTotalSummary="False" EnterMoveNextColumn="True"  NavigationStyle="Row" ShowFilterPanelMode="Never" AllowColumnFiltering="False" MouseDoubleClick="GridView1_MouseDoubleClick" />
+                        </dxg:GridControl.View>
+                        <dxg:GridColumn IsSmart="False" FieldName="ID" Header="CO No." Width="*" x:Name="colID" />
+                        <dxg:GridColumn FieldName="Image" Visible="False" VisibleIndex="-1" Width="*" AllowAutoFilter="False" Focusable="False">
+                            <dxg:GridColumn.EditSettings>
+                                <dxe:ImageEditSettings Stretch="UniformToFill"/>
+                            </dxg:GridColumn.EditSettings>
+                        </dxg:GridColumn>
+                        <dxg:GridColumn IsSmart="False" FieldName="CloseoutType" Header="CO Type" Width="*" x:Name="colType" AllowFocus="False" AllowEditing="False"></dxg:GridColumn>
+                        <dxg:GridColumn IsSmart="False" FieldName="ConsolidatedID" Header="Consol No" Width="*" x:Name="colConsolNo" AllowFocus="True" AllowEditing="True"></dxg:GridColumn>
+                        <dxg:GridColumn IsSmart="False" FieldName="TransactionCnt" Header="Trans Cnt" Width="*" x:Name="colTransCnt" AllowFocus="False" AllowEditing="False"></dxg:GridColumn>
+                        <dxg:GridColumn IsSmart="False" FieldName="EmpID" Header="Emp ID" Width="1.5*" x:Name="colEmployee" AllowFocus="False" AllowEditing="False"></dxg:GridColumn>
+                        <dxg:GridColumn IsSmart="False" FieldName="StartDatetime" Header="Start Datetime" Width="3*" x:Name="colSD" AllowFocus="False" AllowEditing="False" ></dxg:GridColumn>
+                        <dxg:GridColumn IsSmart="False" FieldName="EndDatetime" Header="End Datetime" Width="3*" x:Name="colED"/>
+                        
+                    </dxg:GridControl>
+                </Grid>
+            </Grid>
+            <TextBlock Grid.Row="2" x:Name="lbData" Text="Select the Close Out Batch to reprint"></TextBlock>
+            <Grid Grid.Row="4" Margin="9,0,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    <ColumnDefinition Width="9"></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    <ColumnDefinition Width="9"></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    <ColumnDefinition Width="9"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <dxe:ToggleSwitch ContentPlacement="Far" HorizontalAlignment="Left" Grid.Column="0" CheckedStateContent="Send to Receipt Printer" UncheckedStateContent="Send to Receipt Printer" x:Name="chkReceiptPrn" IsChecked="True"></dxe:ToggleSwitch>
+                <dxe:ToggleSwitch ContentPlacement="Far" HorizontalAlignment="Left" Grid.Column="2" CheckedStateContent="Include Sales by Hour Report" UncheckedStateContent="Include Sales by Hour Report" x:Name="chkSH" IsChecked="True"></dxe:ToggleSwitch>
+                <dxe:ToggleSwitch ContentPlacement="Far" HorizontalAlignment="Left" Grid.Column="4" CheckedStateContent="Include Sales by Department Report" UncheckedStateContent="Include Sales by Department Report" x:Name="chkSD" IsChecked="True"></dxe:ToggleSwitch>
+            </Grid>
+
+            <Rectangle Grid.Row="7" Style="{DynamicResource DefaultLineStyle}" Height="2" VerticalAlignment="Center"  Margin="-9,0"/>
+            
+            <Grid Grid.Row="8" Margin="9" HorizontalAlignment="Right">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="9"/>
+                    <ColumnDefinition Width="Auto"/>
+                    
+
+                </Grid.ColumnDefinitions>
+                <Button Grid.Column="0" Height="35" Width="100" FontFamily="{StaticResource OSRegular}" FontSize="16"
+                        Style="{DynamicResource YellowButtonStyle}" x:Name="btnUp1" Click="BtnUp1_Click" >
+                    <Image Source="{DynamicResource Arrow_U}" Width="21" Height="21"></Image>
+                </Button>
+                <Button Grid.Column="2" Height="35" Width="100" FontFamily="{StaticResource OSRegular}" FontSize="16"
+                        Style="{DynamicResource YellowButtonStyle}" x:Name="btnDown1" Click="BtnDown1_Click" >
+                    <Image Source="{DynamicResource Arrow_D}" Width="21" Height="21"></Image>
+                </Button>
+
+               
+            </Grid>
+            <Grid Background="#3D000000" Margin="-15" Grid.RowSpan="9" x:Name="blurGrid" Visibility="Collapsed"/>
+        </Grid>
+    </cc:ModalWindow>
+</Window>

@@ -1,0 +1,290 @@
+﻿<Window x:Class="OfflineRetailV2.UserControls.POSSection.frm_POSApptBookBrw"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:OfflineRetailV2.UserControls.POSSection"
+        xmlns:cc="clr-namespace:OfflineRetailV2.Controls"
+        xmlns:lm="clr-namespace:OfflineRetailV2.LayoutManager"
+        xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+        xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+        xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid" 
+        xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars"
+        xmlns:dxsch="http://schemas.devexpress.com/winfx/2008/xaml/scheduling" 
+        xmlns:dxschv="http://schemas.devexpress.com/winfx/2008/xaml/scheduling/visual"
+        AllowsTransparency="True" WindowStyle="None" Background="Transparent" WindowStartupLocation="CenterScreen"
+        Title="" Foreground="White"   Height="740" Width="1024" Loaded="Window_Loaded" >
+
+    <Window.Resources>
+        <!--region #AppointmentContentTemplate-->
+        <DataTemplate x:Key="appointmentContentTemplate">
+            <dxschv:AppointmentContentPanel>
+                <dxschv:AppointmentContentPanel.IntervalSubject>
+                    <dxschv:AppointmentIntervalSubjectPresenter/>
+                </dxschv:AppointmentContentPanel.IntervalSubject>
+                <dxschv:AppointmentContentPanel.Location>
+                    <dxschv:AppointmentLocationPresenter FontWeight="Normal" Foreground="BlueViolet" />
+                </dxschv:AppointmentContentPanel.Location>
+                <dxschv:AppointmentContentPanel.Description>
+                    <StackPanel>
+                        <dxschv:FastTextBlock  FontWeight="Normal" Foreground="Black"/>
+                        <dxschv:AppointmentDescriptionPresenter FontWeight="Normal" Margin="0,1,0,0" WordWrap="True"/>
+                    </StackPanel>
+                </dxschv:AppointmentContentPanel.Description>
+                <dxschv:AppointmentContentPanel.Images>
+                    <dxschv:AppointmentImagesPanel/>
+                </dxschv:AppointmentContentPanel.Images>
+            </dxschv:AppointmentContentPanel>
+        </DataTemplate>
+        <!--endregion #AppointmentContentTemplate-->
+
+        
+        <Style x:Key="appointmentStyle" TargetType="dxschv:AppointmentControl">
+            <Setter Property="ShowInterval" Value="True"/>
+            <Setter Property="ShowDescription" Value="True"/>
+            
+        </Style>
+        <!--endregion #AppointmentControlStyle-->
+    </Window.Resources>
+    <cc:ModalWindow  x:Name="ModalWindow">
+        <Grid Margin="9">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="9"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="9"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="Title"  x:Name="Title" VerticalAlignment="Center" Style="{DynamicResource BlueHeading}" />
+                <Grid Grid.Column="1" HorizontalAlignment="Right" Margin="0,0,20,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition Width="9"></ColumnDefinition>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition Width="9"></ColumnDefinition>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <Button Grid.Column="0" IsTabStop="False" Focusable="False" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Content="KEYBOARD"
+                                 Style="{DynamicResource GeneralButtonStyle}"  x:Name="FullKbd" Click="FullKbd_Click" Visibility="Collapsed"/>
+
+                    <Button Grid.Column="2" IsTabStop="False" Focusable="False" Height="35" Width="180" FontFamily="{StaticResource OSSemiBold}" 
+                        Style="{DynamicResource GeneralButtonStyle}" Content="NEW APPOINTMENT" x:Name="btnAdd"  Click="BtnAdd_Click" >
+
+                    </Button>
+                    <Button Grid.Column="4" IsTabStop="False" Focusable="False" Content="DONE" Height="35" Width="120" FontFamily="{StaticResource OSSemiBold}" FontSize="16"
+                        Style="{DynamicResource SaveButtonStyle}" x:Name="btnOK" Click="BtnOK_Click"  />
+                </Grid>
+            </Grid>
+            <Rectangle Grid.Row="1" Style="{DynamicResource DefaultLineStyle}"  VerticalAlignment="Center"  Margin="-9,0"/>
+            <Grid Grid.Row="2" Margin="0,9,0,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="6"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="9"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="11"></ColumnDefinition>
+                        <ColumnDefinition Width="2*"></ColumnDefinition>
+                        <ColumnDefinition Width="11"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="11"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Column="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="6"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <TextBlock Grid.Row="0" Text="Calendar"></TextBlock>
+                        <dxe:DateEdit Grid.Row="2" x:Name="dtCalendar" EditValueChanged="DtCalendar_EditValueChanged" PreviewMouseLeftButtonDown="DtCalendar_PreviewMouseLeftButtonDown" />
+                    </Grid>
+                    <Grid Grid.Column="2" Style="{DynamicResource GrdBkColor1}" Margin="9">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            <ColumnDefinition Width="9"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="9"></ColumnDefinition>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Button Grid.Column="0" Height="Auto" Width="50" x:Name="prev" Style="{DynamicResource YellowButtonStyle}" Click="Prev_Click">
+                            <Image Source="{DynamicResource Arrow_P}" Width="21" Height="21" >
+                                
+                            </Image>
+                        </Button>
+                        <TextBlock Grid.Column="2" x:Name="lbDate" HorizontalAlignment="Center" Text="04/04/2020" FontSize="20"></TextBlock>
+                        <Button Grid.Column="4" Height="Auto" Width="50" x:Name="next" Style="{DynamicResource YellowButtonStyle}" Click="Next_Click">
+                            <Image Source="{DynamicResource Arrow_N}" Width="21" Height="21" >
+                                
+                            </Image>
+                        </Button>
+                    </Grid>
+                    <Grid Grid.Column="4">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="9"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid Grid.Row="0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                                <RowDefinition Height="6"></RowDefinition>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <TextBlock Text="Staff"></TextBlock>
+                            <dxg:LookUpEdit Grid.Row="2"  x:Name="emplkup" ItemsSource="{Binding}"
+                                        DisplayMember="EmployeeName"
+                                        ValueMember="ID"
+                                        AutoPopulateColumns="False"
+                                        AutoComplete="True"
+                                        IncrementalFiltering="True"
+                                        ImmediatePopup="True"
+                                        IsPopupAutoWidth="False" EditValueChanged="Emplkup_EditValueChanged" 
+                                        PreviewMouseLeftButtonDown="Emplkup_PreviewMouseLeftButtonDown" 
+                                            PopupOpened="gen_PopupOpened">
+                                <dxg:LookUpEdit.PopupContentTemplate>
+                                    <ControlTemplate>
+                                        <dxg:GridControl Name="PART_GridControl" AutoGenerateColumns="None">
+                                            <dxg:GridControl.Columns>
+                                                <dxg:GridColumn FieldName="Image" Visible="False" VisibleIndex="-1" Width="*" AllowAutoFilter="False" Focusable="False">
+                                                    <dxg:GridColumn.EditSettings>
+                                                        <dxe:ImageEditSettings Stretch="UniformToFill"/>
+                                                    </dxg:GridColumn.EditSettings>
+                                                </dxg:GridColumn>
+                                                <dxg:GridColumn FieldName="ID" Visible="False" VisibleIndex="-1"/>
+                                                <dxg:GridColumn FieldName="EmployeeID" Header="Emp. ID" Visible="True" VisibleIndex="1" />
+                                                <dxg:GridColumn FieldName="EmployeeName" Header="Employee" Visible="True" VisibleIndex="2"/>
+                                            </dxg:GridControl.Columns>
+                                            <dxg:GridControl.View>
+                                                <dxg:TableView AutoWidth="True" />
+                                            </dxg:GridControl.View>
+                                        </dxg:GridControl>
+                                    </ControlTemplate>
+                                </dxg:LookUpEdit.PopupContentTemplate>
+                            </dxg:LookUpEdit>
+                        </Grid>
+                        <TextBlock Grid.Row="2" Text="No Appointment" x:Name="lbcnt" Style="{DynamicResource LoginUser}" HorizontalAlignment="Right"></TextBlock>
+                    </Grid>
+                </Grid>
+
+                <Grid x:Name="pnlschd" Grid.Row="2">
+                    <dxsch:SchedulerControl Grid.Row="2" x:Name="schdctrl"  ActiveViewType="DayView"   AllowAppointmentConflicts="True" AllowAppointmentEdit="False"  AllowAppointmentDragBetweenResources="False" AllowAppointmentCreate="False" AllowAppointmentDelete="False" AllowAppointmentResize="False" AllowCellMultiSelect="False" AllowReminders="False" AllowInplaceEditor="False"  AllowAppointmentDrag="False" MouseDown="Schdctrl_MouseDown"   >
+                        <dxsch:SchedulerControl.OptionsWindows>
+                            <dxsch:OptionsWindows/>
+                        </dxsch:SchedulerControl.OptionsWindows>
+                        <dxsch:SchedulerControl.LabelItems>
+                            <dxsch:AppointmentLabelItem Id="11" Caption="1" Color="MistyRose"  />
+                            <dxsch:AppointmentLabelItem Id="12" Caption="2" Color="Lavender"/>
+                            <dxsch:AppointmentLabelItem Id="13" Caption="3" Color="SandyBrown"/>
+                            <dxsch:AppointmentLabelItem Id="14" Caption="4" Color="PaleGreen"/>
+                            <dxsch:AppointmentLabelItem Id="15" Caption="5" Color="Khaki"/>
+                            <dxsch:AppointmentLabelItem Id="16" Caption="6" Color="YellowGreen"/>
+                            <dxsch:AppointmentLabelItem Id="17" Caption="7" Color="Turquoise"/>
+                            <dxsch:AppointmentLabelItem Id="18" Caption="8" Color="Violet"/>
+                            <dxsch:AppointmentLabelItem Id="19" Caption="9" Color="Plum"/>
+                            <dxsch:AppointmentLabelItem Id="20" Caption="10" Color="LightPink"/>
+                        </dxsch:SchedulerControl.LabelItems>
+
+                        <dxsch:SchedulerControl.DataSource>
+                            <dxsch:DataSource>
+
+                                <dxsch:DataSource.ResourceMappings>
+                                    <dxsch:ResourceMappings
+                                Id="APPTID"
+                                Caption="APPT"
+                                ></dxsch:ResourceMappings>
+
+                                </dxsch:DataSource.ResourceMappings>
+                                <dxsch:DataSource.AppointmentMappings>
+
+                                    <dxsch:AppointmentMappings 
+                                Subject="APPTSUB"
+                                Description="APPTDET"
+                                End="EDATE"
+                                Start="SDATE"
+                                LabelId="LABEL"
+                                ResourceId="APPTID"
+                                ></dxsch:AppointmentMappings>
+                                </dxsch:DataSource.AppointmentMappings>
+
+                                <dxsch:DataSource.AppointmentLabelsSource>
+                                    <dxsch:AppointmentLabelItem Caption="11" Id="11" Color="MistyRose"></dxsch:AppointmentLabelItem>
+
+                                </dxsch:DataSource.AppointmentLabelsSource>
+                            </dxsch:DataSource>
+                        </dxsch:SchedulerControl.DataSource>
+                        <dxsch:DayView ShowDayHeaders="True"  TimeRulerCellStyle="{DynamicResource  DayViewTmRulerStyle}" CellStyle="{DynamicResource DayViewClStyle}" ShowAllDayArea="False"
+                   TimeScale="00:10:00" 
+                   ShowWorkTimeOnly="False" ShowAppointmentDescription="True" TimeIndicatorVisibility="Always" NavigationButtonsVisibility="Never">
+                            <dxsch:DayView.AppointmentContentTemplate>
+                                <DataTemplate>
+                                    <dxschv:AppointmentContentPanel>
+                                        
+                                        <dxschv:AppointmentContentPanel.IntervalSubject>
+                                            <dxschv:AppointmentIntervalSubjectPresenter FontWeight="Bold" Foreground="Black"/>
+                                        </dxschv:AppointmentContentPanel.IntervalSubject>
+                                        <dxschv:AppointmentContentPanel.Location>
+                                            <dxschv:AppointmentLocationPresenter FontWeight="Normal" Foreground="Blue" />
+                                        </dxschv:AppointmentContentPanel.Location>
+                                        <dxschv:AppointmentContentPanel.Description>
+                                            <StackPanel>
+                                                <dxschv:FastTextBlock Text="{Binding Appointment.CustomFields[Note]}" FontWeight="Normal" Foreground="Red"/>
+                                                <dxschv:AppointmentDescriptionPresenter FontWeight="Normal" Margin="0,1,0,0" WordWrap="True" Foreground="Black"/>
+                                            </StackPanel>
+                                        </dxschv:AppointmentContentPanel.Description>
+                                        <dxschv:AppointmentContentPanel.Images>
+                                            <dxschv:AppointmentImagesPanel/>
+                                        </dxschv:AppointmentContentPanel.Images>
+                                    </dxschv:AppointmentContentPanel>
+                                </DataTemplate>
+                            </dxsch:DayView.AppointmentContentTemplate>
+
+
+                            
+
+
+
+                            
+
+
+                        </dxsch:DayView>
+                    </dxsch:SchedulerControl>
+
+                </Grid>
+
+                <Canvas Grid.Row="4" x:Name="pnlstaff" Height="30"></Canvas>
+            </Grid>
+            <Grid Grid.Row="4" Margin="9" HorizontalAlignment="Right">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="9"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+               
+                <Button Grid.Column="0" IsTabStop="False" Focusable="False" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" 
+                                Style="{DynamicResource YellowButtonStyle}"  Height="35" Width="100"
+                            x:Name="UpScrollButton" Click="UpScrollButton_Click" >
+                    <Image Source="{DynamicResource Arrow_U}" Width="21" Height="21"/>
+                </Button>
+                <Button Grid.Column="2" IsTabStop="False" Focusable="False" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
+                                Style="{DynamicResource YellowButtonStyle}" Height="35" Width="100"
+                            x:Name="DownScrollButton" Click="DownScrollButton_Click" >
+                    <Image Source="{DynamicResource Arrow_D}" Width="21" Height="21"/>
+                </Button>
+
+                
+            </Grid>
+            <Grid Background="#3D000000" Margin="-15" Grid.RowSpan="5" x:Name="blurGrid" Visibility="Collapsed"/>
+        </Grid>
+    </cc:ModalWindow>
+</Window>

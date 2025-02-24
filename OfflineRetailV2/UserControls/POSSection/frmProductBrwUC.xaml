@@ -1,0 +1,255 @@
+﻿<UserControl x:Class="OfflineRetailV2.UserControls.POSSection.frmProductBrwUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:OfflineRetailV2.UserControls.POSSection"
+                 xmlns:cc="clr-namespace:OfflineRetailV2.Controls"
+             
+        xmlns:lm="clr-namespace:OfflineRetailV2.LayoutManager"
+           xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+         xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+         xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid" 
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="900">
+
+    
+    <!--<ScrollViewer Margin="9" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">-->
+    <Grid Grid.Row="2" Margin="3" x:Name="pnlMain" >
+        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid x:Name="bar1" Margin="0,9,0,0" >
+            <Grid.ColumnDefinitions>
+
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="7"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="7"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="7"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="7"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="7"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="7"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="9"/>
+
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Image Source="{DynamicResource Back}" Height="35" Width="35" x:Name="btnBack" PreviewMouseLeftButtonDown="Image_PreviewMouseLeftButtonDown"></Image>
+
+
+            
+            <Button Height="35" Width="90" Grid.Column="2" x:Name="barButtonItem1"
+                        Style="{DynamicResource AddButton}" Click="BarButtonItem1_Click" />
+            <Button  Height="35" Width="90" Grid.Column="4"
+                        Style="{DynamicResource EditButton}" x:Name="btnEdit" Click="BtnEdit_Click" />
+            <Button Height="35" Width="90" Grid.Column="6"
+                        Style="{DynamicResource PrintButton}" x:Name="btnPrint" Click="BtnPrint_Click" />
+
+            <Button Height="35" Width="100" Grid.Column="8"
+                        Style="{DynamicResource DuplicateButton}" x:Name="btnDuplicate" Click="BtnDuplicate_Click"/>
+
+            <Button  Height="35" MinWidth="100" Grid.Column="10"
+                        Style="{DynamicResource PrintLabelButton}" x:Name="btnPrintBarCode" Click="BtnPrintBarCode_Click"/>
+            <Button Height="35" Width="90" Grid.Column="12" x:Name="barButtonFetch" Visibility="Collapsed"
+                        Style="{DynamicResource AddButton}" Click="BarButtonFetch_Click" Grid.ColumnSpan="2" Margin="0,0,158,0" VerticalAlignment="Top" />
+            <dxe:ComboBoxEdit Grid.Column="13" Style="{DynamicResource DropDownGold}" HorizontalAlignment="Right" Width="175" Height="35" x:Name="cmbFilter" AllowDefaultButton="False" ItemsSource="{Binding}" DisplayMember="DisplayText" ValueMember="FilterText" BorderTemplate="{DynamicResource CustomBorderTemplateGold}" EditValueChanged="CmbFilter_EditValueChanged" PreviewMouseLeftButtonDown="CmbFilter_PreviewMouseLeftButtonDown">
+
+            </dxe:ComboBoxEdit>
+
+            <Button  Height="35"  Width="90" Grid.Column="15"
+                        Style="{DynamicResource DeleteButton}" x:Name="btnDelete" Click="BtnDelete_Click"/>
+        </Grid>
+
+        <Rectangle Grid.Row="1" VerticalAlignment="Center" Height="1" Style="{DynamicResource DefaultLineStyle}" Margin="0,5" />
+
+        <Grid x:Name="bar2" Grid.Row="2" Margin="3,0,3,5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="69*"></ColumnDefinition>
+                <ColumnDefinition Width="227*"/>
+            </Grid.ColumnDefinitions>
+
+            <cc:CustomTextBox Grid.Column="0"   HorizontalAlignment="Stretch" Height="30"  BorderThickness="1"  CornerRadius="0"
+                                  InfoText="Search Items"  Icon="{DynamicResource Search}" FontSize="13"  FontFamily="{DynamicResource OSSemiBold}"  x:Name="txtSearchGrdData" GotFocus="TxtSearchGrdData_GotFocus" LostFocus="TxtSearchGrdData_LostFocus" TextChanged="TxtSearchGrdData_TextChanged" Grid.ColumnSpan="2" PreviewMouseLeftButtonDown="TxtSearchGrdData_PreviewMouseLeftButtonDown" />
+        </Grid>
+
+        <dxg:GridControl Grid.Row="4" ShowBorder="False" x:Name="gridControl1"  >
+            <dxg:GridControl.View>
+                <dxg:TableView  x:Name="gridView1" IncrementalSearchMode="Enabled" UseOnlyCurrentColumnInIncrementalSearch="True" IncrementalSearchClearDelay="3000"  NavigationStyle="Cell" ShowTotalSummary="False" ShowFilterPanelMode="Never" AllowColumnFiltering="False" MouseDoubleClick="GridView1_MouseDoubleClick" FontFamily="{StaticResource OSRegular}">
+
+                    <dxg:TableView.CellTemplate>
+                        <DataTemplate>
+                            <Border Padding="15,0,0,0">
+                                <dxe:InplaceBaseEdit Name="PART_Editor" />
+                            </Border>
+                        </DataTemplate>
+                    </dxg:TableView.CellTemplate>
+
+                    <!--<dxg:TableView.ColumnHeaderContentStyle>
+                     
+
+                        <Style TargetType="{x:Type dxg:GridColumnHeader}">
+
+                            <Setter Property="Margin" Value="20,0,0,1" />
+                            <Setter Property="FontSize" Value="19" />
+                        </Style> 
+                    </dxg:TableView.ColumnHeaderContentStyle>-->
+ 
+                </dxg:TableView>
+
+            </dxg:GridControl.View>
+            <dxg:GridColumn FieldName="ID" Header="ID" Width="*" x:Name="colID" Visible="False"/>
+            <dxg:GridColumn FieldName="Image" Visible="False" VisibleIndex="-1" Width="*" AllowAutoFilter="False" Focusable="False">
+                <dxg:GridColumn.EditSettings>
+                    <dxe:ImageEditSettings Stretch="UniformToFill"/>
+                </dxg:GridColumn.EditSettings>
+            </dxg:GridColumn>
+            <dxg:GridColumn FieldName="SKU" Header="SKU" Width="*"  x:Name="colSKU" TextElement.FontWeight="Bold">
+                <dxg:GridColumn.ColumnHeaderContentStyle>
+                    <Style TargetType="{x:Type ContentControl}">
+                        <Setter Property="Margin" Value="20,0,0,1" />
+                        <Setter Property="FontSize" Value="12" />
+                        <Setter Property="FontFamily" Value="{StaticResource OSBold}" />
+                    </Style>
+                </dxg:GridColumn.ColumnHeaderContentStyle>
+                
+            </dxg:GridColumn>
+
+            <dxg:GridColumn FieldName="ProductName" HorizontalHeaderContentAlignment="Left"    Header="Description" Width="2*"  x:Name="colDesc" UnboundType="String" AllowAutoFilter="True"  AutoFilterCriteria="Contains">
+
+                <dxg:GridColumn.ColumnHeaderContentStyle>
+                    <Style TargetType="{x:Type ContentControl}">
+                        <Setter Property="Margin" Value="20,0,0,1" />
+                        <Setter Property="FontSize" Value="12" />
+                        <Setter Property="FontFamily" Value="{StaticResource OSBold}" />
+                    </Style>
+                </dxg:GridColumn.ColumnHeaderContentStyle>
+
+                <!--<dxg:GridColumn.CellTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Path=Data.ProductName}"   Name="PART_Editor" Margin="10,0,0,0" />
+                    </DataTemplate>
+                </dxg:GridColumn.CellTemplate>-->
+
+                <!--<Style TargetType="dxg:GridColumn.ColumnHeaderContentStyle">
+                    <Setter Property="DisplayTemplate">
+                        <Setter.Value>
+                            <ControlTemplate>
+                                <TextBlock Margin="20,0,0,0" Padding="20" x:Name="PART_Editor" />
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>-->
+ 
+        
+            </dxg:GridColumn>
+            
+            <dxg:GridColumn FieldName="PriceA" Header="Price" Width="0.5*"  x:Name="colPrice"   AllowIncrementalSearch="False">
+                <dxg:GridColumn.ColumnHeaderContentStyle>
+                    <Style TargetType="{x:Type ContentControl}">
+                        <Setter Property="Margin" Value="20,0,0,1" />
+                        <Setter Property="FontSize" Value="12" />
+                        <Setter Property="FontFamily" Value="{StaticResource OSBold}" />
+                    </Style>
+                </dxg:GridColumn.ColumnHeaderContentStyle>
+                
+                <dxg:GridColumn.EditSettings>
+                    <dxe:TextEditSettings DisplayFormat="f" MaskType="Numeric" HorizontalContentAlignment="Left"/>
+                </dxg:GridColumn.EditSettings>
+            </dxg:GridColumn>
+            <dxg:GridColumn FieldName="QtyOnHand" Header="Qty" Width="0.5*"  x:Name="colQty" HorizontalHeaderContentAlignment="Left">
+                <dxg:GridColumn.EditSettings>
+                    <dxe:TextEditSettings DisplayFormat="f" MaskType="Numeric" HorizontalContentAlignment="Left"/>
+                </dxg:GridColumn.EditSettings>
+             
+                <dxg:GridColumn.ColumnHeaderContentStyle>
+                    <Style TargetType="{x:Type ContentControl}">
+                        <Setter Property="Margin" Value="20,0,0,1" />
+                        <Setter Property="FontSize" Value="12" />
+                        <Setter Property="FontFamily" Value="{StaticResource OSBold}" />
+                    </Style>
+                </dxg:GridColumn.ColumnHeaderContentStyle>
+            </dxg:GridColumn>
+
+            <dxg:GridColumn FieldName="Department" Header="Department" Width="*"  x:Name="colDept">
+                <dxg:GridColumn.ColumnHeaderContentStyle>
+                    <Style TargetType="{x:Type ContentControl}">
+                        <Setter Property="Margin" Value="20,0,0,1" />
+                        <Setter Property="FontSize" Value="12" />
+                        <Setter Property="FontFamily" Value="{StaticResource OSBold}" />
+                    </Style>
+                </dxg:GridColumn.ColumnHeaderContentStyle>
+            </dxg:GridColumn>
+            <dxg:GridColumn FieldName="Category" Header="Category" Width="*"  x:Name="colCat">
+                <dxg:GridColumn.ColumnHeaderContentStyle>
+                    <Style TargetType="{x:Type ContentControl}">
+                        <Setter Property="Margin" Value="20,0,0,1" />
+                        <Setter Property="FontSize" Value="12" />
+                        <Setter Property="FontFamily" Value="{StaticResource OSBold}" />
+                    </Style>
+                </dxg:GridColumn.ColumnHeaderContentStyle>
+            </dxg:GridColumn>
+            <dxg:GridColumn FieldName="ProductType" Header="Type" Width="*"  x:Name="colType">
+                <dxg:GridColumn.ColumnHeaderContentStyle>
+                    <Style TargetType="{x:Type ContentControl}">
+                        <Setter Property="Margin" Value="20,0,0,1" />
+                        <Setter Property="FontSize" Value="12" />
+                        <Setter Property="FontFamily" Value="{StaticResource OSBold}" />
+                    </Style>
+                </dxg:GridColumn.ColumnHeaderContentStyle>
+            </dxg:GridColumn>
+            <dxg:GridColumn FieldName="NoPriceOnLabel" Header="No Price Label" Width="*"  x:Name="colNoPriceLabel" Visible="False">
+                <dxg:GridColumn.ColumnHeaderContentStyle>
+                    <Style TargetType="{x:Type ContentControl}">
+                        <Setter Property="Margin" Value="20,0,0,1" />
+                        <Setter Property="FontSize" Value="12" />
+                        <Setter Property="FontFamily" Value="{StaticResource OSBold}" />
+                    </Style>
+                </dxg:GridColumn.ColumnHeaderContentStyle>
+            </dxg:GridColumn>
+            <dxg:GridColumn FieldName="PrintBarCode" Header="Print Bar Code" Width="*"  x:Name="colPrintLabel" Visible="False">
+                <dxg:GridColumn.ColumnHeaderContentStyle>
+                    <Style TargetType="{x:Type ContentControl}">
+                        <Setter Property="Margin" Value="20,0,0,1" />
+                        <Setter Property="FontSize" Value="12" />
+                        <Setter Property="FontFamily" Value="{StaticResource OSBold}" />
+                    </Style>
+                </dxg:GridColumn.ColumnHeaderContentStyle>
+            </dxg:GridColumn>
+            <dxg:GridColumn FieldName="DecimalPlace" Header="DecimalPlace" Width="*"  x:Name="colDecimal" Visible="False">
+                <dxg:GridColumn.ColumnHeaderContentStyle>
+                    <Style TargetType="{x:Type ContentControl}">
+                        <Setter Property="Margin" Value="20,0,0,1" />
+                        <Setter Property="FontSize" Value="12" />
+                        <Setter Property="FontFamily" Value="{StaticResource OSBold}" />
+                    </Style>
+                </dxg:GridColumn.ColumnHeaderContentStyle>
+            </dxg:GridColumn>
+            <dxg:GridColumn FieldName="FS" Header="Food Stamp" Width="*"  x:Name="colFS" Visible="False"/>
+            <dxg:GridColumn FieldName="QtyToPrint" Header="QtyToPrint" Width="*"  x:Name="colQtyToPrint" Visible="False"/>
+            <dxg:GridColumn FieldName="LabelType" Header="Label Type" Width="*"  x:Name="colLabelType" Visible="False"/>
+            <dxg:GridColumn FieldName="Brand" Header="Family" Width="*"  x:Name="colBrand" Visible="False"/>
+            <dxg:GridColumn FieldName="UPC" Header="UPC" Width="*"  x:Name="colUPC" Visible="False"/>
+            <dxg:GridColumn FieldName="Season" Header="Season" Width="*"  x:Name="colSeason" Visible="False"/>
+            <dxg:GridColumn FieldName="VendorID" Header="Vendor ID" Width="*"  x:Name="colVID" Visible="False"/>
+            <dxg:GridColumn FieldName="VendorName" Header="Vendor Name" Width="*"  x:Name="colVName" Visible="False"/>
+            <dxg:GridColumn FieldName="VendorPart" Header="Vendor Part #" Width="*"  x:Name="colVPart" Visible="False"/>
+            <dxg:GridColumn FieldName="SKU2" Header="Alt SKU" Width="*" x:Name="colSKU2" Visible="False"/>
+            <dxg:GridColumn FieldName="SKU3" Header="Alt SKU2" Width="*" x:Name="colSKU3" Visible="False"/>
+        </dxg:GridControl>
+
+    </Grid>
+    <!--</ScrollViewer>-->
+</UserControl>
+

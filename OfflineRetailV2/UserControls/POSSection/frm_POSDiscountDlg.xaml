@@ -1,0 +1,158 @@
+﻿<Window x:Class="OfflineRetailV2.UserControls.POSSection.frm_POSDiscountDlg"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:OfflineRetailV2.UserControls.POSSection"
+          xmlns:cc="clr-namespace:OfflineRetailV2.Controls"
+        xmlns:lm="clr-namespace:OfflineRetailV2.LayoutManager"
+         xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+        xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+        AllowsTransparency="True" WindowStyle="None" Background="Transparent" WindowStartupLocation="CenterScreen"
+        Title="" Foreground="White"  Width="550" Height="400"   Loaded="Window_Loaded">
+    <cc:ModalWindow  x:Name="ModalWindow">
+        <Grid Margin="9">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="9"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="9"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <TextBlock Text="Discount" x:Name="Title" FontFamily="{StaticResource OSRegular}" FontSize="20"/>
+            <Rectangle Grid.Row="1" Style="{DynamicResource DefaultLineStyle}" Height="2" VerticalAlignment="Center"  Margin="-9,0"/>
+            <Grid Grid.Row="2" Margin="0,9,0,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="21"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="21"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="21"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="21"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="21"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="21"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0" Grid.Row="0" Text="Sub Total"/>
+                    <dxe:TextEdit Grid.Column="2" Grid.Row="0" Text="0.00" x:Name="numSubtotal" Width="120" HorizontalAlignment="Left" FontWeight="Bold"/>
+
+                    <TextBlock Grid.Column="0" Grid.Row="2" Text="New Sub Total"/>
+                    <dxe:TextEdit Grid.Column="2" Grid.Row="2" Text="0.00" x:Name="numNewSubtotal" Width="120" HorizontalAlignment="Left" FontWeight="Bold"/>
+
+                    <TextBlock Grid.Column="0" Grid.Row="4" Text="Discount"/>
+                    <dxe:TextEdit Grid.Column="2" Grid.Row="4" Text="0.00" x:Name="numDiscount" Width="120"
+                                  HorizontalAlignment="Left" LostKeyboardFocus="numDiscount_LostKeyboardFocus" EditValueChanged="numDiscount_EditValueChanged" PreviewKeyDown="numDiscount_PreviewKeyDown"/>
+
+                    <TextBlock Grid.Column="0" Grid.Row="6" Text="Discount %"/>
+                    <dxe:TextEdit Grid.Column="2" Grid.Row="6" Text="0.00" x:Name="numDiscountPerc" Width="120" HorizontalAlignment="Left" LostKeyboardFocus="numDiscountPerc_LostKeyboardFocus" EditValueChanged="numDiscountPerc_EditValueChanged" PreviewKeyDown="numDiscountPerc_PreviewKeyDown"/>
+
+                    <TextBlock Grid.Column="0" Grid.Row="8" Text="Reason for Discount"/>
+                    <dxe:TextEdit Grid.Column="2" Grid.Row="8" Text="0.00" x:Name="txtReason"/>
+                </Grid>
+
+                <Grid Grid.Row="2" Grid.RowSpan="10" Grid.Column="8">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="11"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="11"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="11"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Button Grid.Column="6" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Content="Done"
+                                FontSize="15" Style="{DynamicResource GeneralButtonStyle1}"  Height="46" x:Name="btnOK" Click="btnOK_Click"/>
+
+                    <Button Grid.Column="4" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Content="Cancel"
+                                FontSize="15" Style="{DynamicResource GeneralButtonStyle}"  Height="46" x:Name="btnCancel" Click="btnCancel_Click"/>
+
+                    <Button Grid.Column="0" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Content="KEYBOARD"
+                                FontSize="15" Style="{DynamicResource GeneralButtonStyle}"  Height="46" x:Name="Kbd" Click="Kbd_Click"/>
+
+                    <Button Grid.Column="2" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Content="Help"
+                                FontSize="15" Style="{DynamicResource GeneralButtonStyle}"  Height="46" x:Name="btnHelp" Click="btnHelp_Click"/>
+                </Grid>
+                <Grid Grid.Row="2" Visibility="Collapsed">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="7"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="7"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="7"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="9"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="9"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="9"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="2*"/>
+                        </Grid.ColumnDefinitions>
+                        <Button Grid.Row="0" Grid.Column="0" Width="58" Height="50" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Content="1" FontSize="15"
+                                Style="{DynamicResource PadButtonStyle}"/>
+                        <Button Grid.Row="0" Grid.Column="2" Width="58" Height="50" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Content="2" FontSize="15"
+                                Style="{DynamicResource PadButtonStyle}"/>
+                        <Button Grid.Row="0" Grid.Column="4" Width="58" Height="50" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Content="3" FontSize="15"
+                                Style="{DynamicResource PadButtonStyle}"/>
+                        <Button Grid.Row="0" Grid.Column="6" Width="58" Height="50" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Content="-"
+                                FontSize="15" Style="{DynamicResource PadButtonStyle}"/>
+
+                        <Button Grid.Row="2" Grid.Column="0" Width="58" Height="50" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Content="4" FontSize="15"
+                                Style="{DynamicResource PadButtonStyle}"/>
+                        <Button Grid.Row="2" Grid.Column="2" Width="58" Height="50" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Content="5" FontSize="15"
+                                Style="{DynamicResource PadButtonStyle}"/>
+                        <Button Grid.Row="2" Grid.Column="4" Width="58" Height="50" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Content="6" FontSize="15"
+                                Style="{DynamicResource PadButtonStyle}"/>
+
+                        <Button Grid.Row="4" Grid.Column="0" Width="58" Height="50" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Content="7" FontSize="15"
+                                Style="{DynamicResource PadButtonStyle}"/>
+                        <Button Grid.Row="4" Grid.Column="2" Width="58" Height="50" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Content="8" FontSize="15"
+                                Style="{DynamicResource PadButtonStyle}"/>
+                        <Button Grid.Row="4" Grid.Column="4" Width="58" Height="50" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Content="9" FontSize="15"
+                                Style="{DynamicResource PadButtonStyle}"/>
+
+                        <Button Grid.Row="2" Grid.Column="6" Width="58" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Content="Clear"
+                                FontSize="11" FontFamily="{StaticResource OSSemiBold}" Style="{DynamicResource PadButtonStyle}"/>
+
+                        <Button Grid.Row="4" Grid.Column="6" Width="58" Height="50" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Content="Back"
+                                FontSize="15" Style="{DynamicResource PadButtonStyle}"/>
+
+                        <Button Grid.Row="6" Grid.Column="6" Width="58" Height="50" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Content="."
+                                FontSize="15" Style="{DynamicResource PadButtonStyle}"/>
+
+                        <Button Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="5" Height="50" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Content="0" FontSize="15"
+                                Style="{DynamicResource PadButtonStyle}"/>
+
+               
+
+                    </Grid>
+                </Grid>
+            </Grid>
+            <Grid Grid.Row="4" Margin="9">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="9"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="9"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+            </Grid>
+        </Grid>
+    </cc:ModalWindow>
+</Window>

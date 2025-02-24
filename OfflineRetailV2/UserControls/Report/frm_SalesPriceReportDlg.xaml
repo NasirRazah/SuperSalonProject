@@ -1,0 +1,130 @@
+﻿<Window x:Class="OfflineRetailV2.UserControls.Report.frm_SalesPriceReportDlg"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:OfflineRetailV2.UserControls.Report"
+        mc:Ignorable="d"
+               xmlns:cc="clr-namespace:OfflineRetailV2.Controls"
+        xmlns:lm="clr-namespace:OfflineRetailV2.LayoutManager"
+        xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+        xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+        xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid" 
+        xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars"
+        AllowsTransparency="True" WindowStyle="None" Background="Transparent" WindowStartupLocation="CenterScreen"
+        Title="" Foreground="White"   
+        Width="850" Height="220" Loaded="Window_Loaded">
+    <cc:ModalWindow  x:Name="ModalWindow">
+        <Grid Margin="9">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="9"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="9"/>
+                <RowDefinition Height="*"/>
+
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="Sales Price Report"  x:Name="Title" VerticalAlignment="Center" Style="{DynamicResource BlueHeading}" />
+                <Grid Grid.Column="1" HorizontalAlignment="Right" Margin="0,0,20,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition Width="9"></ColumnDefinition>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition Width="9"></ColumnDefinition>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition Width="9"></ColumnDefinition>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <Button Grid.Column="0" Content="EMAIL" Height="35" Width="120" FontFamily="{StaticResource OSSemiBold}" 
+                        Style="{DynamicResource GeneralButtonStyle}" x:Name="btnEmail" Click="BtnEmail_Click" />
+
+                    <Button Grid.Column="2" Content="PREVIEW" Height="35" Width="120" FontFamily="{StaticResource OSSemiBold}" 
+                        Style="{DynamicResource GeneralButtonStyle}" x:Name="btnPreview" Click="BtnPreview_Click" />
+
+                    <Button Grid.Column="4" Content="CANCEL" Height="35" Width="120" FontFamily="{StaticResource OSSemiBold}" 
+                        Style="{DynamicResource CancelButtonStyle}" x:Name="btnCancel" Click="BtnCancel_Click" />
+                    <Button Grid.Column="6" Content="PRINT" Height="35" Width="120" FontFamily="{StaticResource OSSemiBold}" 
+                        Style="{DynamicResource PrintButtonStyle}" x:Name="btnPrint" Click="BtnPrint_Click"/>
+                </Grid>
+            </Grid>
+            <Rectangle Grid.Row="1" Style="{DynamicResource DefaultLineStyle}"  VerticalAlignment="Center"  Margin="-9,0"/>
+
+            <Border  Grid.Row="2" Style="{DynamicResource GreenBorder}">
+                <TextBlock Style="{DynamicResource GreenBorderInfo}" Text="Effective Period"/>
+            </Border>
+
+            
+            <Grid Grid.Row="4" Margin="9">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="3"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="9"></ColumnDefinition>
+                    <ColumnDefinition Width="0.75*"></ColumnDefinition>
+                    <ColumnDefinition Width="9"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="9"></ColumnDefinition>
+                    <ColumnDefinition Width="0.75*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Grid.Row="0" Text="From"/>
+
+                <TextBlock Grid.Row="0" Grid.Column="4" Text="To"/>
+
+                <dxe:DateEdit Grid.Row="2" Grid.Column="0" x:Name="dtStart" PreviewMouseLeftButtonDown="DtStart_PreviewMouseLeftButtonDown"/>
+                <dxe:DateEdit Grid.Row="2" Grid.Column="2" Style="{DynamicResource SpinDate}" x:Name="tmStart" Mask="hh:mm tt" MaskType="DateTime" MaskUseAsDisplayFormat="True" AllowDefaultButton="False"  HorizontalContentAlignment="Center">
+                    <dxe:DateEdit.Buttons>
+                        <!--<dxe:SpinButtonInfo IsDefaultButton="True" />-->
+                        <!--<dxe:SpinButtonInfo IsDefaultButton="True"  IsLeft="True" Margin="7,0,0,0"    />-->
+                        <dxe:ButtonInfo BorderThickness="0" GlyphKind="User" IsLeft="True"
+                    Command="{Binding Path=(dxe:BaseEdit.OwnerEdit).SpinUpCommand, RelativeSource={RelativeSource Self}}" >
+                            <dxe:ButtonInfo.Content> <Image Source="{DynamicResource GreenDropdownU}" Height="11" /> </dxe:ButtonInfo.Content>
+                        </dxe:ButtonInfo>
+
+                        <dxe:ButtonInfo BorderThickness="0" GlyphKind="User" IsLeft="False"
+                    Command="{Binding Path=(dxe:BaseEdit.OwnerEdit).SpinDownCommand, RelativeSource={RelativeSource Self}}" >
+                            <dxe:ButtonInfo.Content>
+                                <Image Source="{DynamicResource GreenDropdownD}" Height="11" />
+                            </dxe:ButtonInfo.Content>
+                        </dxe:ButtonInfo>
+
+                    </dxe:DateEdit.Buttons>
+                </dxe:DateEdit>
+
+                <dxe:DateEdit Grid.Row="2" Grid.Column="4" x:Name="dtEnd" PreviewMouseLeftButtonDown="DtStart_PreviewMouseLeftButtonDown"/>
+                <dxe:DateEdit Grid.Row="2" Grid.Column="6" Style="{DynamicResource SpinDate}" x:Name="tmEnd" Mask="hh:mm tt" MaskType="DateTime" MaskUseAsDisplayFormat="True" AllowDefaultButton="False"  HorizontalContentAlignment="Center">
+                    <dxe:DateEdit.Buttons>
+                        <!--<dxe:SpinButtonInfo IsDefaultButton="True" />-->
+                        <!--<dxe:SpinButtonInfo IsDefaultButton="True"  IsLeft="True" Margin="7,0,0,0"    />-->
+                        <dxe:ButtonInfo BorderThickness="0" GlyphKind="User" IsLeft="True"
+                    Command="{Binding Path=(dxe:BaseEdit.OwnerEdit).SpinUpCommand, RelativeSource={RelativeSource Self}}" >
+                            <dxe:ButtonInfo.Content>
+                                <Image Source="{DynamicResource GreenDropdownU}" Height="11" />
+                            </dxe:ButtonInfo.Content>
+                        </dxe:ButtonInfo>
+
+                        <dxe:ButtonInfo BorderThickness="0" GlyphKind="User" IsLeft="False"
+                    Command="{Binding Path=(dxe:BaseEdit.OwnerEdit).SpinDownCommand, RelativeSource={RelativeSource Self}}" >
+                            <dxe:ButtonInfo.Content>
+                                <Image Source="{DynamicResource GreenDropdownD}" Height="11" />
+                            </dxe:ButtonInfo.Content>
+                        </dxe:ButtonInfo>
+                    </dxe:DateEdit.Buttons>
+
+                    
+                </dxe:DateEdit>
+
+            </Grid>
+           
+        </Grid>
+    </cc:ModalWindow>
+</Window>

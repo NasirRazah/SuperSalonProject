@@ -1,0 +1,150 @@
+﻿<Window x:Class="OfflineRetailV2.UserControls.Report.frm_ReportSchdEntry"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:OfflineRetailV2.UserControls.Report"
+        mc:Ignorable="d"
+                xmlns:cc="clr-namespace:OfflineRetailV2.Controls"
+        xmlns:lm="clr-namespace:OfflineRetailV2.LayoutManager"
+        xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+        xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+        xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid" 
+        xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars"
+        AllowsTransparency="True" WindowStyle="None" Background="Transparent" WindowStartupLocation="CenterScreen"
+        Title="" Foreground="White"   
+        Width="650" Height="350" Loaded="Window_Loaded">
+    <cc:ModalWindow  x:Name="ModalWindow">
+        <Grid Margin="9">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="9"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="Report Scheduler Entry"  x:Name="Title" VerticalAlignment="Center" Style="{DynamicResource BlueHeading}" />
+                <Grid Grid.Column="1" HorizontalAlignment="Right" Margin="0,0,20,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition Width="9"></ColumnDefinition>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <Button Grid.Column="0" Content="CANCEL" Height="35" Width="120" FontFamily="{StaticResource OSSemiBold}" 
+                        Style="{DynamicResource CancelButtonStyle}" x:Name="btnCancel" Click="BtnCancel_Click" />
+                    <Button Grid.Column="2" Content="DONE" Height="35" Width="120" FontFamily="{StaticResource OSSemiBold}" 
+                        Style="{DynamicResource SaveButtonStyle}" x:Name="btnOK" Click="BtnOK_Click"/>
+                </Grid>
+            </Grid>
+            <Rectangle Grid.Row="1" Style="{DynamicResource DefaultLineStyle}"  VerticalAlignment="Center"  Margin="-9,0"/>
+
+
+            <Grid Margin="9" Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="2"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                   
+                </Grid.ColumnDefinitions>
+
+                <Grid Grid.Column="0" Margin="7,0,7,0" x:Name="pnlSortBy">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="9"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="21"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="9"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="3"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="3"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="3"></RowDefinition>
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="9"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <Border Grid.Row="0" Grid.ColumnSpan="3" Style="{DynamicResource GreenBorder}">
+                        <TextBlock Style="{DynamicResource GreenBorderInfo}" Text="Report Date"></TextBlock>
+                    </Border>
+
+                    <dxe:ComboBoxEdit Grid.Row="2" Grid.ColumnSpan="3" SelectedIndex="-1" x:Name="cmbDt" IsTextEditable="False" AutoComplete="True" ImmediatePopup="True"  PreviewMouseLeftButtonDown="CmbDt_PreviewMouseLeftButtonDown">
+                        <dxe:ComboBoxEditItem>Today</dxe:ComboBoxEditItem>
+                        <dxe:ComboBoxEditItem>Yesterday</dxe:ComboBoxEditItem>
+                        <dxe:ComboBoxEditItem>This Week</dxe:ComboBoxEditItem>
+                        <dxe:ComboBoxEditItem>This Month</dxe:ComboBoxEditItem>
+                    </dxe:ComboBoxEdit>
+
+                    <Border Grid.Row="4" Grid.ColumnSpan="3" Style="{DynamicResource PurpleBorder}" x:Name="label4">
+                        <TextBlock Style="{DynamicResource PurpleBorderInfo}" Text="Report Type"></TextBlock>
+                    </Border>
+
+                    <RadioButton GroupName="1" Grid.Row="6" Grid.Column="0" x:Name="rgRepType_1" Checked="RgRepType_1_Checked" Unchecked="RgRepType_1_Checked">Detail</RadioButton>
+                    <RadioButton GroupName="1" Grid.Row="6" Grid.Column="2" x:Name="rgRepType_2" Checked="RgRepType_1_Checked" Unchecked="RgRepType_1_Checked">Summary</RadioButton>
+                    <RadioButton GroupName="1" Grid.Row="6" Grid.Column="0" x:Name="rgRepType_3" Checked="RgRepType_1_Checked" Unchecked="RgRepType_1_Checked" Visibility="Hidden">By Department</RadioButton>
+                    <RadioButton GroupName="1" Grid.Row="6" Grid.Column="2" x:Name="rgRepType_4" Checked="RgRepType_1_Checked" Unchecked="RgRepType_1_Checked" Visibility="Hidden">By SKU</RadioButton>
+                    <RadioButton GroupName="1" Grid.Row="8" Grid.Column="0" x:Name="rgRepType_5" Checked="RgRepType_1_Checked" Unchecked="RgRepType_1_Checked" Visibility="Hidden">By Date</RadioButton>
+                    <RadioButton GroupName="1" Grid.Row="8" Grid.Column="2" x:Name="rgRepType_6" Checked="RgRepType_1_Checked" Unchecked="RgRepType_1_Checked" Visibility="Hidden">Summary</RadioButton>
+
+                </Grid>
+                
+                <Grid Grid.Column="2" Margin="7,0,7,0">
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="9"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="3"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="9"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="3"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="9"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="3"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="3"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="5"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <Border Grid.Row="0" Grid.ColumnSpan="3" Style="{DynamicResource OrangeBorder}" x:Name="lbsortby">
+                        <TextBlock Style="{DynamicResource OrangeBorderInfo}" Text="Sort By"></TextBlock>
+                    </Border>
+
+                    <dxe:ComboBoxEdit Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" IsTextEditable="False" x:Name="cmbsort" PreviewMouseLeftButtonDown="CmbDt_PreviewMouseLeftButtonDown"></dxe:ComboBoxEdit>
+                    <RadioButton GroupName="4" Grid.Row="4" Grid.Column="0" x:Name="rgsort1_1" IsChecked="True">Ascending</RadioButton>
+                    <RadioButton GroupName="4" Grid.Row="4" Grid.Column="2" x:Name="rgsort1_2">Decending</RadioButton>
+
+
+                    <TextBlock Grid.Row="6" Grid.Column="0" Text="Customer ID" x:Name="lbsort"></TextBlock>
+                    <RadioButton GroupName="2" Grid.Row="8" Grid.Column="0" x:Name="rgsort_1" IsChecked="True">Ascending</RadioButton>
+                    <RadioButton GroupName="2" Grid.Row="8" Grid.Column="2" x:Name="rgsort_2">Decending</RadioButton>
+
+                    <TextBlock Grid.Row="10" Grid.Column="0" Text="Department ID"  x:Name="lbsort2"></TextBlock>
+                    <RadioButton GroupName="3" Grid.Row="12" Grid.Column="0" x:Name="rgsort2_1" IsChecked="True">Ascending</RadioButton>
+                    <RadioButton GroupName="3" Grid.Row="12" Grid.Column="2" x:Name="rgsort2_2">Decending</RadioButton>
+                    
+
+                </Grid>
+                
+            </Grid>
+
+
+        </Grid>
+    </cc:ModalWindow>
+</Window>

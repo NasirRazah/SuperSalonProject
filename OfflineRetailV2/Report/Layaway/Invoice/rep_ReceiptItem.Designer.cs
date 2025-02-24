@@ -1,0 +1,245 @@
+namespace OfflineRetailV2.Report.Invoice
+{
+    partial class repReceiptItem
+    {
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary> 
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Designer generated code
+
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            this.Detail = new DevExpress.XtraReports.UI.DetailBand();
+            this.rSKU = new DevExpress.XtraReports.UI.XRLabel();
+            this.rPrice = new DevExpress.XtraReports.UI.XRLabel();
+            this.rQty = new DevExpress.XtraReports.UI.XRLabel();
+            this.rRate = new DevExpress.XtraReports.UI.XRLabel();
+            this.rItem = new DevExpress.XtraReports.UI.XRLabel();
+            this.ReportFooter = new DevExpress.XtraReports.UI.ReportFooterBand();
+            this.rSubtotalAmount = new DevExpress.XtraReports.UI.XRLabel();
+            this.rSubtotal = new DevExpress.XtraReports.UI.XRLabel();
+            this.rLine = new DevExpress.XtraReports.UI.XRLine();
+            this.rDAmount = new DevExpress.XtraReports.UI.XRLabel();
+            this.rDReason = new DevExpress.XtraReports.UI.XRLabel();
+            this.rDiscount = new DevExpress.XtraReports.UI.XRLabel();
+            this.GroupHeader1 = new DevExpress.XtraReports.UI.GroupHeaderBand();
+            this.rDP = new DevExpress.XtraReports.UI.XRLabel();
+            this.topMarginBand1 = new DevExpress.XtraReports.UI.TopMarginBand();
+            this.bottomMarginBand1 = new DevExpress.XtraReports.UI.BottomMarginBand();
+            ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
+            // 
+            // Detail
+            // 
+            this.Detail.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
+            this.rSKU,
+            this.rPrice,
+            this.rQty,
+            this.rRate,
+            this.rItem});
+            this.Detail.HeightF = 39F;
+            this.Detail.Name = "Detail";
+            this.Detail.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100F);
+            this.Detail.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
+            // 
+            // rSKU
+            // 
+            this.rSKU.Font = new DevExpress.Drawing.DXFont("Arial", 9F, DevExpress.Drawing.DXFontStyle.Regular, DevExpress.Drawing.DXGraphicsUnit.Point, new DevExpress.Drawing.DXFontAdditionalProperty[] {new DevExpress.Drawing.DXFontAdditionalProperty("GdiCharSet", ((byte)(0)))});
+            this.rSKU.LocationFloat = new DevExpress.Utils.PointFloat(308F, 0F);
+            this.rSKU.Name = "rSKU";
+            this.rSKU.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.rSKU.SizeF = new System.Drawing.SizeF(142F, 18F);
+            this.rSKU.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight;
+            // 
+            // rPrice
+            // 
+            this.rPrice.Font = new DevExpress.Drawing.DXFont("Arial", 9.75F, DevExpress.Drawing.DXFontStyle.Regular, DevExpress.Drawing.DXGraphicsUnit.Point, new DevExpress.Drawing.DXFontAdditionalProperty[] {new DevExpress.Drawing.DXFontAdditionalProperty("GdiCharSet", ((byte)(0)))});
+            this.rPrice.LocationFloat = new DevExpress.Utils.PointFloat(308F, 19F);
+            this.rPrice.Name = "rPrice";
+            this.rPrice.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.rPrice.SizeF = new System.Drawing.SizeF(142F, 18F);
+            this.rPrice.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight;
+            this.rPrice.PrintOnPage += new DevExpress.XtraReports.UI.PrintOnPageEventHandler(this.rPrice_PrintOnPage);
+            // 
+            // rQty
+            // 
+            this.rQty.Font = new DevExpress.Drawing.DXFont("Arial", 9F, DevExpress.Drawing.DXFontStyle.Regular, DevExpress.Drawing.DXGraphicsUnit.Point, new DevExpress.Drawing.DXFontAdditionalProperty[] {new DevExpress.Drawing.DXFontAdditionalProperty("GdiCharSet", ((byte)(0)))});
+            this.rQty.LocationFloat = new DevExpress.Utils.PointFloat(233F, 19F);
+            this.rQty.Name = "rQty";
+            this.rQty.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.rQty.SizeF = new System.Drawing.SizeF(66F, 18F);
+            this.rQty.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
+            this.rQty.PrintOnPage += new DevExpress.XtraReports.UI.PrintOnPageEventHandler(this.rQty_PrintOnPage);
+            // 
+            // rRate
+            // 
+            this.rRate.Font = new DevExpress.Drawing.DXFont("Arial", 9F, DevExpress.Drawing.DXFontStyle.Regular, DevExpress.Drawing.DXGraphicsUnit.Point, new DevExpress.Drawing.DXFontAdditionalProperty[] {new DevExpress.Drawing.DXFontAdditionalProperty("GdiCharSet", ((byte)(0)))});
+            this.rRate.LocationFloat = new DevExpress.Utils.PointFloat(125F, 19F);
+            this.rRate.Name = "rRate";
+            this.rRate.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.rRate.SizeF = new System.Drawing.SizeF(92F, 18F);
+            this.rRate.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
+            this.rRate.PrintOnPage += new DevExpress.XtraReports.UI.PrintOnPageEventHandler(this.rRate_PrintOnPage);
+            // 
+            // rItem
+            // 
+            this.rItem.Font = new DevExpress.Drawing.DXFont("Arial", 9.75F, DevExpress.Drawing.DXFontStyle.Regular, DevExpress.Drawing.DXGraphicsUnit.Point, new DevExpress.Drawing.DXFontAdditionalProperty[] {new DevExpress.Drawing.DXFontAdditionalProperty("GdiCharSet", ((byte)(0)))});
+            this.rItem.LocationFloat = new DevExpress.Utils.PointFloat(0F, 0F);
+            this.rItem.Multiline = true;
+            this.rItem.Name = "rItem";
+            this.rItem.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.rItem.SizeF = new System.Drawing.SizeF(275F, 17F);
+            this.rItem.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
+            // 
+            // ReportFooter
+            // 
+            this.ReportFooter.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
+            this.rSubtotalAmount,
+            this.rSubtotal,
+            this.rLine,
+            this.rDAmount,
+            this.rDReason,
+            this.rDiscount});
+            this.ReportFooter.HeightF = 74F;
+            this.ReportFooter.Name = "ReportFooter";
+            this.ReportFooter.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100F);
+            this.ReportFooter.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
+            // 
+            // rSubtotalAmount
+            // 
+            this.rSubtotalAmount.Font = new DevExpress.Drawing.DXFont("Arial", 9.75F, DevExpress.Drawing.DXFontStyle.Regular, DevExpress.Drawing.DXGraphicsUnit.Point, new DevExpress.Drawing.DXFontAdditionalProperty[] {new DevExpress.Drawing.DXFontAdditionalProperty("GdiCharSet", ((byte)(0)))});
+            this.rSubtotalAmount.LocationFloat = new DevExpress.Utils.PointFloat(308F, 51F);
+            this.rSubtotalAmount.Name = "rSubtotalAmount";
+            this.rSubtotalAmount.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.rSubtotalAmount.SizeF = new System.Drawing.SizeF(142F, 19F);
+            this.rSubtotalAmount.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight;
+            // 
+            // rSubtotal
+            // 
+            this.rSubtotal.Font = new DevExpress.Drawing.DXFont("Arial", 9.75F, DevExpress.Drawing.DXFontStyle.Bold, DevExpress.Drawing.DXGraphicsUnit.Point, new DevExpress.Drawing.DXFontAdditionalProperty[] {new DevExpress.Drawing.DXFontAdditionalProperty("GdiCharSet", ((byte)(0)))});
+            this.rSubtotal.LocationFloat = new DevExpress.Utils.PointFloat(50F, 52F);
+            this.rSubtotal.Name = "rSubtotal";
+            this.rSubtotal.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.rSubtotal.SizeF = new System.Drawing.SizeF(175F, 19F);
+            this.rSubtotal.Text = "Sub Total";
+            this.rSubtotal.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
+            // 
+            // rLine
+            // 
+            this.rLine.LocationFloat = new DevExpress.Utils.PointFloat(150F, 41F);
+            this.rLine.Name = "rLine";
+            this.rLine.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100F);
+            this.rLine.SizeF = new System.Drawing.SizeF(300F, 9F);
+            // 
+            // rDAmount
+            // 
+            this.rDAmount.Font = new DevExpress.Drawing.DXFont("Arial", 9.75F, DevExpress.Drawing.DXFontStyle.Regular, DevExpress.Drawing.DXGraphicsUnit.Point, new DevExpress.Drawing.DXFontAdditionalProperty[] {new DevExpress.Drawing.DXFontAdditionalProperty("GdiCharSet", ((byte)(0)))});
+            this.rDAmount.LocationFloat = new DevExpress.Utils.PointFloat(308F, 21F);
+            this.rDAmount.Name = "rDAmount";
+            this.rDAmount.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.rDAmount.SizeF = new System.Drawing.SizeF(142F, 18F);
+            this.rDAmount.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight;
+            // 
+            // rDReason
+            // 
+            this.rDReason.Font = new DevExpress.Drawing.DXFont("Arial", 9F, DevExpress.Drawing.DXFontStyle.Regular, DevExpress.Drawing.DXGraphicsUnit.Point, new DevExpress.Drawing.DXFontAdditionalProperty[] {new DevExpress.Drawing.DXFontAdditionalProperty("GdiCharSet", ((byte)(0)))});
+            this.rDReason.LocationFloat = new DevExpress.Utils.PointFloat(75F, 21F);
+            this.rDReason.Name = "rDReason";
+            this.rDReason.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.rDReason.SizeF = new System.Drawing.SizeF(225F, 18F);
+            this.rDReason.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
+            // 
+            // rDiscount
+            // 
+            this.rDiscount.Font = new DevExpress.Drawing.DXFont("Arial", 9.75F, DevExpress.Drawing.DXFontStyle.Bold, DevExpress.Drawing.DXGraphicsUnit.Point, new DevExpress.Drawing.DXFontAdditionalProperty[] {new DevExpress.Drawing.DXFontAdditionalProperty("GdiCharSet", ((byte)(0)))});
+            this.rDiscount.LocationFloat = new DevExpress.Utils.PointFloat(50F, 1F);
+            this.rDiscount.Name = "rDiscount";
+            this.rDiscount.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.rDiscount.SizeF = new System.Drawing.SizeF(175F, 18F);
+            this.rDiscount.Text = "Discount";
+            this.rDiscount.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
+            // 
+            // GroupHeader1
+            // 
+            this.GroupHeader1.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
+            this.rDP});
+            this.GroupHeader1.HeightF = 2F;
+            this.GroupHeader1.Name = "GroupHeader1";
+            this.GroupHeader1.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100F);
+            this.GroupHeader1.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
+            // 
+            // rDP
+            // 
+            this.rDP.CanGrow = false;
+            this.rDP.Font = new DevExpress.Drawing.DXFont("Arial", 9.75F, DevExpress.Drawing.DXFontStyle.Regular, DevExpress.Drawing.DXGraphicsUnit.Point, new DevExpress.Drawing.DXFontAdditionalProperty[] {new DevExpress.Drawing.DXFontAdditionalProperty("GdiCharSet", ((byte)(0)))});
+            this.rDP.LocationFloat = new DevExpress.Utils.PointFloat(0F, 0F);
+            this.rDP.Name = "rDP";
+            this.rDP.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.rDP.SizeF = new System.Drawing.SizeF(33F, 2F);
+            this.rDP.Text = "rHeader";
+            this.rDP.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
+            this.rDP.PrintOnPage += new DevExpress.XtraReports.UI.PrintOnPageEventHandler(this.rDP_PrintOnPage);
+            // 
+            // topMarginBand1
+            // 
+            this.topMarginBand1.HeightF = 26F;
+            this.topMarginBand1.Name = "topMarginBand1";
+            // 
+            // bottomMarginBand1
+            // 
+            this.bottomMarginBand1.Name = "bottomMarginBand1";
+            // 
+            // repReceiptItem
+            // 
+            this.Bands.AddRange(new DevExpress.XtraReports.UI.Band[] {
+            this.Detail,
+            this.ReportFooter,
+            this.GroupHeader1,
+            this.topMarginBand1,
+            this.bottomMarginBand1});
+            this.Font = new DevExpress.Drawing.DXFont("Arial", 9.75F, DevExpress.Drawing.DXFontStyle.Regular, DevExpress.Drawing.DXGraphicsUnit.Point, new DevExpress.Drawing.DXFontAdditionalProperty[] {new DevExpress.Drawing.DXFontAdditionalProperty("GdiCharSet", ((byte)(0)))});
+            this.Margins = new DevExpress.Drawing.DXMargins(200, 200, 26, 100);
+            this.Version = "13.1";
+            ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
+
+        }
+
+        #endregion
+
+        private DevExpress.XtraReports.UI.DetailBand Detail;
+        public DevExpress.XtraReports.UI.XRLabel rItem;
+        public DevExpress.XtraReports.UI.XRLabel rPrice;
+        public DevExpress.XtraReports.UI.XRLabel rQty;
+        public DevExpress.XtraReports.UI.XRLabel rRate;
+        public DevExpress.XtraReports.UI.XRLabel rDAmount;
+        public DevExpress.XtraReports.UI.XRLabel rDReason;
+        public DevExpress.XtraReports.UI.XRLabel rDiscount;
+        public DevExpress.XtraReports.UI.XRLabel rSubtotalAmount;
+        public DevExpress.XtraReports.UI.XRLabel rSubtotal;
+        public DevExpress.XtraReports.UI.XRLine rLine;
+        public DevExpress.XtraReports.UI.XRLabel rSKU;
+        public DevExpress.XtraReports.UI.ReportFooterBand ReportFooter;
+        public DevExpress.XtraReports.UI.GroupHeaderBand GroupHeader1;
+        public DevExpress.XtraReports.UI.XRLabel rDP;
+        private DevExpress.XtraReports.UI.TopMarginBand topMarginBand1;
+        private DevExpress.XtraReports.UI.BottomMarginBand bottomMarginBand1;
+    }
+}

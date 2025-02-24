@@ -1,0 +1,41 @@
+﻿<UserControl x:Class="OfflineRetailV2.UserControls.POSSection.frm_MatrixProductPOS"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:OfflineRetailV2.UserControls.POSSection"
+               xmlns:cc="clr-namespace:OfflineRetailV2.Controls"
+        xmlns:lm="clr-namespace:OfflineRetailV2.LayoutManager"
+           xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+         xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+         xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid" 
+             xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars"
+             mc:Ignorable="d" 
+             d:DesignHeight="400" d:DesignWidth="900" Loaded="Window_Loaded"  >
+    
+        <Grid Margin="9">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="9"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0" Margin="0,9,0,0" x:Name="pnlcontrol" >
+                <local:frm_MatrixProductUC x:Name="frm_MatrixProductUC"/>
+            </Grid>
+            <Grid Grid.Row="2" Margin="9" x:Name="panel2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="9"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="9"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Button Grid.Column="2" Content="CANCEL" Height="46" Style="{DynamicResource CancelButtonStyle}" FontFamily="{StaticResource OSSemiBold}" 
+                       x:Name="btnCancel" Click="BtnCancel_Click"/>
+            <Button Grid.Column="4" Content="Ok" Style="{DynamicResource SaveButtonStyle}" Height="46" FontFamily="{StaticResource OSSemiBold}" 
+                         x:Name="btnOK" Click="BtnOK_Click"/>
+            </Grid>
+        <Grid Background="#3D000000" Margin="-15" Grid.RowSpan="3" x:Name="blurGrid" Visibility="Collapsed"/>
+    </Grid>
+    
+</UserControl>

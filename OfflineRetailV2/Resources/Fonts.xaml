@@ -1,0 +1,8 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <FontFamily x:Key="OSRegular">/Resources/Fonts/#Open Sans Regular</FontFamily>
+    <FontFamily x:Key="OSLight">/Resources/Fonts/#Open Sans Light</FontFamily>
+    <FontFamily x:Key="OSBold">/Resources/Fonts/#Open Sans Bold</FontFamily>
+    <FontFamily x:Key="OSSemiBold">/Resources/Fonts/#Open Sans Semibold</FontFamily>
+</ResourceDictionary>

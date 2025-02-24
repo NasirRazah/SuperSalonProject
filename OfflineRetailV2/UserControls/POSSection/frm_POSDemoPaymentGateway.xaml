@@ -1,0 +1,80 @@
+﻿<Window x:Class="OfflineRetailV2.UserControls.POSSection.frm_POSDemoPaymentGateway"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:OfflineRetailV2.UserControls.POSSection"
+         xmlns:cc="clr-namespace:OfflineRetailV2.Controls"
+        xmlns:lm="clr-namespace:OfflineRetailV2.LayoutManager"
+           xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+         xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+         xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid" 
+        AllowsTransparency="True" WindowStyle="None" Background="Transparent" WindowStartupLocation="CenterScreen"
+        Title="" Foreground="White" SizeToContent="WidthAndHeight" Width="600"   
+        Loaded="Window_Loaded">
+    <cc:ModalWindow  x:Name="ModalWindow">
+        <Grid Margin="9">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="9"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="9"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <TextBlock Text="Demo Payment Gateway" x:Name="Title" FontFamily="{StaticResource OSRegular}" FontSize="20"/>
+            <Rectangle Grid.Row="1" Style="{DynamicResource DefaultLineStyle}" Height="2" VerticalAlignment="Center"  Margin="-9,0"/>
+            <Grid Grid.Row="2" Margin="0,9,0,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="21"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="9"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="21"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="21"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="21"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0" Grid.Row="0" Text="Transaction Amount" FontWeight="Bold"/>
+                <TextBlock Grid.Column="2" Grid.Row="0" Text="0.00" FontWeight="Bold" x:Name="numAmount"/>
+
+                <TextBlock Grid.Column="2" Grid.Row="2" Text="Enter or Swipe Card Number" FontWeight="Bold"
+                           x:Name="labelControl7"/>
+
+                <TextBlock Grid.Column="0" Grid.Row="4" Text="Card Number"/>
+                <dxe:TextEdit Grid.Column="2" Grid.Row="4" Height="30" x:Name="txtCard" EditValueChanged="txtCard_EditValueChanged"/>
+
+                <TextBlock Grid.Column="0" Grid.Row="6" Text="Expiry"/>
+                <Grid Grid.Column="2" Grid.Row="6">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="21"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <dxe:TextEdit Grid.Column="0" Grid.Row="8" Height="30" Width="100" x:Name="textEdit1" EditValueChanged="textEdit1_EditValueChanged"/>
+                    <TextBlock Grid.Column="2" Grid.Row="8" Text="(MM/YY)" x:Name="labelControl1"/>
+                </Grid>
+
+                <TextBlock Grid.Column="0" Grid.Row="8" Text="CVV Number"/>
+                <dxe:TextEdit Grid.Column="2" Grid.Row="8" Height="30" Width="100" HorizontalAlignment="Left"
+                              x:Name="txtCVV" EditValueChanged="txtCVV_EditValueChanged"/>
+            </Grid>
+            <Grid Grid.Row="4" Margin="9">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="9"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="9"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Button Content="Cancel" Height="47" Grid.Column="2" x:Name="btnCancel"
+                        Style="{DynamicResource GeneralButtonStyle}" Click="btnCancel_Click"/>
+                <Button Content="Done" Height="47" Grid.Column="4" x:Name="btnOK"
+                        Style="{DynamicResource GeneralButtonStyle1}" Click="btnOK_Click"/>
+            </Grid>
+        </Grid>
+    </cc:ModalWindow>
+</Window>

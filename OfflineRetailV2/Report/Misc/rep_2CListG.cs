@@ -1,0 +1,70 @@
+﻿/*
+ USER CLASS : Report - Common Listing with 2 Columns (3)
+ */
+using System;
+using System.Drawing;
+using System.Collections;
+using System.ComponentModel;
+using DevExpress.XtraReports.UI;
+using DevExpress.XtraReports.Native.Presenters;
+using System.Globalization;
+using OfflineRetailV2.Data;
+using OfflineRetailV2;
+namespace OfflineRetailV2.Report.Misc
+{
+    public partial class rep2CListG : DevExpress.XtraReports.UI.XtraReport
+    {
+        public rep2CListG()
+        {
+            InitializeComponent();
+            //Translation.SetMultilingualTextInXtraReport(this);
+        }
+        protected override BandPresenter CreateBandPresenter()
+        {
+            var bandPresenter = base.CreateBandPresenter();
+
+            return new BandPresenterWrapper(bandPresenter, Settings.SetCulture(), this);
+        }
+
+        private int intImageWidth = 100;
+        private int intImageHeight = 100;
+
+        private string strPicID;
+
+        private void rCol2_BeforePrint(object sender, CancelEventArgs e)
+        {
+            
+        }
+
+        private void rID_PrintOnPage(object sender, PrintOnPageEventArgs e)
+        {
+            strPicID = rID.Text;
+        }
+
+        private void rCol2_PrintOnPage(object sender, PrintOnPageEventArgs e)
+        {
+            if (!GeneralFunctions.GetPhotoFromTableForReport(rCol2, Convert.ToInt32(strPicID), "Graphic Art"))
+            {
+                rCol2.Image = null;
+            }
+            else
+            {
+                double AspectRatio = 0.00;
+                int intWidth, intHeight;
+                AspectRatio = Convert.ToDouble(rCol2.Image.Width) /
+                    Convert.ToDouble(rCol2.Image.Height);
+                intHeight = rCol2.Height;
+                intWidth = Convert.ToInt16(Convert.ToDouble(intHeight) * AspectRatio);
+
+                if (intWidth > intImageWidth)
+                {
+                    intWidth = intImageWidth;
+                    intHeight = Convert.ToInt16(Convert.ToDouble(intWidth) / AspectRatio);
+                }
+                rCol2.Width = intWidth;
+                rCol2.Height = intHeight;
+            }
+        }
+
+    }
+}

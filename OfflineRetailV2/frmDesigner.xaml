@@ -1,0 +1,54 @@
+﻿<Window x:Class="OfflineRetailV2.frmDesigner"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:OfflineRetailV2"
+              xmlns:cc="clr-namespace:OfflineRetailV2.Controls"
+        xmlns:lm="clr-namespace:OfflineRetailV2.LayoutManager"
+        xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+        xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+        xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid" 
+        xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars"
+        xmlns:dxrud="http://schemas.devexpress.com/winfx/2008/xaml/reports/userdesigner" 
+        xmlns:mvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm"
+        AllowsTransparency="True" WindowStyle="None" Background="Transparent" WindowStartupLocation="CenterScreen"
+        Title="" Foreground="White"  
+              Width="800" Height="600" Closing="Window_Closing" Loaded="Window_Loaded">
+    <mvvm:Interaction.Behaviors>
+        <dx:DXMessageBoxService />
+    </mvvm:Interaction.Behaviors>
+    <cc:ModalWindow  x:Name="ModalWindow">
+        <Grid Margin="9">
+            <Grid.RowDefinitions>
+                
+                <RowDefinition Height="*"/>
+
+            </Grid.RowDefinitions>
+            <ScrollViewer Grid.Row="0">
+                <dxrud:ReportDesigner Grid.Row="0"  x:Name="rd" HorizontalAlignment="Left" VerticalAlignment="Top"  ShowScriptsTab="False" ShowPreviewTab="False" DocumentClosing="Rd_DocumentClosing" >
+
+                    <dxrud:ReportDesigner.RibbonCustomizationActions>
+                        <dxb:RemoveAction ElementName="{x:Static dxrud:DefaultBarItemNames.SaveAs}" />
+                        <dxb:RemoveAction ElementName="{x:Static dxrud:DefaultBarItemNames.Save}" />
+                        <dxb:RemoveAction ElementName="{x:Static dxrud:DefaultBarItemNames.Open}" />
+                        <dxb:RemoveAction ElementName="{x:Static dxrud:DefaultBarItemNames.New}" />
+                        <dxb:InsertAction ContainerName="{x:Static dxrud:DefaultBarItemNames.ReportGroup}">
+                            <dxb:InsertAction.Element>
+                                <dxb:BarButtonItem 
+                                       Content="Save &amp; Close"  LargeGlyph="{dx:DXImage Image=Save_32X32.png}"  ItemClick="CloseDocumentButton_ItemClick"/>
+                            </dxb:InsertAction.Element>
+                        </dxb:InsertAction>
+
+                    </dxrud:ReportDesigner.RibbonCustomizationActions>
+                    <dxrud:ReportDesignerClassicView/>
+
+
+
+                </dxrud:ReportDesigner>
+            </ScrollViewer>
+            
+            
+        </Grid>
+    </cc:ModalWindow>
+</Window>

@@ -1,0 +1,47 @@
+﻿<UserControl x:Class="OfflineRetailV2.frmProductBrwUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:OfflineRetailV2"
+                xmlns:cc="clr-namespace:OfflineRetailV2.Controls"
+        xmlns:lm="clr-namespace:OfflineRetailV2.LayoutManager"
+           xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+         xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+         xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid" 
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid Grid.Row="2" Margin="3">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="21"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <dxg:GridControl x:Name="gridControl1" Grid.Row="4" ShowBorder="False" SelectionMode="Row">
+            <dxg:GridControl.View>
+                <dxg:TableView  x:Name="gridView1"/>
+            </dxg:GridControl.View>
+            <dxg:GridColumn FieldName="ID" Header="ID" x:Name="colID" Visible="False" Width="*"/>
+            <dxg:GridColumn FieldName="SKU" Header="SKU" x:Name="colSKU" Width="*"/>
+            <dxg:GridColumn FieldName="ProductName" Header="Description" x:Name="colDesc" Width="*"/>
+            <dxg:GridColumn FieldName="PriceA" Header="Price" x:Name="colPrice" Width="*"/>
+            <dxg:GridColumn FieldName="QtyOnHand" Header="Qty" x:Name="colQty" Width="*"/>
+            <dxg:GridColumn FieldName="Department" Header="Department" x:Name="colDept" Width="*"/>
+            <dxg:GridColumn FieldName="Category" Header="POS Screen Category" x:Name="colCat" Width="*"/>
+            <dxg:GridColumn FieldName="ProductType" Header="Type" x:Name="colType" Width="*"/>
+            <dxg:GridColumn FieldName="NoPriceOnLabel" Header="No Price Label" x:Name="colNoPriceLabel" Visible="False" Width="*"/>
+            <dxg:GridColumn FieldName="PrintBarCode" Header="Print Bar Code" x:Name="colPrintLabel" Visible="False" Width="*"/>
+            <dxg:GridColumn FieldName="DecimalPlace" Header="DecimalPlace" x:Name="colDecimal" Visible="False" Width="*"/>
+            <dxg:GridColumn FieldName="FS" Header="Food Stamp" x:Name="colFS" Width="*"/>
+            <dxg:GridColumn FieldName="QtyToPrint" Header="QtyToPrint" x:Name="colQtyToPrint" Visible="False" Width="*"/>
+            <dxg:GridColumn FieldName="LabelType" Header="Label Type" x:Name="colLabelType" Visible="False" Width="*"/>
+            <dxg:GridColumn FieldName="Brand" Header="Family" x:Name="colBrand" Width="*"/>
+            <dxg:GridColumn FieldName="UPC" Header="UPC" x:Name="colUPC" Width="*"/>
+            <dxg:GridColumn FieldName="Season" Header="Season" x:Name="colSeason" Width="*"/>
+            <dxg:GridColumn FieldName="VendorID" Header="Vendor ID" x:Name="colVID" Width="*"/>
+            <dxg:GridColumn FieldName="VendorName" Header="Vendor Name" x:Name="colVName" Width="*"/>
+            <dxg:GridColumn FieldName="VendorPart" Header="Vendor Part #" x:Name="colVPart" Width="*"/>
+        </dxg:GridControl>
+    </Grid>
+</UserControl>

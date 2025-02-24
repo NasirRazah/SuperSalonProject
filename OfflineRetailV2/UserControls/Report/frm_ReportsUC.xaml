@@ -1,0 +1,170 @@
+﻿<UserControl x:Class="OfflineRetailV2.UserControls.Report.frm_ReportsUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:OfflineRetailV2.UserControls.Report"
+             mc:Ignorable="d" 
+                  xmlns:cc="clr-namespace:OfflineRetailV2.Controls"
+        xmlns:lm="clr-namespace:OfflineRetailV2.LayoutManager"
+        xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+        xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+        xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid" 
+        xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars"
+         xmlns:dxgt="http://schemas.devexpress.com/winfx/2008/xaml/grid/themekeys" 
+        xmlns:dxt="http://schemas.devexpress.com/winfx/2008/xaml/core/themekeys"
+             d:DesignHeight="450" d:DesignWidth="800"   
+        Foreground="White">
+    <UserControl.Resources>
+        
+
+        <dx:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+        <dx:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverterInverted" Invert="True" />
+        <ControlTemplate x:Key="{dxgt:GroupRowThemeKey ResourceKey=ExpandButtonTemplate, IsThemeIndependent=True}" TargetType="{x:Type dx:ToggleStateButton}">
+            <Grid HorizontalAlignment="Stretch" x:Name="collapse" VerticalAlignment="Stretch" Opacity="1">
+                <!--<Border HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="Auto" Height="Auto" Opacity="1" CornerRadius="3,3,3,3">
+                    <Border.Background>
+                        <LinearGradientBrush EndPoint="0.5,1.002" StartPoint="0.5,-0.002" SpreadMethod="Pad">
+                            <GradientStop Color="#3E4C6EB3" Offset="0" />
+                            <GradientStop Color="#80EDF4FF" Offset="1" />
+                            <GradientStop Color="#3F7098DC" Offset="0.215" />
+                        </LinearGradientBrush>
+                    </Border.Background>
+                </Border>
+                <Border x:Name="border" Width="11" Height="11" Background="#FF274C88" CornerRadius="2,2,2,2" Padding="1,1,1,1">
+                    <Border CornerRadius="1,1,1,1">
+                        <Border.Background>
+                            Green
+                        </Border.Background>
+                        <Border Margin="0,0,0,5" CornerRadius="1,1,1,1">
+                            <Border.Background>
+                                <LinearGradientBrush EndPoint="0.5,-0.002" StartPoint="0.5,1.002">
+                                    <GradientStop Color="#FF6085CC" Offset="0" />
+                                    <GradientStop Color="#FF7FA7E0" Offset="0.885" />
+                                    <GradientStop Color="#FFBBD8FF" Offset="1" />
+                                </LinearGradientBrush>
+                            </Border.Background>
+                        </Border>
+                    </Border>
+                </Border>-->
+                <Grid Margin="3,3,3,3">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Image x:Name="Plus1" Source="{DynamicResource Expand}"   Visibility="{Binding IsChecked, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource BooleanToVisibilityConverterInverted}}" ></Image>
+                    <Image x:Name="Plus2" Source="{DynamicResource Collapse}"  Visibility="{Binding IsChecked, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource BooleanToVisibilityConverter}}" ></Image>
+                </Grid>
+            </Grid>
+        </ControlTemplate>
+
+        <Style x:Key="{dxgt:GroupRowThemeKey ResourceKey=ExpandButtonStyle, IsThemeIndependent=True}" TargetType="{x:Type dx:ToggleStateButton}">
+            <Setter Property="Focusable" Value="false" />
+            <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+            <!--<Setter Property="Width" Value="13" />
+            <Setter Property="Height" Value="13" />-->
+            <Setter Property="Width" Value="24" />
+            <Setter Property="Height" Value="24" />
+            <Setter Property="HorizontalContentAlignment" Value="Center" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+            <Setter Property="Template" Value="{DynamicResource {dxgt:GroupRowThemeKey ResourceKey=ExpandButtonTemplate}}" />
+        </Style>
+
+        <SolidColorBrush xmlns:dxgt="http://schemas.devexpress.com/winfx/2008/xaml/grid/themekeys"  
+                     x:Key="{dxgt:GroupRowThemeKey ResourceKey=GroupRowBackgroundSelected, IsThemeIndependent=True}" Color="#42657A"/>
+    </UserControl.Resources>
+    <Grid Margin="3">
+            <Grid.RowDefinitions>
+
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="9"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="9"/>
+        </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0" Margin="0,9,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition Width="21"></ColumnDefinition>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Button Height="35" Width="100" Grid.Column="0" x:Name="btnPrint"
+                        Style="{DynamicResource PrintButton}" Click="BtnPrint_Click"/>
+            <Button Height="35" Width="100" Grid.Column="2" x:Name="btnSchd"
+                        Style="{DynamicResource PrintScheduleButton}" Click="BtnSchd_Click"/>
+        </Grid>
+            <Grid Grid.Row="2">
+
+            <ScrollViewer  dx:ScrollBarExtensions.ScrollBarMode="TouchOverlap" ManipulationBoundaryFeedback="Posscroll_ManipulationBoundaryFeedback" 
+                                                      Grid.Row="1" x:Name="posscroll" Style="{DynamicResource ThickScroll}"  HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" PanningMode="Both" 
+                                         Margin="0,0,0,0" Height="Auto" VerticalAlignment="Stretch" Padding="0,0,0,0" >
+
+                <dxg:GridControl  SelectionMode="MultipleRow" ShowBorder="False" AutoExpandAllGroups="False" x:Name="grdRep" MouseDoubleClick="GrdRep_MouseDoubleClick" CustomGroupDisplayText="GrdRep_CustomGroupDisplayText" >
+                <dxg:GridControl.View>
+                    <dxg:TableView  x:Name="gridView1" AllowGrouping="True" NavigationStyle="Row" ShowVerticalLines="False"  GroupRowStyle="{DynamicResource GroupStyle}"  ShowColumnHeaders="False" LeftGroupAreaIndent="0" FadeSelectionOnLostFocus="False"  >
+                        
+                        <dxg:TableView.GroupValueTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Value}" Margin="10,0,0,0"/>
+                            </DataTemplate>
+                        </dxg:TableView.GroupValueTemplate>
+                         
+                        <!--<dxg:TableView.RowStyle>
+                                <Style TargetType="dxg:RowControl">
+                                    <Setter Property="Foreground" Value="Black"/>
+                                </Style>
+                            </dxg:TableView.RowStyle>-->
+                        
+                            
+                        <dxg:TableView.CellStyle>
+                                <Style TargetType="dxg:LightweightCellEditor" BasedOn="{StaticResource {dxgt:GridRowThemeKey ResourceKey=LightweightCellStyle}}">
+                                    <Style.Triggers>
+                                        <Trigger Property="RowSelectionState" Value="Focused">
+                                            <Setter Property="BorderBrush" Value="#FFD3D3D3" />
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </dxg:TableView.CellStyle>
+                        
+                        </dxg:TableView>
+                </dxg:GridControl.View>
+                <dxg:GridColumn FieldName="Dummy1" VisibleIndex="0" Width="60" AllowAutoFilter="False" Focusable="False">
+                </dxg:GridColumn>
+                <dxg:GridColumn FieldName="Image" VisibleIndex="1" Width="30" AllowAutoFilter="False" Focusable="False">
+                    <dxg:GridColumn.CellTemplate>
+                        <DataTemplate>
+                            <dxe:ImageEdit x:Name="PART_Editor" Width="18" Height="18"></dxe:ImageEdit>
+                        </DataTemplate>
+                    </dxg:GridColumn.CellTemplate>
+                    <dxg:GridColumn.EditSettings>
+                        <dxe:ImageEditSettings />
+                    </dxg:GridColumn.EditSettings>
+                </dxg:GridColumn>
+                
+                <dxg:GridColumn FieldName="ReportID" Header="Code" Width="*" x:Name="colID" Visible="False"/>
+                <dxg:GridColumn FieldName="ReportGroupID" Header="Security Group" Width="*" x:Name="colGroup" GroupIndex="0" AllowFocus="True" AllowEditing="False"/>
+                <dxg:GridColumn FieldName="ReportName" Header="Description" Width="4*" x:Name="colName" AllowFocus="True" AllowEditing="False"/>
+                
+            </dxg:GridControl>
+
+            </ScrollViewer>
+
+            <!--<dxg:TreeListControl x:Name="reptreelist" AutoGenerateColumns="AddNew" >
+                    <dxg:TreeListControl.Columns>
+                        <dxg:TreeListColumn FieldName="ReportGroupID" Visible="False"/>
+                        <dxg:TreeListColumn FieldName="ReportID" Visible="False"/>
+                        <dxg:TreeListColumn FieldName="ReportName"/>
+                    </dxg:TreeListControl.Columns>
+                    <dxg:TreeListControl.View>
+                    <dxg:TreeListView x:Name="repview"  NavigationStyle="Row" AllowConditionalFormattingMenu="True" KeyFieldName="ReportID" ParentFieldName="ReportGroupID" ShowColumnHeaders="False" ShowHorizontalLines="False" ShowVerticalLines="True"  AutoWidth="True" AutoExpandAllNodes="True" ShowRootIndent="False" ShowIndicator="False" ShowNodeImages="True"  AllowEditing="False" MouseDoubleClick="Repview_MouseDoubleClick" CustomRowAppearance="Repview_CustomRowAppearance" CustomNodeFilter="Repview_CustomNodeFilter">
+                        <dxg:TreeListView.FormatConditions>
+                            <dxg:FormatCondition FieldName="ReportID" PredefinedFormatName="GreenText"
+                                             Expression="[ReportID] = 0"
+                                             ApplyToRow="True"></dxg:FormatCondition>
+                        </dxg:TreeListView.FormatConditions>
+                    </dxg:TreeListView>
+                </dxg:TreeListControl.View>
+                </dxg:TreeListControl>-->
+            </Grid>
+        </Grid>
+    
+</UserControl>

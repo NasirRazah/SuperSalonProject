@@ -1,0 +1,58 @@
+﻿<UserControl x:Class="OfflineRetailV2.Controls.LoginControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:OfflineRetailV2.Controls"
+             xmlns:cc="clr-namespace:OfflineRetailV2.Controls"
+             xmlns:prop="clr-namespace:OfflineRetailV2.Properties"
+             Background="Transparent" FontFamily="{StaticResource OSRegular}">
+    <Grid Grid.Row="2">
+        <Border
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            BorderThickness="0"
+            CornerRadius="9">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="25" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="15" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="18" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <TextBlock
+                    Grid.Row="0"
+                    FontSize="31"
+                    Foreground="#FFFFFF"
+                    Text="{x:Static prop:Resources.Login}" />
+                <cc:CustomTextBox
+                    x:Name="txtUser"
+                    Grid.Row="2"
+                    Width="406"
+                    Height="49.65" FontSize="20"
+                    InfoText="{x:Static prop:Resources.LoginID}" />
+                <cc:PasswordBoxControl x:Name="txtPswd" Grid.Row="4" Width="406" />
+
+                <TextBlock
+                    x:Name="ErrorTextBlock"
+                    Grid.Row="5"
+                    Margin="9,9"
+                    VerticalAlignment="Center"
+                    FontSize="13"
+                    Foreground="White"
+                    Opacity="1"
+                    Text="{x:Static prop:Resources.WrongLoginIDOrPassword}"
+                    Visibility="Collapsed" />
+                <cc:CustomButton
+                    x:Name="LoginButton"
+                    Grid.Row="6"
+                    Width="408"
+                    Height="56" FontFamily="{StaticResource OSBold}"
+                    Content="{x:Static prop:Resources.Login}"
+                    IsDefault="True"
+                    IsEnabled="False" />
+            </Grid>
+        </Border>
+    </Grid>
+</UserControl>

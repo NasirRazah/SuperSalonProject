@@ -1,0 +1,209 @@
+namespace OfflineRetailV2.Report.Product
+{
+    partial class repPrintLabel
+    {
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary> 
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Designer generated code
+
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            DevExpress.XtraPrinting.BarCode.Code128Generator code128Generator1 = new DevExpress.XtraPrinting.BarCode.Code128Generator();
+            this.Detail = new DevExpress.XtraReports.UI.DetailBand();
+            this.winControlContainer1 = new DevExpress.XtraReports.UI.WinControlContainer();
+            this.printControl1 = new DevExpress.XtraPrinting.Control.PrintControl();
+            this.pnl = new DevExpress.XtraReports.UI.XRPanel();
+            this.lbSKU = new DevExpress.XtraReports.UI.XRLabel();
+            this.dataSet1 = new System.Data.DataSet();
+            this.lbProduct = new DevExpress.XtraReports.UI.XRLabel();
+            this.lbPrice = new DevExpress.XtraReports.UI.XRLabel();
+            this.lbCompany = new DevExpress.XtraReports.UI.XRLabel();
+            this.lbBarCode = new DevExpress.XtraReports.UI.XRBarCode();
+            this.topMarginBand1 = new DevExpress.XtraReports.UI.TopMarginBand();
+            this.bottomMarginBand1 = new DevExpress.XtraReports.UI.BottomMarginBand();
+            ((System.ComponentModel.ISupportInitialize)(this.dataSet1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
+            // 
+            // Detail
+            // 
+            this.Detail.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
+            this.winControlContainer1,
+            this.pnl});
+            this.Detail.HeightF = 150F;
+            this.Detail.MultiColumn.ColumnSpacing = 2F;
+            this.Detail.MultiColumn.Direction = DevExpress.XtraReports.UI.ColumnDirection.AcrossThenDown;
+            this.Detail.MultiColumn.Mode = DevExpress.XtraReports.UI.MultiColumnMode.UseColumnCount;
+            this.Detail.Name = "Detail";
+            this.Detail.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100F);
+            this.Detail.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
+            this.Detail.BeforePrint += new System.Drawing.Printing.PrintEventHandler(this.Detail_BeforePrint);
+            // 
+            // winControlContainer1
+            // 
+            this.winControlContainer1.BackColor = System.Drawing.Color.Transparent;
+            this.winControlContainer1.BorderColor = System.Drawing.SystemColors.ControlText;
+            this.winControlContainer1.Borders = DevExpress.XtraPrinting.BorderSide.None;
+            this.winControlContainer1.BorderWidth = 1;
+            this.winControlContainer1.Font = new System.Drawing.Font("Times New Roman", 9.75F);
+            this.winControlContainer1.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.winControlContainer1.LocationFloat = new DevExpress.Utils.PointFloat(658F, 58F);
+            this.winControlContainer1.Name = "winControlContainer1";
+            this.winControlContainer1.SizeF = new System.Drawing.SizeF(6F, 6F);
+            this.winControlContainer1.WinControl = this.printControl1;
+            // 
+            // printControl1
+            // 
+            this.printControl1.BackColor = System.Drawing.Color.Empty;
+            this.printControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.printControl1.ForeColor = System.Drawing.Color.Empty;
+            this.printControl1.IsMetric = false;
+            this.printControl1.Location = new System.Drawing.Point(0, 0);
+            this.printControl1.Name = "printControl1";
+            this.printControl1.Size = new System.Drawing.Size(6, 6);
+            this.printControl1.TabIndex = 0;
+            this.printControl1.TooltipFont = new System.Drawing.Font("Tahoma", 8.25F);
+            // 
+            // pnl
+            // 
+            this.pnl.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
+            this.lbSKU,
+            this.lbProduct,
+            this.lbPrice,
+            this.lbCompany,
+            this.lbBarCode});
+            this.pnl.LocationFloat = new DevExpress.Utils.PointFloat(0F, 0F);
+            this.pnl.Name = "pnl";
+            this.pnl.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100F);
+            this.pnl.SizeF = new System.Drawing.SizeF(392F, 150F);
+            // 
+            // lbSKU
+            // 
+            this.lbSKU.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "SKU")});
+            this.lbSKU.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbSKU.LocationFloat = new DevExpress.Utils.PointFloat(67F, 67F);
+            this.lbSKU.Name = "lbSKU";
+            this.lbSKU.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.lbSKU.SizeF = new System.Drawing.SizeF(134F, 25F);
+            this.lbSKU.Text = "lbSKU";
+            this.lbSKU.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
+            this.lbSKU.BeforePrint += new System.Drawing.Printing.PrintEventHandler(this.lbBarCode_BeforePrint);
+            // 
+            // dataSet1
+            // 
+            this.dataSet1.DataSetName = "NewDataSet";
+            // 
+            // lbProduct
+            // 
+            this.lbProduct.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "DESC")});
+            this.lbProduct.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbProduct.LocationFloat = new DevExpress.Utils.PointFloat(67F, 92F);
+            this.lbProduct.Name = "lbProduct";
+            this.lbProduct.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.lbProduct.SizeF = new System.Drawing.SizeF(134F, 36F);
+            this.lbProduct.Text = "lbProduct";
+            this.lbProduct.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
+            this.lbProduct.BeforePrint += new System.Drawing.Printing.PrintEventHandler(this.lbBarCode_BeforePrint);
+            // 
+            // lbPrice
+            // 
+            this.lbPrice.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "PRICE")});
+            this.lbPrice.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbPrice.LocationFloat = new DevExpress.Utils.PointFloat(208F, 67F);
+            this.lbPrice.Name = "lbPrice";
+            this.lbPrice.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.lbPrice.SizeF = new System.Drawing.SizeF(109F, 41F);
+            this.lbPrice.Text = "lbPrice";
+            this.lbPrice.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
+            this.lbPrice.BeforePrint += new System.Drawing.Printing.PrintEventHandler(this.lbBarCode_BeforePrint);
+            // 
+            // lbCompany
+            // 
+            this.lbCompany.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "COMPANY")});
+            this.lbCompany.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbCompany.LocationFloat = new DevExpress.Utils.PointFloat(67F, 12F);
+            this.lbCompany.Name = "lbCompany";
+            this.lbCompany.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.lbCompany.SizeF = new System.Drawing.SizeF(250F, 18F);
+            this.lbCompany.Text = "lbCompany";
+            this.lbCompany.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
+            this.lbCompany.BeforePrint += new System.Drawing.Printing.PrintEventHandler(this.lbBarCode_BeforePrint);
+            // 
+            // lbBarCode
+            // 
+            this.lbBarCode.BarCodeOrientation = DevExpress.XtraPrinting.BarCode.BarCodeOrientation.UpsideDown;
+            this.lbBarCode.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "SKU")});
+            this.lbBarCode.LocationFloat = new DevExpress.Utils.PointFloat(67F, 32F);
+            this.lbBarCode.Module = 1F;
+            this.lbBarCode.Name = "lbBarCode";
+            this.lbBarCode.Padding = new DevExpress.XtraPrinting.PaddingInfo(10, 10, 0, 0, 100F);
+            this.lbBarCode.ShowText = false;
+            this.lbBarCode.SizeF = new System.Drawing.SizeF(250F, 28F);
+            this.lbBarCode.Symbology = code128Generator1;
+            this.lbBarCode.Text = "lbBarCode";
+            this.lbBarCode.BeforePrint += new System.Drawing.Printing.PrintEventHandler(this.lbBarCode_BeforePrint);
+            // 
+            // topMarginBand1
+            // 
+            this.topMarginBand1.HeightF = 10F;
+            this.topMarginBand1.Name = "topMarginBand1";
+            // 
+            // bottomMarginBand1
+            // 
+            this.bottomMarginBand1.HeightF = 10F;
+            this.bottomMarginBand1.Name = "bottomMarginBand1";
+            // 
+            // repPrintLabel
+            // 
+            this.Bands.AddRange(new DevExpress.XtraReports.UI.Band[] {
+            this.Detail,
+            this.topMarginBand1,
+            this.bottomMarginBand1});
+            this.DataSource = this.dataSet1;
+            this.Margins = new System.Drawing.Printing.Margins(10, 10, 10, 10);
+            this.Version = "10.1";
+            ((System.ComponentModel.ISupportInitialize)(this.dataSet1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
+
+        }
+
+        #endregion
+
+        public DevExpress.XtraReports.UI.DetailBand Detail;
+        public DevExpress.XtraReports.UI.XRPanel pnl;
+        public DevExpress.XtraReports.UI.XRLabel lbSKU;
+        public DevExpress.XtraReports.UI.XRLabel lbProduct;
+        public DevExpress.XtraReports.UI.XRLabel lbPrice;
+        public DevExpress.XtraReports.UI.XRLabel lbCompany;
+        public DevExpress.XtraReports.UI.XRBarCode lbBarCode;
+        private DevExpress.XtraReports.UI.WinControlContainer winControlContainer1;
+        private DevExpress.XtraPrinting.Control.PrintControl printControl1;
+        private System.Data.DataSet dataSet1;
+        private DevExpress.XtraReports.UI.TopMarginBand topMarginBand1;
+        private DevExpress.XtraReports.UI.BottomMarginBand bottomMarginBand1;
+    }
+}

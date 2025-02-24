@@ -1,0 +1,176 @@
+﻿        xmlns:cc="clr-namespace:OfflineRetailV2.Controls"
+        xmlns:lm="clr-namespace:OfflineRetailV2.LayoutManager"
+        xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+        xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+        xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid" 
+        xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars"
+        AllowsTransparency="True" WindowStyle="None" Background="Transparent" WindowStartupLocation="CenterScreen"
+        Title="" Foreground="White"   >
+    <cc:ModalWindow  x:Name="ModalWindow">
+        <Grid Margin="9">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="9"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="9"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <TextBlock Text="??" x:Name="Title" FontFamily="{StaticResource OSRegular}" FontSize="20"/>
+            <Rectangle Grid.Row="1" Style="{DynamicResource DefaultLineStyle}" Height="2" VerticalAlignment="Center"  Margin="-9,0"/>
+            <Grid Grid.Row="2" Margin="0,9,0,0">
+                
+            </Grid>
+            <Grid Grid.Row="4" Margin="9">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="9"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="9"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                
+            </Grid>
+        </Grid>
+    </cc:ModalWindow>
+
+=======================================================================================================================================================
+            <Rectangle Grid.Row="1" VerticalAlignment="Center" Height="3" Fill="#3A6F889A"/>
+=======================================================================================================================================================
+            <dxe:DateEdit Mask="HH:mm:ss" Grid.Column="2">
+                            <dxe:DateEdit.Buttons>
+                                <dxe:SpinButtonInfo/>
+                            </dxe:DateEdit.Buttons>
+                        </dxe:DateEdit>
+=======================================================================================================================================================
+ <dxg:GridControl Grid.Row="4" ShowBorder="False" SelectionMode="Row">
+                            <dxg:GridControl.View>
+                                <dxg:TableView/>
+                            </dxg:GridControl.View>
+                            <dxg:GridColumn FieldName="Column1" Header="Value" Width="*"/>
+                            <dxg:GridColumn FieldName="Column2" Header="Default" Width="*"/>
+                        </dxg:GridControl>
+
+=======================================================================================================================================================
+                        Height="25" Background="Transparent" BorderBrush="#35FFFFFF"
+=======================================================================================================================================================
+
+                        <Button Grid.Column="2" Content="CANCEL" Height="46" FontFamily="{StaticResource OSSemiBold}" FontSize="16"
+                        Style="{DynamicResource GeneralButtonStyle}"/>
+                <Button Grid.Column="4" Content="Ok" Height="46" FontFamily="{StaticResource OSSemiBold}" FontSize="16"
+                        Style="{DynamicResource GeneralButtonStyle1}"/>
+
+
+                        <Button Grid.Column="0" Content="KEYBOARD" Height="46" FontFamily="{StaticResource OSSemiBold}" FontSize="16"
+                        Style="{DynamicResource GeneralButtonStyle}" x:Name="btnKeyboard"/>
+=======================================================================================================================================================
+<dxg:GridControl.TotalSummary>
+                        <dxg:GridSummaryItem ShowInColumn="9" SummaryType="Sum"/>
+                    </dxg:GridControl.TotalSummary>
+
+=======================================================================================================================================================
+  <dxg:GridColumn.EditSettings>
+          <dxe:TextEditSettings DisplayFormat="f" MaskType="Numeric"/>
+      </dxg:GridColumn.EditSettings>
+
+
+      EditSettings = new TextEditSettings()
+                {
+                    DisplayFormat = "f3",
+                    MaskType = DevExpress.Xpf.Editors.MaskType.Numeric
+                };
+      =======================================================================================================================================================
+ <dxe:DateEdit Mask="hh:mm" Grid.Column="2">
+                                <dxe:DateEdit.Buttons>
+                                    <dxe:SpinButtonInfo/>
+                                </dxe:DateEdit.Buttons>
+                                <dxe:DateEdit.StyleSettings>
+                                    <dxe:DateEditPickerStyleSettings/>
+                                </dxe:DateEdit.StyleSettings>
+                            </dxe:DateEdit>
+
+=======================================================================================================================================================
+gridView1.FocusedRowHandle;
+gridControl1.SetCellValue
+(gridControl1.ItemsSource as DataTable).Rows.Count
+ gridControl1.RefreshData();
+ gridControl1.SetFocusedRowCellValue
+ =======================================================================================================================================================
+ colPrice.EditSettings = new TextEditSettings() { DisplayFormat = "f3", MaskType = MaskType.Numeric };
+
+ =======================================================================================================================================================
+
+    <dxb:BarContainerControl Grid.Column="6" Background="Transparent"  VerticalAlignment="Center" Width="Auto">
+                        <dxb:ToolBarControl Background="Transparent" HorizontalAlignment="Stretch" Width="Auto">
+                            <!--Create a DateEdit and SpinEdit in-place editors -->
+                            <dxb:BarEditItem Content="Vendor" EditWidth="100" x:Name="lkupVendor" ItemClick="editItemDateEdit1_ItemClick" EditValueChanged="lkupVendor_EditValueChanged">
+                                <dxb:BarEditItem.EditSettings>
+                                    <dxe:ComboBoxEditSettings />
+                                </dxb:BarEditItem.EditSettings>
+                            </dxb:BarEditItem>
+                            <dxb:BarEditItem x:Name="FDate" Content="Order Date :  From" EditWidth="100" ItemClick="FDate_ItemClick">
+                                <dxb:BarEditItem.EditSettings>
+                                    <dxe:ComboBoxEditSettings />
+                                </dxb:BarEditItem.EditSettings>
+                            </dxb:BarEditItem>
+                            <dxb:BarEditItem x:Name="TDate" Content=" To" EditWidth="100" ItemClick="TDate_ItemClick">
+                                <dxb:BarEditItem.EditSettings>
+                                    <dxe:DateEditSettings />
+                                </dxb:BarEditItem.EditSettings>
+                            </dxb:BarEditItem>
+                            <dxb:BarButtonItem Content="Add"/>
+                        </dxb:ToolBarControl>
+                    </dxb:BarContainerControl>
+
+ =======================================================================================================================================================
+  #region Instance
+ private static readonly object padlock = new object();
+        private static Singleton instance = null;
+        public static Singleton Instance
+        {
+            get
+            {
+                lock (padlock)
+                {
+                    if (instance == null)
+                    {
+                        instance = new Singleton();
+                    }
+                    return instance;
+                }
+            }
+        }
+   #endregion
+ =======================================================================================================================================================
+
+ ModalWindow.CloseCommand = new CommandBase(OnClose);
+        }
+
+        private void OnClose(object obj)
+        {
+            DialogResult = false;
+            Close();
+        }
+
+=======================================================================================================================================================
+        <dxb:BarContainerControl Grid.Column="6" Background="Transparent" HorizontalAlignment="Right"
+                                             VerticalAlignment="Center" Width="Auto" >
+                        <dxb:ToolBarControl Width="Auto" Height="50" >
+                            <!--Create a DateEdit and SpinEdit in-place editors -->
+                            <dxb:BarEditItem x:Name="editItemDateEdit1" Content="Vendor" EditWidth="100">
+                                <dxb:BarEditItem.EditSettings>
+                                    <dxe:ComboBoxEditSettings/>
+                                </dxb:BarEditItem.EditSettings>
+                            </dxb:BarEditItem>
+                            <dxb:BarEditItem x:Name="editItemDateEdist1" Content="Order Date :  From" EditWidth="100">
+                                <dxb:BarEditItem.EditSettings>
+                                    <dxe:ComboBoxEditSettings />
+                                </dxb:BarEditItem.EditSettings>
+                            </dxb:BarEditItem>
+                            <dxb:BarEditItem x:Name="editItemDateEdit2" Content=" To" EditWidth="100">
+                                <dxb:BarEditItem.EditSettings>
+                                    <dxe:DateEditSettings />
+                                </dxb:BarEditItem.EditSettings>
+                            </dxb:BarEditItem>
+                            <dxb:BarButtonItem Content="Add"/>
+                        </dxb:ToolBarControl>
+                    </dxb:BarContainerControl>

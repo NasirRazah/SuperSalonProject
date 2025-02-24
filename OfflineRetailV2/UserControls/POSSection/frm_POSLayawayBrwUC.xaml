@@ -1,0 +1,160 @@
+﻿<UserControl x:Class="OfflineRetailV2.UserControls.POSSection.frm_POSLayawayBrwUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:OfflineRetailV2.UserControls.POSSection"
+               xmlns:cc="clr-namespace:OfflineRetailV2.Controls"
+        xmlns:lm="clr-namespace:OfflineRetailV2.LayoutManager"
+           xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+         xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+         xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid" 
+             xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800"   >
+    <Grid Grid.Row="2" Margin="9">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="21"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="21"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="21"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="21"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions >
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="9"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Column="0" Grid.Row="0" Text="I" Margin="3,0" x:Name="lbCustID"/>
+            <TextBlock Grid.Column="0" Grid.Row="2" Text="N" Margin="3,0" x:Name="lbCustName"/>
+            <TextBlock Grid.Column="2" Grid.Row="0" Text="A" Margin="3,0" x:Name="lbCustAddress"/>
+            <TextBlock Grid.Column="2" Grid.Row="2" Text="V" Margin="3,0" x:Name="lbCustBal"/>
+            <TextBlock Grid.Column="4" Grid.Row="2" Text="T" Margin="3,0" x:Name="lbCustTax"/>
+        </Grid>
+        <Grid Grid.Row="2" HorizontalAlignment="Right">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="21"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="21"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="21"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="21"/>
+                <ColumnDefinition Width="Auto"/> 
+
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="0" IsTabStop="False" Focusable="False" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Content="KEYBOARD"
+                                FontFamily="{StaticResource OSSemiBold}" Style="{DynamicResource GeneralButtonStyle}"  Width="120" x:Name="FullKbd" Visibility="Collapsed" Click="FullKbd_Click"/>
+
+            <Button IsTabStop="False" Focusable="False" Content="REFUND" Height="35" Width="100" Grid.Column="2" x:Name="btnRefund"
+                        FontFamily="{StaticResource OSSemiBold}" Style="{DynamicResource GeneralButtonStyle}" Click="btnRefund_Click"/>
+
+
+            <Button IsTabStop="False" Focusable="False" Content="ALL" Height="35" Width="100" Grid.Column="4" x:Name="btnSelect"
+                        FontFamily="{StaticResource OSSemiBold}" Style="{DynamicResource GeneralButtonStyle}" Click="btnSelect_Click"/>
+            
+            <Button Grid.Column="6" IsTabStop="False" Focusable="False" Content="APPLY" Height="35" Width="100"  x:Name="btnApply"
+                        FontFamily="{StaticResource OSSemiBold}" Style="{DynamicResource GeneralButtonStyle}"  Click="btnApply_Click"/>
+
+
+            <Button IsTabStop="False" Focusable="False" Content="CLEAR" Height="35" Width="100" Grid.Column="8" x:Name="btnClear"
+                        FontFamily="{StaticResource OSSemiBold}" Style="{DynamicResource CancelButtonStyle}" Click="btnClear_Click" />
+
+            <Button IsTabStop="False" Focusable="False" Content="PAY" Height="35" Width="100" Grid.Column="10" x:Name="btnTender"
+                        FontFamily="{StaticResource OSSemiBold}" Style="{DynamicResource SaveButtonStyle}" Click="btnTender_Click"/>
+
+           
+            
+        </Grid>
+
+        <Grid Grid.Row="4">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="3"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="3"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="3"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="15"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <RadioButton Grid.Row="0" Grid.Column="0" Content="Weighted Average on Balance Due" x:Name="rg1"/>
+            <RadioButton Grid.Row="2" Grid.Column="0" Content="Weighted Average on Total Sale" x:Name="rg2"/>
+            <RadioButton Grid.Row="4" Grid.Column="0" Content="Top Down" x:Name="rg3"/>
+
+            <TextBlock Text="Amount to Apply" Grid.Row="0" Grid.Column="2"/>
+            <dxe:TextEdit  Grid.Row="2" Grid.Column="2" Text="0.00"  x:Name="numAmount"/>
+
+            <TextBlock Text="Total Current Deposit"  Grid.Row="4" Grid.Column="2"/>
+            <dxe:TextEdit  Grid.Row="6" Grid.Column="2" Text="0.00" Mask="f2" MaskType="Numeric" MaskUseAsDisplayFormat="True" InputScope="Number" x:Name="numDeposit"/>
+
+            
+        </Grid>
+
+        <dxg:GridControl Grid.Row="6" ShowBorder="False" SelectionMode="MultipleRow" AutoGenerateColumns="AddNew" EnableSmartColumnsGeneration="False" x:Name="grdLayaway" SelectionChanged="grdLayaway_SelectionChanged">
+            <dxg:GridControl.View>
+                <dxg:TableView x:Name="gridView1" NavigationStyle="Row" AutoWidth="True" ShowCheckBoxSelectorColumn="True" ShowTotalSummary="False" ShowFilterPanelMode="Never" AllowColumnFiltering="False"/>
+            </dxg:GridControl.View>
+            <dxg:GridColumn FieldName="ID" Header="ID" Width="*" x:Name="colID" Visible="False"/>
+            <dxg:GridColumn FieldName="Image" Visible="False" VisibleIndex="-1" Width="*" AllowAutoFilter="False" Header="" Focusable="False">
+                <dxg:GridColumn.EditSettings>
+                    <dxe:ImageEditSettings Stretch="UniformToFill"/>
+                </dxg:GridColumn.EditSettings>
+            </dxg:GridColumn>
+            <dxg:GridColumn FieldName="LayawayNo" Header="Lay No." Width="*"  x:Name="colLayaway"/>
+            <dxg:GridColumn FieldName="InvoiceNo" Header="Inv No." Width="*"  x:Name="colInvoice"/>
+            <dxg:GridColumn FieldName="SKU" Header="SKU" Width="*"  x:Name="colSKU" Visible="True"/>
+            <dxg:GridColumn FieldName="Description" Header="Description" Width="*"  x:Name="colDesc" Visible="True"/>
+            <dxg:GridColumn FieldName="Qty" Header="Qty" Width="*"  x:Name="colQty" Visible="True"/>
+            <dxg:GridColumn FieldName="DateDue" Header="Due Date" Width="*"  x:Name="colDueDate" Visible="True"/>
+            <dxg:GridColumn FieldName="TotalSale" Header="Total Sale" Width="*"  x:Name="colTotalSale" Visible="True"/>
+            <dxg:GridColumn FieldName="Payment" Header="Payment To Date" Width="*"  x:Name="colPayment" Visible="True"/>
+            <dxg:GridColumn FieldName="Balance" Header="Balance Due" Width="*"  x:Name="colBalance" Visible="True"/>
+            <dxg:GridColumn FieldName="Deposit" Header="Current Deposit" Width="*"  x:Name="colDeposit" Visible="True"/>
+            <dxg:GridColumn FieldName="ProductID" Header="Product" Width="*"  x:Name="colPID" Visible="False"/>
+            <dxg:GridColumn FieldName="ProductType" Header="Type" Width="*"  x:Name="colProductType" Visible="False"/>
+            <dxg:GridColumn FieldName="ItemID" Header="Item ID" Width="*"  x:Name="colItem" Visible="False"/>
+            <dxg:GridColumn FieldName="MatrixOptionID" Header="MatrixOptionID" Width="*"  x:Name="colMatrixOptionID" Visible="False"/>
+            <dxg:GridColumn FieldName="OptionValue1" Header="OptionValue1" Width="*"  x:Name="colOptionValue1" Visible="False"/>
+            <dxg:GridColumn FieldName="OptionValue2" Header="OptionValue2" Width="*"  x:Name="OptionValue2" Visible="False"/>
+            <dxg:GridColumn FieldName="OptionValue3" Header="OptionValue3" Width="*"  x:Name="OptionValue3" Visible="False"/>
+            <dxg:GridColumn FieldName="Cost" Header="Cost" Width="*"  x:Name="Cost" Visible="False"/>
+        </dxg:GridControl>
+        <Grid Grid.Row="8" HorizontalAlignment="Right">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="3"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="3"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="3"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <dxe:TextEdit Grid.Column="0" x:Name="numsTS" Width="100"/>
+            <dxe:TextEdit Grid.Column="2" x:Name="numsP" Width="100"/>
+            <dxe:TextEdit Grid.Column="4" x:Name="numsB" Width="100"/>
+            <dxe:TextEdit Grid.Column="6" x:Name="numsD" Width="100"/>
+        </Grid>
+        <Grid Background="#3D000000" Margin="-15" Grid.RowSpan="9" x:Name="blurGrid" Visibility="Collapsed"/>
+    </Grid>
+</UserControl>

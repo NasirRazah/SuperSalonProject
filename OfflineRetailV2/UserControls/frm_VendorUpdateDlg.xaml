@@ -1,0 +1,60 @@
+﻿<Window x:Class="OfflineRetailV2.UserControls.frm_VendorUpdateDlg"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:OfflineRetailV2.UserControls"
+        mc:Ignorable="d"
+        xmlns:cc="clr-namespace:OfflineRetailV2.Controls"
+        xmlns:lm="clr-namespace:OfflineRetailV2.LayoutManager"
+        xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+        xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+        xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid" 
+        xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars"
+        AllowsTransparency="True" WindowStyle="None" Background="Transparent" WindowStartupLocation="CenterScreen"
+        Title="" Foreground="White"   Width="900" Height="300" Loaded="Window_Loaded">
+    <cc:ModalWindow  x:Name="ModalWindow">
+        <Grid Margin="9">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="9"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="Vendor Update Confirmation"  x:Name="Title" VerticalAlignment="Center" Style="{DynamicResource BlueHeading}" />
+                <Grid Grid.Column="1" HorizontalAlignment="Right" Margin="0,0,20,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="9"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="9"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="9"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Button Grid.Column="0" Content="YES" Height="35" Width="100" FontFamily="{StaticResource OSSemiBold}" 
+                        Style="{DynamicResource SaveButtonStyle}" x:Name="btnYes" Click="BtnYes_Click"/>
+                    <Button Grid.Column="2" Content="NO" Height="35" Width="100" FontFamily="{StaticResource OSSemiBold}" 
+                        Style="{DynamicResource CancelButtonStyle}" x:Name="btnNo" Click="BtnNo_Click"/>
+                    <Button Grid.Column="4" Content="YES TO ALL" Height="35" Width="100" FontFamily="{StaticResource OSSemiBold}" 
+                        Style="{DynamicResource SaveButtonStyle}" x:Name="btnYesAll" Click="BtnYesAll_Click"/>
+                    <Button Grid.Column="6" Content="NO TO ALL" Height="35" Width="100" FontFamily="{StaticResource OSSemiBold}" 
+                        Style="{DynamicResource CancelButtonStyle}" x:Name="btnNoAll" Click="BtnNoAll_Click"/>
+                </Grid>
+            </Grid>
+            <Rectangle Grid.Row="1" Style="{DynamicResource DefaultLineStyle}"  VerticalAlignment="Center"  Margin="-9,0"/>
+
+            <Grid Grid.Row="2" Margin="0,9,0,0">
+                <TextBlock Width="Auto" Height="Auto" VerticalAlignment="Stretch" x:Name="lbText"/>
+            </Grid>
+            <Grid Grid.Row="4" Margin="9">
+                
+            </Grid>
+        </Grid>
+    </cc:ModalWindow>
+</Window>

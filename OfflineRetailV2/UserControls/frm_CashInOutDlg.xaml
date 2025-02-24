@@ -1,0 +1,80 @@
+﻿<Window x:Class="OfflineRetailV2.UserControls.frm_CashInOutDlg"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:OfflineRetailV2.UserControls"
+      xmlns:cc="clr-namespace:OfflineRetailV2.Controls"
+        xmlns:lm="clr-namespace:OfflineRetailV2.LayoutManager"
+        xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+        xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+        xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid" 
+        xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars"
+        AllowsTransparency="True" WindowStyle="None" Background="Transparent" WindowStartupLocation="CenterScreen"
+        Title="" Foreground="White"   Width="700" Height="330">
+    <cc:ModalWindow  x:Name="ModalWindow">
+        <Grid Margin="9">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="9"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="Cash In / Cash Out"  x:Name="Title" VerticalAlignment="Center" Style="{DynamicResource BlueHeading}" />
+                <Grid Grid.Column="1" HorizontalAlignment="Right" Margin="0,0,20,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition Width="9"></ColumnDefinition>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition Width="9"></ColumnDefinition>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Button IsTabStop="False" Focusable="False" Grid.Column="0" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Content="KEYBOARD"
+                                 FontFamily="{StaticResource OSSemiBold}" Style="{DynamicResource GeneralButtonStyle}"  Height="35" Width="120" x:Name="FullKbd" Click="FullKbd_Click" Visibility="Hidden"/>
+                    <Button Grid.Column="2" Content="CANCEL" Height="35" Width="120" FontFamily="{StaticResource OSSemiBold}" 
+                        Style="{DynamicResource CancelButtonStyle}" x:Name="btnCancel" Click="BtnCancel_Click" />
+                    <Button Grid.Column="4" Content="SAVE" Height="35" Width="120" FontFamily="{StaticResource OSSemiBold}" 
+                        Style="{DynamicResource SaveButtonStyle}" x:Name="btnOK" Click="btnOK_Click"/>
+                </Grid>
+            </Grid>
+            <Rectangle Grid.Row="1" Style="{DynamicResource DefaultLineStyle}"  VerticalAlignment="Center"  Margin="-9,0"/>
+
+
+            <Grid Grid.Row="2" Margin="0,9,0,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="9"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="3"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="3"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="3"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="0" Grid.Column="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="50"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <RadioButton Grid.Column="0" Content="Cash In" x:Name="rbIn" GroupName="1" IsChecked="True"/>
+                    <RadioButton Grid.Column="2" Content="Cash Out" x:Name="rbOut" GroupName="1" />
+                </Grid>
+
+                <TextBlock Grid.Column="0" Grid.Row="2" Text="Explanation" VerticalAlignment="Top"/>
+                <dxe:TextEdit Grid.Column="2" Grid.Row="4" x:Name="txtExplanation" MaxLength="150" Height="70" GotFocus="Full_GotFocus" LostFocus="Full_LostFocus" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" AcceptsReturn="True" VerticalContentAlignment="Top" />
+
+                <TextBlock Grid.Column="0" Grid.Row="6" Text="Amount"/>
+                <dxe:TextEdit Grid.Row="8"  Grid.Column="2" x:Name="numAmount"  InputScope="Number"
+                                  Text="0.00" Mask="f2" MaskType="Numeric" MaskUseAsDisplayFormat="True" GotFocus="Num_GotFocus"  LostFocus="Full_LostFocus" />
+            </Grid>
+
+        </Grid>
+    </cc:ModalWindow>
+</Window>

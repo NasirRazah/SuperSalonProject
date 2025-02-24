@@ -1,0 +1,81 @@
+﻿<Window x:Class="OfflineRetailV2.UserControls.POSSection.frm_TagDlg"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:OfflineRetailV2.UserControls.POSSection"
+        xmlns:cc="clr-namespace:OfflineRetailV2.Controls"
+        xmlns:lm="clr-namespace:OfflineRetailV2.LayoutManager"
+           xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+         xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+         xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid" 
+        AllowsTransparency="True" WindowStyle="None" Background="Transparent" WindowStartupLocation="CenterScreen"
+        Title="" Foreground="White" SizeToContent="WidthAndHeight"   
+        Width="400">
+    <cc:ModalWindow  x:Name="ModalWindow">
+        <Grid Margin="9">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="9"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="9"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <TextBlock Text="??" x:Name="Title" FontFamily="{StaticResource OSRegular}" FontSize="20"/>
+            <Rectangle Grid.Row="1" Style="{DynamicResource DefaultLineStyle}" Height="2" VerticalAlignment="Center"  Margin="-9,0"/>
+            <Grid Grid.Row="2" Margin="0,9,0,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="9"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="21"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Row="0" Grid.Column="0" Text="Tagged Item"/>
+                <dxe:ComboBoxEdit Grid.Row="0" Grid.Column="2" Text="" x:Name="cmbProduct"/>
+                <TextBlock Grid.Row="2" Grid.Column="0" Text="Price"/>
+                <Grid Grid.Row="2" Grid.Column="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="21"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <dxe:TextEdit x:Name="numPrice"/>
+                    <dxe:SpinEdit x:Name="spnCount" Grid.Column="2" HorizontalContentAlignment="Center">
+                        <dxe:SpinEdit.Buttons>
+                            <dxe:ButtonInfoCollection>
+                                <dxe:ButtonInfo Command="{Binding SpinDownCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=dxe:SpinEdit}}">
+                                    <dxe:ButtonInfo.Content>
+                                        <dx:DXImage Source="{DynamicResource GreenDropdownD}" Height="15" Width="16"  Margin="5,5">
+                                        </dx:DXImage>
+                                    </dxe:ButtonInfo.Content>
+                                </dxe:ButtonInfo>
+                                <dxe:ButtonInfo Command="{Binding SpinUpCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=dxe:SpinEdit}}" IsLeft="True">
+                                    <dxe:ButtonInfo.Content>
+                                        <dx:DXImage Source="{DynamicResource GreenDropdownU}" Height="15" Width="16"  Margin="5,5">
+                                        </dx:DXImage>
+                                    </dxe:ButtonInfo.Content>
+                                </dxe:ButtonInfo>
+                            </dxe:ButtonInfoCollection>
+                        </dxe:SpinEdit.Buttons>
+                    </dxe:SpinEdit>
+                </Grid>
+            </Grid>
+            <Grid Grid.Row="4" Margin="9">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="9"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="9"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Button Grid.Column="2" Content="CANCEL" Height="46" FontFamily="{StaticResource OSSemiBold}" FontSize="16"
+                        Style="{DynamicResource GeneralButtonStyle}" x:Name="btnCancel"/>
+                <Button Grid.Column="4" Content="Ok" Height="46" FontFamily="{StaticResource OSSemiBold}" FontSize="16"
+                        Style="{DynamicResource GeneralButtonStyle1}" x:Name="btnOK"/>
+            </Grid>
+        </Grid>
+    </cc:ModalWindow>
+</Window>

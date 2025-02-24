@@ -1,0 +1,121 @@
+﻿<Window x:Class="OfflineRetailV2.UserControls.POSSection.frm_POSSelectTagItemDlq"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:OfflineRetailV2.UserControls.POSSection"
+        xmlns:cc="clr-namespace:OfflineRetailV2.Controls"
+        xmlns:lm="clr-namespace:OfflineRetailV2.LayoutManager"
+        xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+        xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+        xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid" 
+        xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars"
+        AllowsTransparency="True" WindowStyle="None" Background="Transparent" WindowStartupLocation="CenterScreen"
+        Title="" Foreground="White"   
+        Width="800" Height="600">
+    <cc:ModalWindow  x:Name="ModalWindow">
+        <Grid Margin="9">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="9"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="9"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <TextBlock Text="Select Tag Item" x:Name="Title" FontFamily="{StaticResource OSRegular}" FontSize="20"/>
+            <Rectangle Grid.Row="1" Style="{DynamicResource DefaultLineStyle}" Height="2" VerticalAlignment="Center"  Margin="-9,0"/>
+            <Grid Grid.Row="2" Margin="0,9,0,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="13"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="9"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Text="Available Tag Item" FontSize="14"/>
+                    <dxg:GridControl Grid.Row="4" ShowBorder="False" SelectionMode="Row" x:Name="grd1">
+                        <dxg:GridControl.View>
+                            <dxg:TableView x:Name="gridView1"/>
+                        </dxg:GridControl.View>
+                        <dxg:GridColumn FieldName="ID" Header="ID" Width="*" x:Name="col1ID" Visible="False"/>
+                        <dxg:GridColumn FieldName="SKU" Header="SKU" Width="*" x:Name="col1SKU"/>
+                        <dxg:GridColumn FieldName="PNAME" Header="Description" Width="*" x:Name="col1Desc"/>
+                        <dxg:GridColumn FieldName="QTY" Header="QTY" Width="*" x:Name="col1Qty"/>
+                        <dxg:GridColumn FieldName="PRICE" Header="Price" Width="*" x:Name="col1Price">
+                            <dxg:GridColumn.EditSettings>
+                                <dxe:TextEditSettings DisplayFormat="f" MaskType="Numeric"/>
+                            </dxg:GridColumn.EditSettings>
+                        </dxg:GridColumn>
+                        <dxg:GridColumn FieldName="PTYPE" Header="Type" Width="*" x:Name="col1PType" Visible="False"/>
+                        <dxg:GridColumn FieldName="INV" Header="Invoice" Width="*" x:Name="col1INV" Visible="False"/>
+                        <dxg:GridColumn FieldName="PID" Header="Product ID" Width="*" x:Name="col1PID" Visible="False"/>
+                        <dxg:GridColumn FieldName="" Header="" Width="*" x:Name="gridColumn17">
+                            <dxg:GridColumn.EditSettings>
+                                <dxe:ButtonEditSettings x:Name="repSelect" DefaultButtonClick="repSelect_DefaultButtonClick"/>
+                            </dxg:GridColumn.EditSettings>
+                        </dxg:GridColumn>
+                    </dxg:GridControl>
+                </Grid>
+                <Grid Grid.Row="2">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="9"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Text="Selected Tag Item" FontSize="14"/>
+                    <dxg:GridControl Grid.Row="4" ShowBorder="False" SelectionMode="Row" x:Name="grd2">
+                        <dxg:GridControl.View>
+                            <dxg:TableView x:Name="gridView2"/>
+                        </dxg:GridControl.View>
+                        <dxg:GridColumn FieldName="ID" Header="ID" Width="*" x:Name="col2ID" Visible="False"/>
+                        <dxg:GridColumn FieldName="SKU" Header="SKU" Width="*" x:Name="col2SKU"/>
+                        <dxg:GridColumn FieldName="PNAME" Header="Description" Width="*" x:Name="col2Desc"/>
+                        <dxg:GridColumn FieldName="QTY" Header="QTY" Width="*" x:Name="col2Qty"/>
+                        <dxg:GridColumn FieldName="PRICE" Header="Price" Width="*" x:Name="col2Price" Visible="False">
+                            <dxg:GridColumn.EditSettings>
+                                <dxe:TextEditSettings DisplayFormat="f" MaskType="Numeric"/>
+                            </dxg:GridColumn.EditSettings>
+                        </dxg:GridColumn>
+                        <dxg:GridColumn FieldName="PTYPE" Header="Type" Width="*" x:Name="col2PType" Visible="False"/>
+                        <dxg:GridColumn FieldName="INV" Header="Invoice" Width="*" x:Name="col2Inv" Visible="False"/>
+                        <dxg:GridColumn FieldName="PID" Header="Product ID" Width="*" x:Name="col2PID" Visible="False"/>
+                        <dxg:GridColumn FieldName="INV" Header="Invoice" Width="*" x:Name="col2CInv" Visible="False"/>
+                        <dxg:GridColumn FieldName="INV" Header="Invoice" Width="*" x:Name="col2TQty" Visible="False"/>
+                        <dxg:GridColumn FieldName="" Header="" Width="*" x:Name="gridColumn18">
+                            <dxg:GridColumn.EditSettings>
+                                <dxe:ButtonEditSettings x:Name="repBtn" DefaultButtonClick="repBtn_DefaultButtonClick"/>
+                            </dxg:GridColumn.EditSettings>
+                        </dxg:GridColumn>
+                    </dxg:GridControl>
+                </Grid>
+            </Grid>
+            <Grid Grid.Row="4" Margin="9">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="9"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="9"/>
+                    <ColumnDefinition Width="1.2*"/>
+                    <ColumnDefinition Width="9"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="9"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Button Grid.Column="0" Content="Qty(-)" Height="46" FontFamily="{StaticResource OSSemiBold}" FontSize="16"
+                        Style="{DynamicResource GeneralButtonStyle}" x:Name="btnLessQty" Click="btnLessQty_Click"/>
+                <Button Grid.Column="2" Content="Qty(+)" Height="46" FontFamily="{StaticResource OSSemiBold}" FontSize="16"
+                        Style="{DynamicResource GeneralButtonStyle}" x:Name="btnMoreQty" Click="btnMoreQty_Click"/>
+                <Button Grid.Column="4" Content="Cancel Selection" Height="46" FontFamily="{StaticResource OSSemiBold}" FontSize="16"
+                        Style="{DynamicResource GeneralButtonStyle}" x:Name="btnVoid"/>
+                <Button Grid.Column="6" Content="Select" Height="46" FontFamily="{StaticResource OSSemiBold}" FontSize="16"
+                        Style="{DynamicResource GeneralButtonStyle}" x:Name="btnTagReturn" Click="btnTagReturn_Click"/>
+                <Button Grid.Column="8" Content="Ok" Height="46" FontFamily="{StaticResource OSSemiBold}" FontSize="16"
+                        Style="{DynamicResource SaveButtonStyle}" x:Name="btnPrint" Click="btnPrint_Click"/>
+            </Grid>
+        </Grid>
+    </cc:ModalWindow>
+</Window>

@@ -1,0 +1,130 @@
+﻿<Window x:Class="OfflineRetailV2.UserControls.POSSection.MatrixDataWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:OfflineRetailV2.UserControls.POSSection"
+                xmlns:cc="clr-namespace:OfflineRetailV2.Controls"
+        xmlns:lm="clr-namespace:OfflineRetailV2.LayoutManager"
+          xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"  
+        xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+             xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid" 
+        AllowsTransparency="True" WindowStyle="None" Background="Transparent" WindowStartupLocation="CenterScreen"
+        Title="" Foreground="White" Width="1024" Height="768">
+    <cc:ModalWindow x:Name="ModalWindow" Padding="0">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="9"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="9"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid Height="58" Margin="9,4">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="0"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="Matrix Data : test" FontFamily="{StaticResource OSRegular}" FontSize="20"/>
+                <Button Grid.Column="2" Content="Add" Width="109" Height="49" FontFamily="{StaticResource OSSemiBold}" FontSize="16"
+                        Style="{DynamicResource SaveButtonStyle}"/>
+            </Grid>
+            <Rectangle Grid.Row="1" Style="{DynamicResource DefaultLineStyle}" Height="2" VerticalAlignment="Center"/>
+            <ScrollViewer Grid.Row="2" Padding="12"
+                          HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Visible">
+                <Grid >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="13"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="13"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Column="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="7"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="9"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Text="Option 1 Name (Example: Size)" FontSize="11" FontFamily="{StaticResource OSSemiBold}"/>
+                        <dxe:TextEdit Grid.Row="2" Height="30" x:Name="txtOption1"/>
+                        <dxg:GridControl Grid.Row="4" ShowBorder="False" SelectionMode="Row" x:Name="grdOption1">
+                            <dxg:GridControl.View>
+                                <dxg:TableView AllowPerPixelScrolling="True" ShowTotalSummary="True" x:Name="gridView1"/>
+                            </dxg:GridControl.View>
+                            <dxg:GridColumn FieldName="ID" Header="ID" Width="*" x:Name="colOption1ID" Visible="False"/>
+                            <dxg:GridColumn FieldName="OptionValue" Header="Value" Width="*" x:Name="colOption1Value"/>
+                            <dxg:GridColumn FieldName="OptionDefault" Header="Default" Width="*" x:Name="colOption1Default"/>
+                        </dxg:GridControl>
+                    </Grid>
+                    <Grid Grid.Column="2">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="7"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="9"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Text="Option 2 Name (Example: Size)" FontSize="11" FontFamily="{StaticResource OSSemiBold}"/>
+                        <dxe:TextEdit Grid.Row="2" Height="30" x:Name="txtOption2"/>
+                        <dxg:GridControl Grid.Row="4" ShowBorder="False" SelectionMode="Row" x:Name="grdOption2">
+                            <dxg:GridControl.View>
+                                <dxg:TableView AllowPerPixelScrolling="True" ShowTotalSummary="True" x:Name="gridView2"/>
+                            </dxg:GridControl.View>
+                            <dxg:GridColumn FieldName="ID" Header="ID" Width="*" x:Name="colOption2ID" Visible="False"/>
+                            <dxg:GridColumn FieldName="OptionValue" Header="Value" Width="*" x:Name="colOption2Value"/>
+                            <dxg:GridColumn FieldName="OptionDefault" Header="Default" Width="*" x:Name="colOption2Default"/>
+                        </dxg:GridControl>
+                    </Grid>
+                    <Grid Grid.Column="4">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="7"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="9"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Text="Option 1 Name (Example: Size)" FontSize="11" FontFamily="{StaticResource OSSemiBold}"/>
+                        <dxe:TextEdit Grid.Row="2" Height="30" x:Name="txtOption3"/>
+                        <dxg:GridControl Grid.Row="4" ShowBorder="False" SelectionMode="Row" x:Name="grdOption3">
+                            <dxg:GridControl.View>
+                                <dxg:TableView AllowPerPixelScrolling="True" ShowTotalSummary="True" x:Name="gridView3"/>
+                            </dxg:GridControl.View>
+                            <dxg:GridColumn FieldName="ID" Header="ID" Width="*" x:Name="colOption3ID" Visible="False"/>
+                            <dxg:GridColumn FieldName="OptionValue" Header="Value" Width="*" x:Name="colOption3Value"/>
+                            <dxg:GridColumn FieldName="OptionDefault" Header="Default" Width="*" x:Name="colOption3Default"/>
+                        </dxg:GridControl>
+                    </Grid>
+                </Grid>
+            </ScrollViewer>
+           
+            <Rectangle Grid.Row="3" Style="{DynamicResource DefaultLineStyle}" Height="2" VerticalAlignment="Center"/>
+            <Grid Grid.Row="4" Margin="9,4,9,9">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="9"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="9"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="9"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="9"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Button Grid.Column="2" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Width="105" Height="46"
+                                Style="{DynamicResource PadNumericButtonStyle1}">
+                    <Image Source="{StaticResource UpCyan}" Width="21" Height="21"/>
+                </Button>
+                <Button Grid.Column="4" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Width="105" Height="46"
+                                Style="{DynamicResource PadNumericButtonStyle1}">
+                    <Image Source="{StaticResource DownCyan}" Width="21" Height="21"/>
+                </Button>
+                <Button Grid.Column="6" Content="Cancel" Width="234" Height="49" FontFamily="{StaticResource OSSemiBold}" FontSize="16"
+                        Style="{DynamicResource CancelButtonStyle}" x:Name="btnCancel"/>
+                <Button Grid.Column="8" Content="Select" Width="234" Height="49" FontFamily="{StaticResource OSSemiBold}" FontSize="16"
+                        Style="{DynamicResource SaveButtonStyle}" x:Name="btnOK"/>
+            </Grid>
+        </Grid>
+    </cc:ModalWindow>
+</Window>

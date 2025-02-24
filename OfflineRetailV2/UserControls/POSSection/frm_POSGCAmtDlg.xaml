@@ -1,0 +1,143 @@
+﻿<Window x:Class="OfflineRetailV2.UserControls.POSSection.frm_POSGCAmtDlg"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:OfflineRetailV2.UserControls.POSSection"
+        xmlns:cc="clr-namespace:OfflineRetailV2.Controls"
+        xmlns:lm="clr-namespace:OfflineRetailV2.LayoutManager"
+           xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+         xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+         xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid" 
+        AllowsTransparency="True" WindowStyle="None" Background="Transparent" WindowStartupLocation="CenterScreen"
+        Title="" Foreground="White"   
+        Height="200" Width="600">
+    <cc:ModalWindow  x:Name="ModalWindow">
+        <Grid Margin="9">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="9"/>
+                <RowDefinition Height="*"/>
+
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="Gift Certificate Balance"  x:Name="Title" VerticalAlignment="Center" Style="{DynamicResource BlueHeading}" />
+                <Grid Grid.Column="1" HorizontalAlignment="Right" Margin="0,0,20,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition Width="9"></ColumnDefinition>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition Width="9"></ColumnDefinition>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition Width="9"></ColumnDefinition>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <Button Grid.Column="0" IsTabStop="False" Focusable="False" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Content="KEYBOARD" Visibility="Collapsed"
+                                 FontFamily="{StaticResource OSSemiBold}" Style="{DynamicResource GeneralButtonStyle}"  Height="35" Width="120" x:Name="FullKbd" Click="FullKbd_Click"/>
+
+                    <Button Grid.Column="2" IsTabStop="False" Focusable="False" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Content="Help" Visibility="Collapsed"
+                                 FontFamily="{StaticResource OSSemiBold}" Style="{DynamicResource GeneralButtonStyle}"  Height="35" Width="120" x:Name="btnHelp" Click="btnHelp_Click"/>
+
+                    <Button Grid.Column="6" IsTabStop="False" Focusable="False" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Content="DONE"
+                                 FontFamily="{StaticResource OSSemiBold}" Style="{DynamicResource SaveButtonStyle}"  Height="35" Width="120" x:Name="btnOK" Click="btnOK_Click"/>
+
+                    <Button Grid.Column="4" IsTabStop="False" Focusable="False" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Content="CANCEL"
+                                 FontFamily="{StaticResource OSSemiBold}" Style="{DynamicResource CancelButtonStyle}"  Height="35" Width="120" x:Name="btnCancel" Click="btnCancel_Click"/>
+
+
+                </Grid>
+            </Grid>
+            <Rectangle Grid.Row="1" Style="{DynamicResource DefaultLineStyle}"  VerticalAlignment="Center"  Margin="-9,0"/>
+            <Grid Grid.Row="2" Margin="0,9,0,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="21"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="21"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="6"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="6"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.Row="0" Grid.Column="0" Text="Gift Certificate #" x:Name="label1"/>
+                    <TextBlock Grid.Row="0" Grid.Column="2" Text="" x:Name="lbGC"/>
+                    <TextBlock Grid.Row="2" Grid.Column="0" Text="Gift Certificate Balance"/>
+                    <dxe:TextEdit Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" Text="0.00" Mask="f2" MaskType="Numeric" MaskUseAsDisplayFormat="True"   InputScope="Number"  
+                                  x:Name="txtAmt" SelectAllOnGotFocus="True" GotFocus="Num_GotFocus" LostFocus="Num_LostFocus"/>
+                </Grid>
+                
+                <Grid Grid.Row="4" Visibility="Collapsed">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="7"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="7"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="7"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="9"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="9"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="9"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="21"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Button Grid.Row="0" Grid.Column="0" Width="58" Height="50" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Content="1" FontSize="15"
+                                Style="{DynamicResource PadButtonStyle}"/>
+                    <Button Grid.Row="0" Grid.Column="2" Width="58" Height="50" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Content="2" FontSize="15"
+                                Style="{DynamicResource PadButtonStyle}"/>
+                    <Button Grid.Row="0" Grid.Column="4" Width="58" Height="50" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Content="3" FontSize="15"
+                                Style="{DynamicResource PadButtonStyle}"/>
+                    <Button Grid.Row="0" Grid.Column="6" Width="58" Height="50" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Content="-"
+                                FontSize="15" Style="{DynamicResource PadButtonStyle}"/>
+
+                    <Button Grid.Row="2" Grid.Column="0" Width="58" Height="50" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Content="4" FontSize="15"
+                                Style="{DynamicResource PadButtonStyle}"/>
+                    <Button Grid.Row="2" Grid.Column="2" Width="58" Height="50" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Content="5" FontSize="15"
+                                Style="{DynamicResource PadButtonStyle}"/>
+                    <Button Grid.Row="2" Grid.Column="4" Width="58" Height="50" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Content="6" FontSize="15"
+                                Style="{DynamicResource PadButtonStyle}"/>
+
+                    <Button Grid.Row="4" Grid.Column="0" Width="58" Height="50" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Content="7" FontSize="15"
+                                Style="{DynamicResource PadButtonStyle}"/>
+                    <Button Grid.Row="4" Grid.Column="2" Width="58" Height="50" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Content="8" FontSize="15"
+                                Style="{DynamicResource PadButtonStyle}"/>
+                    <Button Grid.Row="4" Grid.Column="4" Width="58" Height="50" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Content="9" FontSize="15"
+                                Style="{DynamicResource PadButtonStyle}"/>
+
+                    <Button Grid.Row="2" Grid.Column="6" Width="58" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Content="Clear"
+                                FontSize="11" FontFamily="{StaticResource OSSemiBold}" Style="{DynamicResource PadButtonStyle}"/>
+
+                    <Button Grid.Row="4" Grid.Column="6" Width="58" Height="50" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Content="Back"
+                                FontSize="15" Style="{DynamicResource PadButtonStyle}"/>
+
+                    <Button Grid.Row="6" Grid.Column="6" Width="58" Height="50" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Content="."
+                                FontSize="15" Style="{DynamicResource PadButtonStyle}"/>
+
+                    <Button Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="5" Height="50" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Content="0" FontSize="15"
+                                Style="{DynamicResource PadButtonStyle}"/>
+
+                   
+
+                </Grid>
+            </Grid>
+            
+        </Grid>
+    </cc:ModalWindow>
+</Window>

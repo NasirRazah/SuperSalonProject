@@ -1,0 +1,194 @@
+﻿<Window x:Class="OfflineRetailV2.UserControls.POSSection.frmPOSRentalSelectDlg"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:OfflineRetailV2.UserControls.POSSection"
+        xmlns:cc="clr-namespace:OfflineRetailV2.Controls"
+        xmlns:lm="clr-namespace:OfflineRetailV2.LayoutManager"
+           xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+         xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+         xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid" 
+             xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars"
+        AllowsTransparency="True" WindowStyle="None" Background="Transparent" WindowStartupLocation="CenterScreen"
+        Title="" Foreground="White"     
+        Width="800" Height="480" Loaded="Window_Loaded">
+    <cc:ModalWindow  x:Name="ModalWindow">
+        <Grid Margin="9">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="9"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="3"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="Title"  x:Name="Title" VerticalAlignment="Center" Style="{DynamicResource BlueHeading}" />
+                <Grid Grid.Column="1" HorizontalAlignment="Right" Margin="0,0,20,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition Width="9"></ColumnDefinition>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition Width="9"></ColumnDefinition>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Button IsTabStop="False" Focusable="False" Grid.Column="0" Content="KEYBOARD" Height="35" Width="120" Visibility="Collapsed" FontFamily="{StaticResource OSSemiBold}" 
+                        Style="{DynamicResource GeneralButtonStyle}" x:Name="FullKbd" Click="FullKbd_Click"/>
+                    <Button Grid.Column="2" Content="CANCEL" Height="35" Width="120" FontFamily="{StaticResource OSSemiBold}" 
+                        Style="{DynamicResource CancelButtonStyle}" x:Name="btnCancel" Click="BtnCancel_Click" />
+                    <Button Grid.Column="4" Content="DONE" Height="35" Width="120" FontFamily="{StaticResource OSSemiBold}" 
+                        Style="{DynamicResource SaveButtonStyle}" x:Name="btnOK" Click="BtnOK_Click"/>
+                </Grid>
+            </Grid>
+            <Rectangle Grid.Row="1" Style="{DynamicResource DefaultLineStyle}"  VerticalAlignment="Center"  Margin="-9,0"/>
+
+            <Border Grid.Row="2" Style="{DynamicResource DummyBorder}" Margin="9,0" >
+                <TextBlock x:Name="lbprod" Grid.ColumnSpan="3" Text="Duration" FontSize="14" Margin="9"/>
+            </Border>
+
+
+            <Grid Margin="0,9" Grid.Row="4">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="2"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                   
+                </Grid.ColumnDefinitions>
+
+                <Grid Grid.Column="0" Margin="7,0,7,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="9"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="3"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="3"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="3"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="3"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="3"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="3"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="3"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="3"></RowDefinition>
+                    </Grid.RowDefinitions>
+
+                    <Border Grid.Row="0" Grid.ColumnSpan="3" Style="{DynamicResource GreenBorder}">
+                        <TextBlock Style="{DynamicResource GreenBorderInfo}" Text="Rental Parameters"></TextBlock>
+                    </Border>
+
+                    <TextBlock Grid.Row="2"  Text="Minimum rent (in Hours)" FontSize="14" />
+                    <dxe:TextEdit Grid.Row="4" Grid.Column="2"  Text="0.00"
+                                  x:Name="numRentalMinHour"  Mask="f2" MaskType="Numeric" MaskUseAsDisplayFormat="True" IsReadOnly="True" IsTabStop="False" VerticalAlignment="Top"/>
+                    <TextBlock Grid.Row="6"  Text="Minimum rent (in Amt.)" FontSize="14"/>
+                    <dxe:TextEdit Grid.Row="8" Grid.Column="2"  Text="0.00"
+                                  x:Name="numRentalMinAmt"  Mask="f2" MaskType="Numeric" MaskUseAsDisplayFormat="True" IsReadOnly="True" IsTabStop="False"/>
+                    <TextBlock Grid.Row="10"  Text="Security Deposit Amount" FontSize="14"/>
+                    <dxe:TextEdit Grid.Row="12" Grid.Column="2"  Text="0.00"
+                                  x:Name="numRentalDeposit" HorizontalContentAlignment="Right" Mask="f2" MaskType="Numeric" MaskUseAsDisplayFormat="True" IsReadOnly="True" IsTabStop="False"/>
+
+                </Grid>
+                <Grid Grid.Column="1" Style="{DynamicResource ScreenSeparator}"></Grid>
+                <Grid Grid.Column="2" Margin="7,0,7,0">
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="9"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="3"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="3"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="3"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="3"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="3"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="3"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="3"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="9"></ColumnDefinition>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <Border Grid.Row="0" Grid.ColumnSpan="3" Style="{DynamicResource OrangeBorder}">
+                        <TextBlock Style="{DynamicResource OrangeBorderInfo}" Text="Applicable Rent"></TextBlock>
+                    </Border>
+
+                    <Border  Grid.Row="2" Grid.ColumnSpan="3">
+
+                        <Grid  x:Name="grpctrl" >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="6"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="6"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="9"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Button IsTabStop="False" Focusable="False" Content="Minute Basis" Grid.Column="0" Style="{DynamicResource GeneralButtonStyle}" x:Name="btnmin" Height="35" Tag="min." Click="Btnmin_Click"
+                                           >
+                                
+                            </Button>
+                            <Button IsTabStop="False" Content="Hourly" Focusable="False" Grid.Column="2" Style="{DynamicResource GeneralButtonStyle}" x:Name="btnhr" Tag="hr." Click="Btnmin_Click">
+                                
+                            </Button>
+                            <Button IsTabStop="False" Content="Half Day" Focusable="False" Grid.Column="4" Style="{DynamicResource GeneralButtonStyle}" x:Name="btnhfday" Tag="half day" Click="Btnmin_Click">
+                                
+                            </Button>
+                            <Button IsTabStop="False"  Content="Daily" Focusable="False" Grid.Column="0" Grid.Row="2" Style="{DynamicResource GeneralButtonStyle}" x:Name="btnday" Tag="day" Click="Btnmin_Click"
+                                Height="35">
+                                
+                            </Button>
+                            <Button IsTabStop="False" Content="Weekly" Focusable="False" Grid.Column="2" Grid.Row="2" Style="{DynamicResource GeneralButtonStyle}" x:Name="btnwk" Tag="week" Click="Btnmin_Click">
+                                
+                            </Button>
+                            <Button IsTabStop="False" Content="Monthly" Focusable="False" Grid.Column="4" Grid.Row="2" Style="{DynamicResource GeneralButtonStyle}" x:Name="btnmth" Tag="month" Click="Btnmin_Click">
+                                
+                            </Button>
+                        </Grid>
+
+
+                        
+
+                    </Border>
+
+
+                    <TextBlock Grid.Row="6" x:Name="lbduration" Grid.Column="2" Text="Duration" FontSize="14"/>
+                    <TextBlock Grid.Row="4"  Text="Duration"  x:Name="label1" FontSize="14" />
+                    <dxe:TextEdit Grid.Row="6" Grid.Column="0"  Text="0.00"
+                                  x:Name="numDuration" HorizontalContentAlignment="Right" Mask="f" MaskType="Numeric" MaskUseAsDisplayFormat="True" InputScope="Number" TabIndex="0" EditValueChanged="NumDuration_EditValueChanged" SelectAllOnGotFocus="True" GotFocus="Num_GotFocus" LostFocus="Num_LostFocus"/>
+                    <TextBlock Grid.Row="8"  Text="Rent" FontSize="14" x:Name="label2" />
+                    <dxe:TextEdit Grid.Row="10"  Grid.ColumnSpan="3" Text="0.00"
+                                  x:Name="numRent"  Mask="f2" MaskType="Numeric" MaskUseAsDisplayFormat="True" InputScope="Number" EditValueChanged="NumDuration_EditValueChanged" SelectAllOnGotFocus="True" GotFocus="Num_GotFocus" LostFocus="Num_LostFocus"/>
+                    <TextBlock Grid.Row="12"  Text="Total Rent" FontSize="14" x:Name="label3"/>
+                    <dxe:TextEdit Grid.Row="14" Grid.ColumnSpan="3"  Text="0.00"
+                                  x:Name="numTotal" Mask="f2" MaskType="Numeric" MaskUseAsDisplayFormat="True" IsReadOnly="True" IsTabStop="False"/>
+
+
+                </Grid>
+                
+            </Grid>
+
+
+
+
+        </Grid>
+    </cc:ModalWindow>
+</Window>

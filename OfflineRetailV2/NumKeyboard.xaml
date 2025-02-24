@@ -1,0 +1,157 @@
+﻿<Window x:Class="OfflineRetailV2.NumKeyboard"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:OfflineRetailV2.UserControls.POSSection"
+        xmlns:cc="clr-namespace:OfflineRetailV2.Controls"
+        xmlns:lm="clr-namespace:OfflineRetailV2.LayoutManager"
+           xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+         xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+         xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid" 
+        mc:Ignorable="d" Height="325" Width="550" MinWidth="550" AllowsTransparency="True"
+        Title="NumKeyboard"  WindowStyle="None" Background="Transparent" WindowStartupLocation="Manual" ShowInTaskbar="False"
+         Foreground="White"   ResizeMode="CanResizeWithGrip" Focusable="False" Loaded="Window_Loaded" MouseDown="Window_MouseDown" >
+    <Window.Resources>
+        <Style TargetType="{x:Type ResizeGrip}">
+            <Setter Property="OverridesDefaultStyle" Value="true"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ResizeGrip}">
+                        <Grid Background="Goldenrod" Width="30" Height="30"
+                        SnapsToDevicePixels="True">
+                            <Path Data="M9,0L11,0 11,11 0,11 0,9 3,9 3,6 6,6 6,3 9,3z" 
+                           Margin="0,0,2,2" 
+                           Stretch="UniformToFill"
+                           HorizontalAlignment="Right" 
+                           VerticalAlignment="Bottom">
+                                <Path.Fill>
+                                    <DrawingBrush ViewportUnits="Absolute" 
+                                         ViewboxUnits="Absolute" 
+                                         Viewport="0,0,3,3" 
+                                         Viewbox="0,0,3,3" 
+                                         TileMode="Tile">
+                                        <DrawingBrush.Drawing>
+                                            <DrawingGroup>
+                                                <DrawingGroup.Children>
+                                                    <GeometryDrawing Geometry="M0,0L2,0 2,2 0,2z">
+                                                        <GeometryDrawing.Brush>
+                                                            <LinearGradientBrush StartPoint="0,0.25" 
+                                                                  EndPoint="1,0.75">
+                                                                <LinearGradientBrush.GradientStops>
+                                                                    <GradientStop Color="#FFFFFFFF" 
+                                                                 Offset="0.3" />
+                                                                    <GradientStop Color="#FFBBC5D7" 
+                                                                 Offset="0.75" />
+                                                                    <GradientStop Color="#FF6D83A9" 
+                                                                 Offset="1" />
+                                                                </LinearGradientBrush.GradientStops>
+                                                            </LinearGradientBrush>
+                                                        </GeometryDrawing.Brush>
+                                                    </GeometryDrawing>
+                                                </DrawingGroup.Children>
+                                            </DrawingGroup>
+                                        </DrawingBrush.Drawing>
+                                    </DrawingBrush>
+                                </Path.Fill>
+                            </Path>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    <cc:ModalWindow  x:Name="ModalWindow" Focusable="False">
+        <Border  Style="{DynamicResource KeyboardBorder}"  BorderThickness="0" CornerRadius="4.8">
+            <Grid Grid.Row="2" Margin="10">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="7"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="7"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="7"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="9"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="9"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="9"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="9"/>
+                    <ColumnDefinition Width="9"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="9"/>
+
+
+                </Grid.ColumnDefinitions>
+                <Button Grid.Row="0" Grid.Column="0" Focusable="False" x:Name="btnKey1"  VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Content="1"
+                                Style="{DynamicResource PadButtonStyle1}" Click="BtnKey1_Click" />
+                <Button Grid.Row="0" Grid.Column="2" Focusable="False" x:Name="btnKey2"  VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Content="2" 
+                                Style="{DynamicResource PadButtonStyle1}" Click="BtnKey1_Click" />
+                <Button Grid.Row="0" Grid.Column="4" Focusable="False" x:Name="btnKey3"   VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Content="3" 
+                                Style="{DynamicResource PadButtonStyle1}" Click="BtnKey1_Click" />
+                <Button Grid.Row="0" Grid.Column="6" Grid.ColumnSpan="2"   VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Content="£ 1" 
+    Style="{DynamicResource PadButtonStyle2}"  x:Name="btnC1" FontSize="14" Click="btn5_Click"/>
+                <Button Grid.Row="0" Grid.Column="9"   Grid.ColumnSpan="2" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Content="£ 2" 
+    Style="{DynamicResource PadButtonStyle2}" x:Name="btnC2" FontSize="14" Click="btn5_Click"/>
+
+
+
+
+
+                <Button Grid.Row="2" Grid.Column="0" x:Name="btnKey4"  Focusable="False"  VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Content="4"
+                                Style="{DynamicResource PadButtonStyle1}" Click="BtnKey1_Click" />
+                <Button Grid.Row="2" Grid.Column="2" x:Name="btnKey5"  Focusable="False"  VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Content="5"
+                                Style="{DynamicResource PadButtonStyle1}" Click="BtnKey1_Click" />
+                <Button Grid.Row="2" Grid.Column="4" x:Name="btnKey6" Focusable="False"  VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Content="6"
+                                Style="{DynamicResource PadButtonStyle1}" Click="BtnKey1_Click" />
+                <Button Grid.Row="2" Grid.Column="6" Grid.ColumnSpan="2"   VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Content="£ 3" 
+      Style="{DynamicResource PadButtonStyle2}" x:Name="btnC3" FontSize="14" Click="btn5_Click"/>
+                <Button Grid.Row="2" Grid.Column="9" Grid.ColumnSpan="2"   VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Content="£ 20" 
+      Style="{DynamicResource PadButtonStyle2}" x:Name="btnC4" FontSize="14" Click="btn5_Click"/>
+
+                
+
+
+
+                <Button Grid.Row="4" Grid.Column="0" x:Name="btnKey7" Focusable="False"  VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Content="7" 
+                                Style="{DynamicResource PadButtonStyle1}" Click="BtnKey1_Click" />
+                <Button Grid.Row="4" Grid.Column="2"  x:Name="btnKey8" Focusable="False"  VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Content="8" 
+                                Style="{DynamicResource PadButtonStyle1}" Click="BtnKey1_Click" />
+                <Button Grid.Row="4" Grid.Column="4" x:Name="btnKey9"  Focusable="False"  VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Content="9" 
+                                Style="{DynamicResource PadButtonStyle1}" Click="BtnKey1_Click"  />
+
+                <Button Grid.Row="4" Grid.Column="6"  Grid.ColumnSpan="2"  VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Content="£ 500" 
+    Style="{DynamicResource PadButtonStyle2}"  x:Name="btnC5" FontSize="14" Click="btn5_Click"/>
+                <Button Grid.Row="4" Grid.Column="9"  Grid.ColumnSpan="2"  VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Content="£ 100" 
+    Style="{DynamicResource PadButtonStyle2}" x:Name="btnC6" FontSize="14" Click="btn5_Click"/>
+
+                <Button Grid.Row="6" Grid.Column="6" x:Name="btnKeyDelete" Grid.ColumnSpan="2" Focusable="False"  VerticalContentAlignment="Center" HorizontalContentAlignment="Center" 
+                                Style="{DynamicResource PadButtonStyleImage}" Tag="Delete" Click="BtnKey1_Click" >
+                    <Image Source="{StaticResource Close1}" Width="22.32" Focusable="False"/>
+                </Button>
+                <Button Grid.Row="6" Grid.Column="9" x:Name="btnKeyBack" Grid.ColumnSpan="2" Focusable="False"  VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
+                Style="{DynamicResource PadButtonStyleImage}" Tag="Back" Click="BtnKey1_Click">
+                    <Image Source="{StaticResource Delete1}" Width="27.13" Focusable="False"/>
+                </Button>
+
+                <Button x:Name="btnKeyMinus" Grid.Row="6" Grid.Column="0" Focusable="False"  VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Content="-"
+                 Style="{DynamicResource PadButtonStyle1}" Click="BtnKey1_Click" />
+
+                <Button x:Name="btnKey0" Grid.Row="6" Grid.Column="2" Grid.ColumnSpan="1"  Focusable="False" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Content="0"
+                                 Style="{DynamicResource PadButtonStyle1}"  Click="BtnKey1_Click"/>
+
+                <Button x:Name="btnKeyDot" Grid.Row="6" Grid.Column="4" Focusable="False"  VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Content="."
+                                 Style="{DynamicResource PadButtonStyle1}"  Grid.ColumnSpan="1" Click="BtnKey1_Click"/>
+
+
+
+
+            </Grid>
+        </Border>
+    </cc:ModalWindow>
+</Window>

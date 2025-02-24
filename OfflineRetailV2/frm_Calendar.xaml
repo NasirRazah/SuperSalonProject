@@ -1,0 +1,145 @@
+﻿<Window x:Class="OfflineRetailV2.frm_Calendar"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:OfflineRetailV2"
+        xmlns:cc="clr-namespace:OfflineRetailV2.Controls"
+        xmlns:lm="clr-namespace:OfflineRetailV2.LayoutManager"
+           xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+         xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+         xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid"
+        xmlns:mc="clr-namespace:Pabo.Calendar;assembly=MonthCalendar"
+        AllowsTransparency="True" WindowStyle="None" Background="Transparent" WindowStartupLocation="CenterScreen"
+        Title="" Foreground="White"  Width="600" Height="600" 
+        Loaded="Window_Loaded">
+    <cc:ModalWindow  x:Name="ModalWindow">
+        <Grid Margin="9">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="9"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="9"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <TextBlock Text="Calendar" x:Name="Title" FontFamily="{StaticResource OSRegular}" FontSize="20"/>
+            <Rectangle Grid.Row="1" Style="{DynamicResource DefaultLineStyle}" Height="2" VerticalAlignment="Center"  Margin="-9,0"/>
+            <Grid Grid.Row="2" Margin="0,9,0,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="21"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="21"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Row="0" x:Name="lbCustomText" Text="Custom Text" FontSize="13" FontFamily="{StaticResource OSSemiBold}" Margin="21,0"/>
+                <Grid Grid.Row="2">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="9"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="50"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="21"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="9"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Grid.Row="0" Grid.Column="0" Text="Year" FontFamily="{StaticResource OSSemiBold}"/>
+                    <dxe:ComboBoxEdit Grid.Row="0" Grid.Column="2" x:Name="cmbYear" EditValueChanged="CmbYear_EditValueChanged" PopupOpening="CmbYear_PopupOpening"/>
+                    <Button x:Name="btnyp" Grid.Row="0" Grid.Column="4" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
+                                Style="{DynamicResource PadNumericButtonStyle1}" Width="60" Click="Btnyp_Click">
+                        <Image Source="{StaticResource UpCyan}" Width="21" Height="21" RenderTransformOrigin="0.5,0.5">
+                            <Image.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform/>
+                                    <RotateTransform Angle="-90"/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </Image.RenderTransform>
+                        </Image>
+                    </Button>
+                    <Button x:Name="btnyn" Grid.Row="0" Grid.Column="6" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
+                                Style="{DynamicResource PadNumericButtonStyle1}" Width="60" Click="Btnyn_Click">
+                        <Image Source="{StaticResource UpCyan}" Width="21" Height="21" RenderTransformOrigin="0.5,0.5">
+                            <Image.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform/>
+                                    <RotateTransform Angle="90"/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </Image.RenderTransform>
+                        </Image>
+                    </Button>
+
+                    <TextBlock Grid.Row="2" Grid.Column="0" Text="Month" FontFamily="{StaticResource OSSemiBold}"/>
+                    <dxe:ComboBoxEdit Grid.Row="2" Grid.Column="2" x:Name="cmbMonth" EditValueChanged="CmbMonth_EditValueChanged"/>
+                    <Button x:Name="btnmp" Grid.Row="2" Grid.Column="4" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
+                                Style="{DynamicResource PadNumericButtonStyle1}" Width="60" Click="Btnmp_Click">
+                        <Image Source="{StaticResource UpCyan}" Width="21" Height="21" RenderTransformOrigin="0.5,0.5">
+                            <Image.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform/>
+                                    <RotateTransform Angle="-90"/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </Image.RenderTransform>
+                        </Image>
+                    </Button>
+                    <Button x:Name="btnmn" Grid.Row="2" Grid.Column="6" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
+                                Style="{DynamicResource PadNumericButtonStyle1}" Width="60" Click="Btnmn_Click">
+                        <Image Source="{StaticResource UpCyan}" Width="21" Height="21" RenderTransformOrigin="0.5,0.5">
+                            <Image.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform/>
+                                    <RotateTransform Angle="90"/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </Image.RenderTransform>
+                        </Image>
+                    </Button>
+                </Grid>
+                <Grid Grid.Row="4">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="21"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <WindowsFormsHost Height="360">
+                        <mc:MonthCalendar x:Name="cal" DayClick="Cal_DayClick" DaySelected="Cal_DaySelected" BackColor="Transparent"
+                                          />
+                    </WindowsFormsHost>
+
+
+                    <Grid Grid.Column="2" VerticalAlignment="Bottom">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="21"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Button Grid.Row="2" Content="CANCEL" Height="60" FontFamily="{StaticResource OSSemiBold}" FontSize="16"
+                        Style="{DynamicResource GeneralButtonStyle}" x:Name="btnCancel" Click="BtnCancel_Click"/>
+                        <Button Grid.Row="0" Content="Done" Height="60" FontFamily="{StaticResource OSSemiBold}" FontSize="16"
+                        Style="{DynamicResource GeneralButtonStyle1}" x:Name="btnOK" Click="BtnOK_Click"/>
+                    </Grid>
+                </Grid>
+            </Grid>
+            <Grid Grid.Row="4" Margin="9">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="9"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="9"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+            </Grid>
+        </Grid>
+    </cc:ModalWindow>
+</Window>

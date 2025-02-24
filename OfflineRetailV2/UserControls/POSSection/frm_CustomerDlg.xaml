@@ -1,0 +1,1589 @@
+﻿<Window x:Class="OfflineRetailV2.UserControls.POSSection.frm_CustomerDlg"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:OfflineRetailV2.UserControls.POSSection"
+         xmlns:cc="clr-namespace:OfflineRetailV2.Controls"
+        xmlns:lm="clr-namespace:OfflineRetailV2.LayoutManager"
+           xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+         xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+         xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid" 
+        xmlns:dxsch="http://schemas.devexpress.com/winfx/2008/xaml/scheduling"
+        AllowsTransparency="True" WindowStyle="None" Background="Transparent" WindowStartupLocation="CenterScreen"
+        Title="" Foreground="White"   
+        Width="1024" Height="740" Loaded="Window_Loaded" Closing="Window_Closing">
+
+    <cc:ModalWindow  x:Name="ModalWindow">
+        <Grid Margin="9">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="Title"  x:Name="Title" VerticalAlignment="Center" TextWrapping="WrapWithOverflow" Style="{DynamicResource BlueHeading}" />
+                <Grid Grid.Column="1" HorizontalAlignment="Right" Margin="0,0,20,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="3"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="9"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="9"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Button Grid.Column="0" Content="KEYBOARD" Height="35"  Width="110" FontFamily="{StaticResource OSSemiBold}"
+                        Style="{DynamicResource GeneralButtonStyle}" x:Name="btnKeyboard" Visibility="Collapsed"/>
+                    <Border Grid.Column="2" BorderThickness="0" x:Name="grpHA" Visibility="Collapsed" Margin="0,-15,0,0" >
+                        <Grid >
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                                <RowDefinition Height="1"></RowDefinition>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="3"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="9"/>
+                                <ColumnDefinition Width="Auto"/>
+
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="From" Grid.Row="0" Grid.Column="0" />
+                            <dxe:DateEdit Grid.Row="2" Grid.Column="0" Width="100" x:Name="dtF" PreviewMouseLeftButtonDown="DtDOB_PreviewMouseLeftButtonDown"/>
+                            <TextBlock Grid.Row="0" Grid.Column="2" Text="To"/>
+                            <dxe:DateEdit Grid.Row="2" Grid.Column="2" Width="100" x:Name="dtT" PreviewMouseLeftButtonDown="DtDOB_PreviewMouseLeftButtonDown"/>
+                            <Button Grid.Column="4" Grid.Row="2" Content="STATEMENT" Height="35"  Width="100" FontFamily="{StaticResource OSSemiBold}" 
+                        Style="{DynamicResource SavePostButtonStyle}" x:Name="btnStatement" Click="BtnStatement_Click"/>
+                        </Grid>
+                    </Border>
+                    <Button Grid.Column="4" Content="REPRINT" Height="35"  Width="100" FontFamily="{StaticResource OSSemiBold}" 
+                        Style="{DynamicResource PrintButtonStyle}" x:Name="btnPrint" Visibility="Hidden" Click="BtnPrint_Click" />
+                    <Button Grid.Column="6" Content="CANCEL" Height="35"  Width="110" FontFamily="{StaticResource OSSemiBold}" 
+                        Style="{DynamicResource CancelButtonStyle}" x:Name="btnCancel" Click="BtnCancel_Click"/>
+                    <Button Grid.Column="8" Content="SAVE" Height="35" Width="110" FontFamily="{StaticResource OSSemiBold}" 
+                        Style="{DynamicResource SaveButtonStyle}" x:Name="btnLogin" Click="BtnLogin_Click"/>
+                </Grid>
+            </Grid>
+            <Grid Grid.Row="2" Margin="0,9,0,0">
+                <UniformGrid Columns="6" >
+                    <FrameworkElement x:Name="c1"/>
+                </UniformGrid>
+                <TabControl Style="{DynamicResource OuterPOSTabControlStyle}" x:Name="tcCustomer" MouseLeftButtonUp="TcCustomer_MouseLeftButtonUp" SelectionChanged="TcCustomer_SelectionChanged">
+                    <TabItem Width="{Binding ElementName=c1, Path=ActualWidth}" x:Name="tpGeneral"
+                         Style="{DynamicResource OuterPOSTabItemStyle}" PreviewMouseLeftButtonUp="TpGeneral_PreviewMouseLeftButtonUp">
+                        <TabItem.Header>
+                            <TextBlock Text="General Details" Style="{DynamicResource TabItemText}"></TextBlock>
+                        </TabItem.Header>
+
+
+                        <Grid Margin="9">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                <ColumnDefinition Width="2"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                <ColumnDefinition Width="2"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+
+                            <Grid Grid.Column="0" Margin="7,0,7,0">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="9"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="3"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="3"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="3"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="3"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="3"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="3"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="3"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="3"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="3"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="3"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="3"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="3"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="3"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="3"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="3"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="3"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="3"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="3"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="3"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="3"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="3"></RowDefinition>
+                                </Grid.RowDefinitions>
+
+                                <Border Grid.Row="0" Grid.ColumnSpan="3" Style="{DynamicResource GreenBorder}">
+                                    <TextBlock Style="{DynamicResource GreenBorderInfo}" Text="Primary Info."></TextBlock>
+                                </Border>
+
+                                <Grid Grid.Row="2">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                        <RowDefinition Height="3"></RowDefinition>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                        <ColumnDefinition Width="9"></ColumnDefinition>
+                                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Grid.Row="0" Text="Customer ID" FontSize="11" FontFamily="{StaticResource OSSemiBold}"/>
+                                    <dxe:TextEdit Grid.Row="2" Grid.Column="0"  Height="26" x:Name="txtCustID" MaxLength="20" EditValueChanged="TxtCustID_EditValueChanged" GotFocus="Full_GotFocus" LostFocus="Full_LostFocus"/>
+
+                                    <dxe:ToggleSwitch ContentPlacement="Far" Height="26" HorizontalAlignment="Left" Grid.Row="2" Grid.Column="2" UncheckedStateContent="Active ?" CheckedStateContent="Active ?" IsTabStop="False" x:Name="chkActive" Checked="ChkActive_Checked" Unchecked="ChkActive_Checked"/>
+                                </Grid>
+                                
+
+                                <TextBlock Grid.Row="6" Text="Company" FontSize="11" FontFamily="{StaticResource OSSemiBold}"/>
+                                <dxe:TextEdit Grid.Row="8" Grid.Column="2" Height="26" x:Name="txtCompany" 
+                                              MaxLength="30" EditValueChanged="TxtCustID_EditValueChanged" GotFocus="Full_GotFocus" LostFocus="Full_LostFocus"/>
+
+                                <TextBlock Grid.Row="10" Text="First Name" FontSize="11" FontFamily="{StaticResource OSSemiBold}"/>
+                                <dxe:TextEdit  Grid.Row="12" Grid.Column="2" Height="26" x:Name="txtFName"
+                                           MaxLength="20" EditValueChanged="TxtCustID_EditValueChanged" GotFocus="Full_GotFocus" LostFocus="Full_LostFocus"/>
+
+                                <TextBlock Grid.Row="14" Text="Last Name" FontSize="11" FontFamily="{StaticResource OSSemiBold}"/>
+                                <dxe:TextEdit  Grid.Row="16" Grid.Column="2" Height="26" x:Name="txtLName"
+                                           MaxLength="20" EditValueChanged="TxtCustID_EditValueChanged" GotFocus="Full_GotFocus" LostFocus="Full_LostFocus"/>
+
+
+                                <Grid Grid.Row="18">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                        <ColumnDefinition Width="15"></ColumnDefinition>
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Grid.Column="0" Text="Salutation" FontSize="11" FontFamily="{StaticResource OSSemiBold}"/>
+                                    <TextBlock Grid.Column="2" Text="Spouse" FontSize="11"
+                                                   FontFamily="{StaticResource OSSemiBold}"/>
+                                </Grid>
+                                <Grid Grid.Row="20">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                        <ColumnDefinition Width="15"></ColumnDefinition>
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <dxe:TextEdit Grid.Column="0" Height="26" x:Name="txtSalutation"  MaxLength="4"  
+                                                  GotFocus="Full_GotFocus" LostFocus="Full_LostFocus" EditValueChanged="TxtCustID_EditValueChanged"/>
+                                    <dxe:TextEdit Grid.Column="2" Height="26" x:Name="txtSpouse"  MaxLength="20"  
+                                                  GotFocus="Full_GotFocus" LostFocus="Full_LostFocus" EditValueChanged="TxtCustID_EditValueChanged"/>
+                                </Grid>
+
+                                <Grid Grid.Row="22">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                        <ColumnDefinition Width="15"></ColumnDefinition>
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Grid.Column="0" Text="Date of Birth" FontSize="11" FontFamily="{StaticResource OSSemiBold}"/>
+                                    <TextBlock Grid.Column="2" Text="Date of Marriage" FontSize="11"
+                                                   FontFamily="{StaticResource OSSemiBold}"/>
+                                </Grid>
+                                <Grid Grid.Row="24">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                        <ColumnDefinition Width="15"></ColumnDefinition>
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <dxe:DateEdit  Grid.Column="0" Height="26" x:Name="dtDOB" EditValueChanged="TxtCustID_EditValueChanged" PreviewMouseLeftButtonDown="DtDOB_PreviewMouseLeftButtonDown"/>
+                                    <dxe:DateEdit  Grid.Column="2" Height="26" x:Name="dtDOM" EditValueChanged="TxtCustID_EditValueChanged" PreviewMouseLeftButtonDown="DtDOB_PreviewMouseLeftButtonDown"/>
+                                </Grid>
+
+
+                                <TextBlock Grid.Row="26" Text="Work Phone" FontSize="11" FontFamily="{StaticResource OSSemiBold}"/>
+                                <dxe:TextEdit Grid.Row="28" Grid.Column="2" Height="26" x:Name="txtWphone" MaxLength="14" EditValueChanged="TxtCustID_EditValueChanged" GotFocus="Full_GotFocus" LostFocus="Full_LostFocus"/>
+
+                                <TextBlock Grid.Row="30" Text="Home Phone" FontSize="11" FontFamily="{StaticResource OSSemiBold}"/>
+                                <dxe:TextEdit Grid.Row="32" Grid.Column="2" Height="26"
+                                           x:Name="txtHphone" MaxLength="14" EditValueChanged="TxtCustID_EditValueChanged" GotFocus="Full_GotFocus" LostFocus="Full_LostFocus"/>
+
+                                <TextBlock Grid.Row="34" Text="Mobile Phone" FontSize="11" FontFamily="{StaticResource OSSemiBold}"/>
+                                <dxe:TextEdit  Grid.Row="36" Grid.Column="2" Height="26" x:Name="txtMphone"
+                                           MaxLength="14" EditValueChanged="TxtCustID_EditValueChanged" GotFocus="Full_GotFocus" LostFocus="Full_LostFocus"/>
+
+                                
+                                
+
+                                <TextBlock Grid.Row="38" Text="Fax" FontSize="11" FontFamily="{StaticResource OSSemiBold}"/>
+                                <dxe:TextEdit Grid.Row="40" Grid.Column="2" Height="26" x:Name="txtFax" MaxLength="14"
+                                               GotFocus="Full_GotFocus" LostFocus="Full_LostFocus" EditValueChanged="TxtCustID_EditValueChanged"/>
+
+                                <TextBlock Grid.Row="42" Text="Email" FontSize="11" FontFamily="{StaticResource OSSemiBold}"/>
+                                <dxe:TextEdit Grid.Row="44" Grid.Column="2" Height="26" x:Name="txtEmail" MaxLength="60" 
+                                               GotFocus="Full_GotFocus" LostFocus="Full_LostFocus" EditValueChanged="TxtCustID_EditValueChanged"/>
+
+                            </Grid>
+                            <Grid Grid.Column="1" Style="{DynamicResource ScreenSeparator}"></Grid>
+                            <Grid Grid.Column="2" Margin="7,0,7,0">
+
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="9"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="3"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="3"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="3"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="3"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="3"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="3"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="3"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="3"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="3"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="3"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="3"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="3"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="3"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="3"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="3"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="3"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="3"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="3"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="3"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="3"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="3"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="3"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="3"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="3"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="3"></RowDefinition>
+                                </Grid.RowDefinitions>
+
+
+                                <Border Grid.Row="0" Grid.ColumnSpan="3" Style="{DynamicResource OrangeBorder}">
+                                    <TextBlock Style="{DynamicResource OrangeBorderInfo}" Text="Billing Address"></TextBlock>
+                                </Border>
+
+                                <TextBlock Grid.Row="2" Text="Address 1" FontSize="11" FontFamily="{StaticResource OSSemiBold}"/>
+                                <dxe:TextEdit Grid.Row="4" Grid.Column="2" Height="26" x:Name="txtBadd1" MaxLength="60" EditValueChanged="TxtCustID_EditValueChanged" GotFocus="Full_GotFocus" LostFocus="Full_LostFocus"/>
+
+                                <TextBlock Grid.Row="6" Text="Address 2" FontSize="11" FontFamily="{StaticResource OSSemiBold}"/>
+                                <dxe:TextEdit Grid.Row="8" Grid.Column="2" Height="26" x:Name="txtBadd2" MaxLength="60" EditValueChanged="TxtCustID_EditValueChanged" GotFocus="Full_GotFocus" LostFocus="Full_LostFocus"/>
+
+                                <TextBlock Grid.Row="10" Text="City" FontSize="11" FontFamily="{StaticResource OSSemiBold}"/>
+                                <dxe:TextEdit Grid.Row="12" Grid.Column="2" Height="26" x:Name="txtBcity" MaxLength="20" EditValueChanged="TxtCustID_EditValueChanged" GotFocus="Full_GotFocus" LostFocus="Full_LostFocus"/>
+
+                                <Grid Grid.Row="14">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                        <ColumnDefinition Width="9"></ColumnDefinition>
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Grid.Column="0" Text="Zip" FontSize="11" FontFamily="{StaticResource OSSemiBold}" Cursor="Hand" TextDecorations="Underline" MouseLeftButtonUp="TextBlock_MouseLeftButtonUp" x:Name="linkBZip"/>
+                                    <TextBlock Grid.Column="2" Text="State" FontSize="11" FontFamily="{StaticResource OSSemiBold}"/>
+                                </Grid>
+
+                                <Grid Grid.Row="16">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                        <ColumnDefinition Width="9"></ColumnDefinition>
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+
+                                    <dxe:TextEdit Grid.Column="0" Height="26" x:Name="cmbBzip" MaxLength="12" EditValueChanged="TxtCustID_EditValueChanged" LostFocus="CmbBzip_LostFocus" GotFocus="Full_GotFocus"/>
+                                    <dxe:TextEdit Grid.Column="2" Height="26" x:Name="txtBstate" MaxLength="30"  EditValueChanged="TxtCustID_EditValueChanged" GotFocus="Full_GotFocus" LostFocus="Full_LostFocus"/>
+
+                                </Grid>
+
+                                <TextBlock Grid.Row="18" Text="Country" FontSize="11" FontFamily="{StaticResource OSSemiBold}"/>
+                                <dxe:TextEdit Grid.Row="20" Grid.Column="2" Height="26" x:Name="txtBcountry" MaxLength="20" EditValueChanged="TxtCustID_EditValueChanged" GotFocus="Full_GotFocus" LostFocus="Full_LostFocus"/>
+
+
+                                <Border Grid.Row="22" Grid.ColumnSpan="3" Style="{DynamicResource GreenBorder}" Margin="0,15,0,9">
+                                    <TextBlock Style="{DynamicResource GreenBorderInfo}" Text="Shipping Address"></TextBlock>
+                                </Border>
+
+                                <TextBlock Grid.Row="24" Text="Address 1" FontSize="11" FontFamily="{StaticResource OSSemiBold}"/>
+                                <dxe:TextEdit Grid.Row="26" Grid.Column="2" Height="26" x:Name="txtSadd1" MaxLength="60" EditValueChanged="TxtCustID_EditValueChanged" GotFocus="Full_GotFocus" LostFocus="Full_LostFocus"/>
+
+                                <TextBlock Grid.Row="28" Text="Address 2" FontSize="11" FontFamily="{StaticResource OSSemiBold}"/>
+                                <dxe:TextEdit Grid.Row="30" Grid.Column="2" Height="26" x:Name="txtSadd2" MaxLength="60" EditValueChanged="TxtCustID_EditValueChanged" GotFocus="Full_GotFocus" LostFocus="Full_LostFocus"/>
+
+                                <TextBlock Grid.Row="32" Text="City" FontSize="11" FontFamily="{StaticResource OSSemiBold}"/>
+                                <dxe:TextEdit Grid.Row="34" Grid.Column="2" Height="26" x:Name="txtScity" MaxLength="20" EditValueChanged="TxtCustID_EditValueChanged" GotFocus="Full_GotFocus" LostFocus="Full_LostFocus"/>
+
+
+                                <Grid Grid.Row="36">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                        <ColumnDefinition Width="9"></ColumnDefinition>
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Grid.Column="0" Text="Zip" FontSize="11" FontFamily="{StaticResource OSSemiBold}" Cursor="Hand" TextDecorations="Underline" x:Name="linkSZip" PreviewMouseLeftButtonUp="LinkSZip_PreviewMouseLeftButtonUp" />
+                                    <TextBlock Grid.Column="2" Text="State" FontSize="11" FontFamily="{StaticResource OSSemiBold}"/>
+                                </Grid>
+
+                                <Grid Grid.Row="38">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                        <ColumnDefinition Width="9"></ColumnDefinition>
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+
+                                    <dxe:TextEdit  Grid.Column="0" Height="26" x:Name="cmbSzip" MaxLength="12" EditValueChanged="TxtCustID_EditValueChanged" LostFocus="CmbSzip_LostFocus" GotFocus="Full_GotFocus" />
+
+
+                                    <dxe:TextEdit  Grid.Column="2" Height="26" x:Name="txtSstate" MaxLength="30"  EditValueChanged="TxtCustID_EditValueChanged" GotFocus="Full_GotFocus" LostFocus="Full_LostFocus"/>
+
+                                </Grid>
+
+
+
+                                <TextBlock Grid.Row="40" Text="Country" FontSize="11" FontFamily="{StaticResource OSSemiBold}"/>
+                                <dxe:TextEdit Grid.Row="42" Grid.Column="2" Height="26" x:Name="txtScountry" MaxLength="20" EditValueChanged="TxtCustID_EditValueChanged" GotFocus="Full_GotFocus" LostFocus="Full_LostFocus"/>
+
+                            </Grid>
+                            <Grid Grid.Column="3" Style="{DynamicResource ScreenSeparator}"></Grid>
+                            <Grid Grid.Column="4" Margin="7,0,7,0">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="9"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="2"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="2"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="2"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="2"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="2"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="2"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="2"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="2"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="2"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="2"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="2"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="2"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="2"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="2"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="2"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="2"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+
+
+                                </Grid.RowDefinitions>
+
+
+                                <Border Grid.Row="0" Grid.ColumnSpan="3" Style="{DynamicResource PurpleBorder}">
+                                    <TextBlock Style="{DynamicResource PurpleBorderInfo}" Text="Photo"></TextBlock>
+                                </Border>
+
+                                <Grid Grid.Row="2">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="5"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Border Height="128" Width="140" Style="{DynamicResource GroupBorder}" BorderThickness="1" >
+                                        <Image x:Name="pictPhoto" Stretch="Uniform"/>
+                                    </Border>
+                                    <Grid Grid.Column="2" Width="120">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="9"/>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="9"/>
+                                            <RowDefinition Height="*"/>
+                                        </Grid.RowDefinitions>
+                                        <Button Grid.Row="0" Width="120" 
+                                            Style="{DynamicResource DeletePhotoButton}" x:Name="btnClearImage" Click="BtnClearImage_Click" >
+
+                                        </Button>
+                                        <Button Grid.Row="2" Width="120"  
+                                Style="{DynamicResource ScanPhotoButton}" x:Name="btnScanImage">
+
+                                        </Button>
+                                        <Button Grid.Row="4" Width="120" MinHeight="30" 
+                                Style="{DynamicResource SelectPhotoButton}" x:Name="btnOpen" Click="BtnOpen_Click" >
+
+                                        </Button>
+                                    </Grid>
+                                </Grid>
+
+                                <Border Grid.Row="4" Grid.ColumnSpan="3" Style="{DynamicResource GreenBorder}" Margin="0,9,0,9">
+                                    <TextBlock Style="{DynamicResource GreenBorderInfo}" Text="Points, Pricing etc."></TextBlock>
+                                </Border>
+
+                                <Grid Grid.Row="6">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                        <ColumnDefinition Width="6"></ColumnDefinition>
+                                        <ColumnDefinition Width="0.9*"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Grid.Column="0" Text="Points Earned" FontSize="11" FontFamily="{StaticResource OSSemiBold}"/>
+                                    <TextBlock Grid.Column="2" Text="Price Level" FontSize="11" FontFamily="{StaticResource OSSemiBold}"/>
+                                </Grid>
+                                <Grid Grid.Row="8">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                        <ColumnDefinition Width="6"></ColumnDefinition>
+                                        <ColumnDefinition Width="0.9*"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <dxe:TextEdit  Grid.Column="0"  Height="26" x:Name="txtPoints" Mask="N0" MaskType="Numeric" IsReadOnly="True" dxe:NumericMaskOptions.AlwaysShowDecimalSeparator="False"/>
+                                    <dxe:ComboBoxEdit  Grid.Column="2" Height="26" x:Name="cmbPrice" EditValueChanged="TxtCustID_EditValueChanged" PreviewMouseLeftButtonDown="CmbPrice_PreviewMouseLeftButtonDown">
+                                        <dxe:ComboBoxEditItem>A</dxe:ComboBoxEditItem>
+                                        <dxe:ComboBoxEditItem>B</dxe:ComboBoxEditItem>
+                                        <dxe:ComboBoxEditItem>C</dxe:ComboBoxEditItem>
+                                    </dxe:ComboBoxEdit>
+
+                                </Grid>
+
+                                <Grid Grid.Row="10">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                        <ColumnDefinition Width="6"></ColumnDefinition>
+                                        <ColumnDefinition Width="0.9*"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Grid.Column="2" Text="Tax ID" FontSize="11" FontFamily="{StaticResource OSSemiBold}" />
+                                </Grid>
+                                <Grid Grid.Row="12">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                        <ColumnDefinition Width="6"></ColumnDefinition>
+                                        <ColumnDefinition Width="0.9*"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <dxe:ToggleSwitch Grid.Column="0" Height="26"  x:Name="chkTax" ContentPlacement="Far" CheckedStateContent="Tax Exempt" UncheckedStateContent="Tax Exempt" HorizontalAlignment="Left" Unchecked="ChkActive_Checked" Checked="ChkActive_Checked" ></dxe:ToggleSwitch>
+                                    <dxe:TextEdit Grid.Column="2"  Height="26" x:Name="txtTaxID" MaxLength="12" EditValueChanged="TxtCustID_EditValueChanged"  GotFocus="Full_GotFocus" LostFocus="Full_LostFocus"/>
+                                </Grid>
+
+                                <Grid Grid.Row="14">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                        <ColumnDefinition Width="6"></ColumnDefinition>
+                                        <ColumnDefinition Width="0.9*"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Grid.Column="2" Grid.ColumnSpan="2" Text="Store Credit" FontSize="11" FontFamily="{StaticResource OSSemiBold}"/>
+                                </Grid>
+                                <Grid Grid.Row="16">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                        <ColumnDefinition Width="6"></ColumnDefinition>
+                                        <ColumnDefinition Width="0.9*"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <dxe:ToggleSwitch Grid.Column="0" Height="26"  x:Name="chkCard" ContentPlacement="Far" CheckedStateContent="Store Credit Card" UncheckedStateContent="Store Credit Card" HorizontalAlignment="Left"  ></dxe:ToggleSwitch>
+                                    <dxe:TextEdit Grid.Column="2"  Height="26" x:Name="numSC"
+                                                      Mask="f2" MaskType="Numeric" MaxLength="12" EditValueChanged="TxtCustID_EditValueChanged" GotFocus="Num_GotFocus" LostFocus="Num_LostFocus"/>
+                                </Grid>
+
+                                <TextBlock Grid.Row="18" Text="Discount" FontSize="11" FontFamily="{StaticResource OSSemiBold}"/>
+                                <dxe:ComboBoxEdit Grid.Row="20" Grid.Column="2" Grid.ColumnSpan="5" Height="26" x:Name="lkupDiscount" TabIndex="8" 
+                                                          IsTextEditable="False" ItemsSource="{Binding}" DisplayMember="DiscountName" ValueMember="ID" EditValueChanged="TxtCustID_EditValueChanged" PreviewMouseLeftButtonDown="LkupDiscount_PreviewMouseLeftButtonDown"  />
+
+
+
+                                <Border Grid.Row="22" Grid.ColumnSpan="3" Style="{DynamicResource BlueBorder}" Margin="0,9,0,9">
+                                    <TextBlock Style="{DynamicResource BlueBorderInfo}" Text="House Account Info."></TextBlock>
+                                </Border>
+
+                                <TextBlock Grid.Row="24" Text="Credit Limit" VerticalAlignment="Center"/>
+                                <dxe:TextEdit Grid.Row="26" Grid.Column="2" Height="26" x:Name="numCL"
+                                                              Mask="f2" MaskType="Numeric" MaxLength="12" EditValueChanged="TxtCustID_EditValueChanged" GotFocus="Num_GotFocus" LostFocus="Num_LostFocus"/>
+
+                                <TextBlock Grid.Row="28" Text="Opening Balance" VerticalAlignment="Center"/>
+                                <dxe:TextEdit Grid.Row="30" Grid.Column="2" Height="26" x:Name="numOB"
+                                                              Mask="f2" MaskType="Numeric" MaxLength="12" EditValueChanged="TxtCustID_EditValueChanged" GotFocus="Num_GotFocus" LostFocus="Num_LostFocus"/>
+
+                                <TextBlock Grid.Row="32" Text="Current Balance" VerticalAlignment="Center"/>
+                                <dxe:TextEdit Grid.Row="34" Grid.Column="2" Height="26" x:Name="numCB"
+                                                              Mask="f2" MaskType="Numeric" IsReadOnly="True" MaxLength="12"/>
+
+
+                            </Grid>
+                        </Grid>
+
+                        <!--
+                        <ScrollViewer >
+                            <Grid Margin="5,0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="35"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid Grid.Column="0">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="3"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="3"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="3"/>
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="5"/>
+                                        <ColumnDefinition Width="18"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="9"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Image Width="32" Height="24" Stretch="Fill"
+                                       Source="{StaticResource BoxGreen}"/>
+                                        <Rectangle Grid.Column="2" VerticalAlignment="Center" Height="3" Fill="#3A6F889A"/>
+                                    </Grid>
+                                    <Grid Grid.Row="2" Grid.ColumnSpan="3">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="3"/>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="3"/>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="3"/>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="3"/>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="3"/>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="3"/>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="3"/>
+                                            <RowDefinition Height="*"/>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="35"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="5"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <TextBlock Grid.Row="0" Text="Customer ID" FontSize="11" FontFamily="{StaticResource OSSemiBold}"/>
+                                        <Grid Grid.Column="2">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="9"/>
+                                                <ColumnDefinition Width="Auto"/>
+                                            </Grid.ColumnDefinitions>
+                                            <dxe:TextEdit Grid.Row="0" Grid.Column="0" TabIndex="0" Height="25" x:Name="txtCustID" MaxLength="20" EditValueChanged="TxtCustID_EditValueChanged" GotFocus="Full_GotFocus" LostFocus="Full_LostFocus"/>
+                                            <CheckBox Grid.Column="2" Content=" Active ?" IsTabStop="False" x:Name="chkActive" Checked="ChkActive_Checked" Unchecked="ChkActive_Checked"/>
+                                        </Grid>
+
+                                        <TextBlock Grid.Row="2" Text="Company" FontSize="11" FontFamily="{StaticResource OSSemiBold}"/>
+                                        <dxe:TextEdit Grid.Row="2" Grid.Column="2" Height="25" TabIndex="1" x:Name="txtCompany"  MaxLength="30" EditValueChanged="TxtCustID_EditValueChanged" GotFocus="Full_GotFocus" LostFocus="Full_LostFocus"/>
+
+                                        <TextBlock Grid.Row="4" Text="First Name" FontSize="11" FontFamily="{StaticResource OSSemiBold}"/>
+                                        <dxe:TextEdit Grid.Row="4" Grid.Column="2" Height="25" TabIndex="2"
+                                           x:Name="txtFName"  MaxLength="20" EditValueChanged="TxtCustID_EditValueChanged" GotFocus="Full_GotFocus" LostFocus="Full_LostFocus" />
+
+                                        <TextBlock Grid.Row="6" Text="Last Name" FontSize="11" FontFamily="{StaticResource OSSemiBold}"/>
+                                        <dxe:TextEdit  Grid.Row="6" Grid.Column="2" Height="25" x:Name="txtLName" TabIndex="3"
+                                           MaxLength="20" EditValueChanged="TxtCustID_EditValueChanged" GotFocus="Full_GotFocus" LostFocus="Full_LostFocus"/>
+
+                                        <TextBlock Grid.Row="8" Text="Salutation" FontSize="11" FontFamily="{StaticResource OSSemiBold}"/>
+                                        <Grid Grid.Row="8" Grid.Column="2">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="21"/>
+                                                <ColumnDefinition Width="Auto"/>
+                                                <ColumnDefinition Width="9"/>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <dxe:TextEdit Grid.Row="8" Grid.Column="0" Height="25" TabIndex="4" x:Name="txtSalutation"  MaxLength="4" EditValueChanged="TxtCustID_EditValueChanged" GotFocus="Full_GotFocus" LostFocus="Full_LostFocus"/>
+                                            <TextBlock Grid.Row="8" Grid.Column="2" Text="Spouse" FontSize="11"
+                                                   FontFamily="{StaticResource OSSemiBold}" />
+                                            <dxe:TextEdit Grid.Row="8" Grid.Column="4" Height="25" x:Name="txtSpouse" TabIndex="5"  MaxLength="20" EditValueChanged="TxtCustID_EditValueChanged" GotFocus="Full_GotFocus" LostFocus="Full_LostFocus"/>
+                                        </Grid>
+
+                                        <TextBlock Grid.Row="10" Text="Date of Birth" FontSize="11" FontFamily="{StaticResource OSSemiBold}"/>
+                                        <dxe:DateEdit Grid.Row="10" Grid.Column="2" Height="25" x:Name="dtDOB" TabIndex="6" EditValueChanged="TxtCustID_EditValueChanged" PreviewMouseLeftButtonDown="DtDOB_PreviewMouseLeftButtonDown"/>
+
+                                        <TextBlock Grid.Row="12" Text="Date of Marriage" FontSize="11" FontFamily="{StaticResource OSSemiBold}"/>
+                                        <dxe:DateEdit Grid.Row="12" Grid.Column="2" Height="25" x:Name="dtDOM" TabIndex="7" EditValueChanged="TxtCustID_EditValueChanged" PreviewMouseLeftButtonDown="DtDOB_PreviewMouseLeftButtonDown"/>
+
+                                        <Grid Grid.Row="14" Grid.Column="2">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto"/>
+                                                <ColumnDefinition Width="9"/>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <TextBlock Text="Points Earned" VerticalAlignment="Center"/>
+                                            <dxe:TextEdit Grid.Row="8" Grid.Column="2" Height="25" x:Name="txtPoints" Mask="N0" MaskType="Numeric" IsReadOnly="True" IsTabStop="False"/>
+                                        </Grid>
+                                    </Grid>
+
+                                    <Grid Grid.Row="4">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="9"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Image Width="38" Height="25" Stretch="Fill"
+                                       Source="{StaticResource PiggyCyan}"/>
+                                        <Rectangle Grid.Column="2" VerticalAlignment="Center" Height="3" Fill="#3A6F889A"/>
+                                    </Grid>
+
+                                    <Grid Grid.Row="6">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="3"/>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="3"/>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="3"/>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="3"/>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="3"/>
+                                            <RowDefinition Height="Auto"/>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="18"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="38"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="18"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <TextBlock Grid.Row="0" Text="Discount" FontSize="11" FontFamily="{StaticResource OSSemiBold}"/>
+                                        <dxe:ComboBoxEdit Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="5" Height="25" x:Name="lkupDiscount" TabIndex="8" 
+                                                          IsTextEditable="False" ItemsSource="{Binding}" DisplayMember="DiscountName" ValueMember="ID" EditValueChanged="TxtCustID_EditValueChanged" PreviewMouseLeftButtonDown="LkupDiscount_PreviewMouseLeftButtonDown"  />
+
+                                        <CheckBox Grid.Row="2" Content=" Tax Exempt" Grid.ColumnSpan="2" HorizontalAlignment="Left" TabIndex="9"
+                                                  x:Name="chkTax" Unchecked="ChkActive_Checked" Checked="ChkActive_Checked"/>
+
+                                        <TextBlock Grid.Row="4" Text="Tax ID" FontSize="11" FontFamily="{StaticResource OSSemiBold}"/>
+                                        <dxe:TextEdit Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="2" Height="25" x:Name="txtTaxID" TabIndex="10" MaxLength="12" EditValueChanged="TxtCustID_EditValueChanged" GotFocus="Full_GotFocus" LostFocus="Full_LostFocus"/>
+
+                                        <TextBlock Grid.Row="6" Grid.Column="0" Text="Price Level" FontSize="11" FontFamily="{StaticResource OSSemiBold}"/>
+                                        <dxe:ComboBoxEdit Grid.Row="6" Grid.Column="2" Grid.ColumnSpan="2" Height="25" TabIndex="11" x:Name="cmbPrice" EditValueChanged="TxtCustID_EditValueChanged" PreviewMouseLeftButtonDown="CmbPrice_PreviewMouseLeftButtonDown">
+                                            <dxe:ComboBoxEditItem>A</dxe:ComboBoxEditItem>
+                                            <dxe:ComboBoxEditItem>B</dxe:ComboBoxEditItem>
+                                            <dxe:ComboBoxEditItem>C</dxe:ComboBoxEditItem>
+                                        </dxe:ComboBoxEdit>
+
+                                        <CheckBox Grid.Row="8" Content=" Store Credit Card" Grid.ColumnSpan="2" HorizontalAlignment="Left" x:Name="chkCard" TabIndex="12"/>
+
+                                        <TextBlock Grid.Row="8" Grid.Column="2" Grid.ColumnSpan="2" Text="Store Credit" FontSize="11" FontFamily="{StaticResource OSSemiBold}" Margin="0,0,9,0" HorizontalAlignment="Right"/>
+                                        <dxe:TextEdit Grid.Row="8" Grid.Column="5" Grid.ColumnSpan="2" Height="25" TabIndex="13" x:Name="numSC" HorizontalContentAlignment="Right" MaskUseAsDisplayFormat="True" Text="0"
+                                                      Mask="f2" MaskType="Numeric" MaxLength="12"  EditValueChanged="TxtCustID_EditValueChanged" GotFocus="Num_GotFocus" LostFocus="Num_LostFocus"
+/>
+
+                                        <GroupBox Grid.Row="10" Grid.ColumnSpan="7" Header="House Account" x:Name="grpHouseAc" >
+                                            <Grid Margin="9,9">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="Auto"/>
+                                                    <RowDefinition Height="3"/>
+                                                    <RowDefinition Height="Auto"/>
+                                                    <RowDefinition Height="3"/>
+                                                    <RowDefinition Height="Auto"/>
+                                                </Grid.RowDefinitions>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="Auto"/>
+                                                    <ColumnDefinition Width="9"/>
+                                                    <ColumnDefinition Width="*"/>
+                                                </Grid.ColumnDefinitions>
+
+                                                <TextBlock Grid.Row="0" Text="Credit Limit" VerticalAlignment="Center"/>
+                                                <dxe:TextEdit Grid.Row="0" Grid.Column="2" Height="25" x:Name="numCL" TabIndex="14"
+                                                              Mask="f2" MaskType="Numeric"  HorizontalContentAlignment="Right" MaskUseAsDisplayFormat="True" Text="0" MaxLength="12" EditValueChanged="TxtCustID_EditValueChanged" GotFocus="Num_GotFocus" LostFocus="Num_LostFocus"/>
+
+                                                <TextBlock Grid.Row="2" Text="Opening Balance" VerticalAlignment="Center"/>
+                                                <dxe:TextEdit Grid.Row="2" Grid.Column="2" Height="25" x:Name="numOB" TabIndex="15" HorizontalContentAlignment="Right" MaskUseAsDisplayFormat="True" Text="0"
+                                                              Mask="f2" MaskType="Numeric" MaxLength="12" EditValueChanged="TxtCustID_EditValueChanged" GotFocus="Num_GotFocus" LostFocus="Num_LostFocus"/>
+
+                                                <TextBlock Grid.Row="4" Text="Current Balance" VerticalAlignment="Center"/>
+                                                <dxe:TextEdit Grid.Row="4" Grid.Column="2" Height="25" x:Name="numCB" IsTabStop="False"
+                                                              Mask="f2" MaskType="Numeric" IsReadOnly="True" MaxLength="12"/>
+                                            </Grid>
+                                        </GroupBox>
+                                    </Grid>
+                                </Grid>
+
+                                <Grid Grid.Column="2">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="17"/>
+                                        <RowDefinition Height="156"/>
+                                        <RowDefinition Height="3"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="3"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="3"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="3"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="3"/>
+                                        <RowDefinition Height="Auto"/>
+
+                                    </Grid.RowDefinitions>
+
+                                    <Grid Grid.Row="0" Grid.RowSpan="2">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="3"/>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="3"/>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="3"/>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="3"/>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="3"/>
+                                            <RowDefinition Height="Auto"/>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="35"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Grid Grid.ColumnSpan="4">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto"/>
+                                                <ColumnDefinition Width="9"/>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <Image Width="32" Height="24" Stretch="Fill"
+                                       Source="{StaticResource BoxGreen}"/>
+                                            <Rectangle Grid.Column="2" VerticalAlignment="Center" Height="3" Fill="#3A6F889A"/>
+                                        </Grid>
+
+                                        <TextBlock Grid.Row="2" Text="Work Phone" FontSize="11" FontFamily="{StaticResource OSSemiBold}"/>
+                                        <dxe:TextEdit Grid.Row="2" Grid.Column="2" Height="25" x:Name="txtWphone" TabIndex="16" MaxLength="14" EditValueChanged="TxtCustID_EditValueChanged" GotFocus="Full_GotFocus" LostFocus="Full_LostFocus" />
+
+                                        <TextBlock Grid.Row="4" Text="Home Phone" FontSize="11" FontFamily="{StaticResource OSSemiBold}"/>
+                                        <dxe:TextEdit Grid.Row="4" Grid.Column="2" Height="25" x:Name="txtHphone" TabIndex="17" MaxLength="14" EditValueChanged="TxtCustID_EditValueChanged" GotFocus="Full_GotFocus" LostFocus="Full_LostFocus"/>
+
+                                        <TextBlock Grid.Row="6" Text="Mobile Phone" FontSize="11" FontFamily="{StaticResource OSSemiBold}"/>
+                                        <dxe:TextEdit Grid.Row="6" Grid.Column="2" Height="25" x:Name="txtMphone" TabIndex="18" MaxLength="14" EditValueChanged="TxtCustID_EditValueChanged" GotFocus="Full_GotFocus" LostFocus="Full_LostFocus"/>
+
+                                        <TextBlock Grid.Row="8" Text="Fax" FontSize="11" FontFamily="{StaticResource OSSemiBold}"/>
+                                        <dxe:TextEdit Grid.Row="8" Grid.Column="2" Height="25" x:Name="txtFax" TabIndex="19" MaxLength="14" EditValueChanged="TxtCustID_EditValueChanged" GotFocus="Full_GotFocus" LostFocus="Full_LostFocus"/>
+
+                                        <TextBlock Grid.Row="10" Text="Email" FontSize="11" FontFamily="{StaticResource OSSemiBold}"/>
+                                        <dxe:TextEdit Grid.Row="10" Grid.Column="2" Height="25" x:Name="txtEmail" TabIndex="20" MaxLength="60" EditValueChanged="TxtCustID_EditValueChanged" GotFocus="Full_GotFocus" LostFocus="Full_LostFocus"/>
+
+                                    </Grid>
+
+                                    <Grid Grid.Row="5">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="9"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Image Width="38" Height="24" Stretch="Fill"
+                                       Source="{StaticResource CameraPurple}"/>
+                                        <Rectangle Grid.Column="2" VerticalAlignment="Center" Height="3" Fill="#3A6F889A"/>
+                                    </Grid>
+
+                                    <Grid Grid.Row="7" HorizontalAlignment="Right">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="13"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <Border Height="110" Style="{DynamicResource GroupBorder}" BorderThickness="1" Width="150">
+                                            <Image x:Name="pictPhoto" Stretch="Fill" />
+                                        </Border>
+                                        <Grid Grid.Column="2" Width="139">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="*"/>
+                                                <RowDefinition Height="3"/>
+                                                <RowDefinition Height="*"/>
+                                                <RowDefinition Height="3"/>
+                                                <RowDefinition Height="*"/>
+                                            </Grid.RowDefinitions>
+                                            <Button Grid.Row="0" Width="139" MinHeight="30" BorderBrush="#446EC1DA" Foreground="#446EC1DA" IsTabStop="False"
+                                            Style="{DynamicResource PadActionButtonStyle}" x:Name="btnClearImage" Click="BtnClearImage_Click">
+                                                <Grid>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="Auto"/>
+                                                        <ColumnDefinition Width="7"/>
+                                                        <ColumnDefinition Width="Auto"/>
+                                                    </Grid.ColumnDefinitions>
+                                                    <Image Source="{StaticResource Trash}" Width="16" Height="16"/>
+                                                    <TextBlock Text="Clear Photo" Grid.Column="2" Foreground="#70B1D3" FontFamily="{StaticResource OSRegular}"
+                                           FontSize="13" VerticalAlignment="Center"/>
+                                                </Grid>
+                                            </Button>
+                                            <Button Grid.Row="2" Width="139" MinHeight="30" BorderBrush="#44E69511" Foreground="#44E69511" IsTabStop="False"
+                                Style="{DynamicResource PadActionButtonStyle}" x:Name="btnScanImage">
+                                                <Grid>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="Auto"/>
+                                                        <ColumnDefinition Width="7"/>
+                                                        <ColumnDefinition Width="Auto"/>
+                                                    </Grid.ColumnDefinitions>
+                                                    <Image Source="{StaticResource UploadGold}" Width="16" Height="16"/>
+                                                    <TextBlock Text="Scan Photo" Grid.Column="2" Foreground="#E69511" FontFamily="{StaticResource OSRegular}"
+                                           FontSize="13" VerticalAlignment="Center"/>
+                                                </Grid>
+                                            </Button>
+                                            <Button Grid.Row="4" Width="139" MinHeight="30" BorderBrush="#448982BD" Foreground="#448982BD" IsTabStop="False"
+                                Style="{DynamicResource PadActionButtonStyle}" x:Name="btnOpen" Click="BtnOpen_Click">
+                                                <Grid>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="Auto"/>
+                                                        <ColumnDefinition Width="7"/>
+                                                        <ColumnDefinition Width="Auto"/>
+                                                    </Grid.ColumnDefinitions>
+                                                    <Image Source="{StaticResource Folder}" Width="16" Height="16"/>
+                                                    <TextBlock Text="Select Photo" Grid.Column="2" Foreground="#8982BD" FontFamily="{StaticResource OSRegular}"
+                                           FontSize="13" VerticalAlignment="Center"/>
+                                                </Grid>
+                                            </Button>
+                                        </Grid>
+                                    </Grid>
+
+                                    <Grid Grid.Row="9">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="9"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Image Width="38" Height="24" Stretch="Fill"
+                                       Source="{StaticResource BoxesCyan}"/>
+                                        <Rectangle Grid.Column="2" VerticalAlignment="Center" Height="3" Fill="#3A6F889A"/>
+                                    </Grid>
+
+                                    <TabControl Grid.Row="11"
+                                                Style="{DynamicResource InnerPOSTabControlStyle}">
+                                        <TabItem Header="Billing Address" Width="200"
+                                                 Style="{DynamicResource InnerPOSTabItemStyle}">
+
+                                            <Grid Margin="5,0">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="Auto"/>
+                                                    <RowDefinition Height="2"/>
+                                                    <RowDefinition Height="Auto"/>
+                                                    <RowDefinition Height="2"/>
+                                                    <RowDefinition Height="Auto"/>
+                                                    <RowDefinition Height="2"/>
+                                                    <RowDefinition Height="Auto"/>
+                                                    <RowDefinition Height="2"/>
+                                                    <RowDefinition Height="Auto"/>
+                                                    <RowDefinition Height="2"/>
+                                                    <RowDefinition Height="Auto"/>
+                                                </Grid.RowDefinitions>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="Auto"/>
+                                                    <ColumnDefinition Width="35"/>
+                                                    <ColumnDefinition Width="*"/>
+                                                </Grid.ColumnDefinitions>
+
+                                                <TextBlock Grid.Row="0" Text="Address 1" FontSize="11" FontFamily="{StaticResource OSSemiBold}"/>
+                                                <dxe:TextEdit Grid.Row="0" Grid.Column="2" Height="25" x:Name="txtBadd1" MaxLength="60" EditValueChanged="TxtCustID_EditValueChanged" GotFocus="Full_GotFocus" LostFocus="Full_LostFocus"/>
+
+                                                <TextBlock Grid.Row="2" Text="Address 2" FontSize="11" FontFamily="{StaticResource OSSemiBold}"/>
+                                                <dxe:TextEdit Grid.Row="2" Grid.Column="2" Height="25" x:Name="txtBadd2" MaxLength="60" EditValueChanged="TxtCustID_EditValueChanged" GotFocus="Full_GotFocus" LostFocus="Full_LostFocus"/>
+
+                                                <TextBlock Grid.Row="4" Text="City" FontSize="11" FontFamily="{StaticResource OSSemiBold}"/>
+                                                <dxe:TextEdit Grid.Row="4" Grid.Column="2" Height="25" x:Name="txtBcity" MaxLength="20" EditValueChanged="TxtCustID_EditValueChanged" GotFocus="Full_GotFocus" LostFocus="Full_LostFocus"/>
+
+                                                <TextBlock Grid.Row="6" Text="Zip" FontSize="11" FontFamily="{StaticResource OSSemiBold}" Cursor="Hand" TextDecorations="Underline" MouseLeftButtonUp="TextBlock_MouseLeftButtonUp" x:Name="linkBZip"/>
+                                                <dxe:TextEdit Grid.Row="6" Grid.Column="2" Height="25" x:Name="cmbBzip" MaxLength="12" EditValueChanged="TxtCustID_EditValueChanged" LostFocus="CmbBzip_LostFocus" GotFocus="Full_GotFocus" />
+
+                                                <TextBlock Grid.Row="8" Text="State" FontSize="11" FontFamily="{StaticResource OSSemiBold}"/>
+                                                <dxe:TextEdit Grid.Row="8" Grid.Column="2" Height="25" x:Name="txtBstate" MaxLength="2" CharacterCasing="Upper" EditValueChanged="TxtCustID_EditValueChanged" GotFocus="Full_GotFocus" LostFocus="Full_LostFocus"/>
+
+                                                <TextBlock Grid.Row="10" Text="Country" FontSize="11" FontFamily="{StaticResource OSSemiBold}"/>
+                                                <dxe:TextEdit Grid.Row="10" Grid.Column="2" Height="25" x:Name="txtBcountry" MaxLength="30" EditValueChanged="TxtCustID_EditValueChanged" GotFocus="Full_GotFocus" LostFocus="Full_LostFocus"/>
+                                            </Grid>
+                                        </TabItem>
+
+                                        <TabItem Header="Shipping Address" Width="200"
+                                                 Style="{DynamicResource InnerPOSTabItemStyle}">
+                                            <Grid Margin="5,0">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="Auto"/>
+                                                    <RowDefinition Height="2"/>
+                                                    <RowDefinition Height="Auto"/>
+                                                    <RowDefinition Height="2"/>
+                                                    <RowDefinition Height="Auto"/>
+                                                    <RowDefinition Height="2"/>
+                                                    <RowDefinition Height="Auto"/>
+                                                    <RowDefinition Height="2"/>
+                                                    <RowDefinition Height="Auto"/>
+                                                    <RowDefinition Height="2"/>
+                                                    <RowDefinition Height="Auto"/>
+                                                </Grid.RowDefinitions>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="Auto"/>
+                                                    <ColumnDefinition Width="35"/>
+                                                    <ColumnDefinition Width="*"/>
+                                                </Grid.ColumnDefinitions>
+
+                                                <TextBlock Grid.Row="0" Text="Address 1" FontSize="11" FontFamily="{StaticResource OSSemiBold}"/>
+                                                <dxe:TextEdit Grid.Row="0" Grid.Column="2" Height="25" x:Name="txtSadd1" MaxLength="60" EditValueChanged="TxtCustID_EditValueChanged" GotFocus="Full_GotFocus" LostFocus="Full_LostFocus"/>
+
+                                                <TextBlock Grid.Row="2" Text="Address 2" FontSize="11" FontFamily="{StaticResource OSSemiBold}"/>
+                                                <dxe:TextEdit Grid.Row="2" Grid.Column="2" Height="25" x:Name="txtSadd2" MaxLength="60" EditValueChanged="TxtCustID_EditValueChanged" GotFocus="Full_GotFocus" LostFocus="Full_LostFocus"/>
+
+                                                <TextBlock Grid.Row="4" Text="City" FontSize="11" FontFamily="{StaticResource OSSemiBold}"/>
+                                                <dxe:TextEdit Grid.Row="4" Grid.Column="2" Height="25" x:Name="txtScity" MaxLength="20" EditValueChanged="TxtCustID_EditValueChanged" GotFocus="Full_GotFocus" LostFocus="Full_LostFocus"/>
+
+                                                <TextBlock Grid.Row="6" Text="Zip" FontSize="11" FontFamily="{StaticResource OSSemiBold}" Cursor="Hand" TextDecorations="Underline" x:Name="linkSZip" PreviewMouseLeftButtonUp="LinkSZip_PreviewMouseLeftButtonUp" />
+                                                <dxe:TextEdit Grid.Row="6" Grid.Column="2" Height="25" x:Name="cmbSzip" MaxLength="12" EditValueChanged="TxtCustID_EditValueChanged" LostFocus="CmbSzip_LostFocus" GotFocus="Full_GotFocus" />
+
+                                                <TextBlock Grid.Row="8" Text="State" FontSize="11" FontFamily="{StaticResource OSSemiBold}"/>
+                                                <dxe:TextEdit Grid.Row="8" Grid.Column="2" Height="25" x:Name="txtSstate" MaxLength="2" CharacterCasing="Upper" EditValueChanged="TxtCustID_EditValueChanged" GotFocus="Full_GotFocus" LostFocus="Full_LostFocus"/>
+
+                                                <TextBlock Grid.Row="10" Text="Country" FontSize="11" FontFamily="{StaticResource OSSemiBold}"/>
+                                                <dxe:TextEdit Grid.Row="10" Grid.Column="2" Height="25" x:Name="txtScountry" MaxLength="30" EditValueChanged="TxtCustID_EditValueChanged" GotFocus="Full_GotFocus" LostFocus="Full_LostFocus"/>
+                                            </Grid>
+                                        </TabItem>
+                                    </TabControl>
+                                </Grid>
+                            </Grid>
+                        </ScrollViewer>
+                        -->
+                    </TabItem>
+
+                    <TabItem Width="{Binding ElementName=c1, Path=ActualWidth}" x:Name="tpOthers"
+                         Style="{DynamicResource OuterPOSTabItemStyle}" PreviewMouseLeftButtonUp="TpOthers_PreviewMouseLeftButtonUp">
+                        <TabItem.Header>
+                            <TextBlock Text="Others" Style="{DynamicResource TabItemText}"></TextBlock>
+                        </TabItem.Header>
+                        <Grid Margin="9">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                <ColumnDefinition Width="2"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                <ColumnDefinition Width="2"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+
+                            <Grid Grid.Column="0" Margin="7,0,7,0">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="9"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="3"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="3"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="3"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="3"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="3"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="3"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="3"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="3"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="3"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="3"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="3"></RowDefinition>
+                                </Grid.RowDefinitions>
+
+                                <Border Grid.Row="0" Grid.ColumnSpan="3" Style="{DynamicResource BlueBorder}">
+                                    <TextBlock Style="{DynamicResource BlueBorderInfo}" Text="CRM Parameters"></TextBlock>
+                                </Border>
+
+                                <TextBlock Grid.Row="2" Text="1. Undefined" x:Name="lbParam1"/>
+                                <dxe:TextEdit Grid.Row="4" Grid.Column="2" x:Name="txtParamVal1" MaxLength="30" Height="26" EditValueChanged="TxtCustID_EditValueChanged" GotFocus="Full_GotFocus" LostFocus="Full_LostFocus"/>
+                                <TextBlock Grid.Row="6" Text="2. Undefined" x:Name="lbParam2" />
+                                <dxe:TextEdit Grid.Row="8" Grid.Column="2" x:Name="txtParamVal2" MaxLength="30" Height="26" EditValueChanged="TxtCustID_EditValueChanged" GotFocus="Full_GotFocus" LostFocus="Full_LostFocus"/>
+                                <TextBlock Grid.Row="10" Text="3. Undefined" x:Name="lbParam3"/>
+                                <dxe:TextEdit Grid.Row="12" Grid.Column="2" x:Name="txtParamVal3" MaxLength="30" Height="26" EditValueChanged="TxtCustID_EditValueChanged" GotFocus="Full_GotFocus" LostFocus="Full_LostFocus"/>
+                                <TextBlock Grid.Row="14" Text="4. Undefined" x:Name="lbParam4"/>
+                                <dxe:TextEdit Grid.Row="16" Grid.Column="2" x:Name="txtParamVal4" MaxLength="30" Height="26" EditValueChanged="TxtCustID_EditValueChanged" GotFocus="Full_GotFocus" LostFocus="Full_LostFocus"/>
+                                <TextBlock Grid.Row="18" Text="5. Undefined" x:Name="lbParam5"/>
+                                <dxe:TextEdit Grid.Row="20" Grid.Column="2" x:Name="txtParamVal5" MaxLength="30" Height="26" EditValueChanged="TxtCustID_EditValueChanged" GotFocus="Full_GotFocus" LostFocus="Full_LostFocus"/>
+
+                            </Grid>
+                            <Grid Grid.Column="1" Style="{DynamicResource ScreenSeparator}"></Grid>
+                            <Grid Grid.Column="2" Margin="7,0,7,0">
+
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="9"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="3"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="3"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="3"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="3"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="3"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="3"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="3"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="3"></RowDefinition>
+                                </Grid.RowDefinitions>
+
+
+                                <Border Grid.Row="0" Grid.ColumnSpan="3" Style="{DynamicResource GreenBorder}">
+                                    <TextBlock Style="{DynamicResource GreenBorderInfo}" Text="POS Screen Notes"></TextBlock>
+                                </Border>
+
+                                <dxe:TextEdit Grid.Row="2" Height="160" VerticalAlignment="Top" x:Name="txtNotes" VerticalContentAlignment="Top" TextWrapping="Wrap" AcceptsReturn="True"
+                                              VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Disabled" MaxLength="100" EditValueChanged="TxtCustID_EditValueChanged" GotFocus="Full_GotFocus" LostFocus="Full_LostFocus"/>
+
+                            </Grid>
+                            <Grid Grid.Column="3" Style="{DynamicResource ScreenSeparator}"></Grid>
+                            <Grid Grid.Column="4" Margin="7,0,7,0">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="3"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="3"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="3"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="3"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="3"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="3"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="3"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="3"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="3"></RowDefinition>
+                                </Grid.RowDefinitions>
+
+
+                                <Border Grid.Row="0" Grid.ColumnSpan="3" Style="{DynamicResource  OrangeBorder}">
+                                    <TextBlock Style="{DynamicResource OrangeBorderInfo}" Text="Groups"></TextBlock>
+                                </Border>
+
+                                <dxg:GridControl Grid.Row="2" AutoGenerateColumns="AddNew" Height="160" EnableSmartColumnsGeneration="False" ShowBorder="False" x:Name="grdGroup" PreviewMouseLeftButtonDown="GrdGroup_PreviewMouseLeftButtonDown">
+                                    <dxg:GridControl.View>
+                                        <dxg:TableView x:Name="gridView3" NavigationStyle="Cell" CellValueChanging="GridView3_CellValueChanging" ShowFilterPanelMode="Never" AllowColumnFiltering="False"/>
+                                    </dxg:GridControl.View>
+                                    <dxg:GridColumn FieldName="ID" Header="ID" Width="*" x:Name="colMappingID" Visible="False"/>
+
+                                    <dxg:GridColumn FieldName="GroupID" Header="Group ID" Width="100" x:Name="colGroupID" IsSmart="False" AllowFocus="True" AllowEditing="True">
+                                        <dxg:GridColumn.EditSettings>
+                                            <dxg:LookUpEditSettings  x:Name="PART_Editor" ValueMember="ID" DisplayMember="GroupID" ImmediatePopup="True" AutoComplete="False" IsPopupAutoWidth="True" PreviewMouseLeftButtonDown="PART_Editor_PreviewMouseLeftButtonDown" >
+                                                <dxg:LookUpEditSettings.PopupContentTemplate>
+                                                    <ControlTemplate>
+                                                        <dxg:GridControl  Style="{DynamicResource partGrd}" x:Name="PART_GridControl" EnableSmartColumnsGeneration="False" ShowBorder="False" BorderBrush="Black" VerticalAlignment="Stretch" VerticalContentAlignment="Stretch">
+
+
+                                                            <dxg:GridControl.View>
+
+                                                                <dxg:TableView x:Name="gridView2" AutoWidth="True" NavigationStyle="Row" Background="AliceBlue" ShowTotalSummary="false" AllowEditing="False" ShowIndicator="False" ShowFilterPanelMode="Never" ShowGroupPanel="False" FadeSelectionOnLostFocus="False" ShowVerticalLines="False" AllowResizing="False" ShowAutoFilterRow="False" AllowColumnFiltering="False" >
+
+                                                                    
+                                                                    
+                                                                </dxg:TableView>
+
+
+                                                            </dxg:GridControl.View>
+                                                            <dxg:GridControl.Columns>
+                                                                <dxg:GridColumn IsSmart="False" FieldName="ID" Header="ID" Visible="False" VisibleIndex="-1"   />
+
+                                                                <dxg:GridColumn IsSmart="False" FieldName="GroupID" Header="Group ID" Visible="True" VisibleIndex="0"/>
+                                                                <dxg:GridColumn IsSmart="False" FieldName="Description" Header="Description" Visible="True" VisibleIndex="1"/>
+                                                            </dxg:GridControl.Columns>
+                                                        </dxg:GridControl>
+                                                    </ControlTemplate>
+                                                </dxg:LookUpEditSettings.PopupContentTemplate>
+                                            </dxg:LookUpEditSettings>
+
+                                        </dxg:GridColumn.EditSettings>
+                                    </dxg:GridColumn>
+                                    <dxg:GridColumn FieldName="Description"  Width="200" x:Name="colGroupName" AllowEditing="False" AllowFocus="False" AllowSorting="False" HorizontalHeaderContentAlignment="Stretch">
+                                        <dxg:GridColumn.Header>
+                                            <Grid Margin="0">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*"/>
+                                                    <ColumnDefinition Width="80"/>
+                                                </Grid.ColumnDefinitions>
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="25"></RowDefinition>
+                                                </Grid.RowDefinitions>
+                                                <TextBlock Grid.Column="0" Text="Name" Foreground="White" FontFamily="{DynamicResource OSSemiBold}" />
+                                                <Button Grid.Column="1" Style="{DynamicResource DeleteGridRowButton}" Margin="15,-9,20,-9" Background="Transparent" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" BorderBrush="Transparent" BorderThickness="0"   HorizontalAlignment="Right" x:Name="simpleButton3" Click="SimpleButton3_Click" Width="30" >
+
+                                                </Button>
+
+                                            </Grid>
+                                        </dxg:GridColumn.Header>
+                                    </dxg:GridColumn>
+                                </dxg:GridControl>
+
+                                <Border Grid.Row="4" Grid.ColumnSpan="3" Style="{DynamicResource  PurpleBorder}" Margin="0,15,0,0">
+                                    <TextBlock Style="{DynamicResource PurpleBorderInfo}" Text="Classes"></TextBlock>
+                                </Border>
+
+                                <dxg:GridControl Grid.Row="6" Height="160" AutoGenerateColumns="AddNew" EnableSmartColumnsGeneration="False" ShowBorder="False" x:Name="grdClass" PreviewMouseLeftButtonDown="GrdClass_PreviewMouseLeftButtonDown">
+                                    <dxg:GridControl.View>
+                                        <dxg:TableView x:Name="gridView4" NavigationStyle="Cell" CellValueChanging="GridView4_CellValueChanging" ShowFilterPanelMode="Never" AllowColumnFiltering="False"/>
+                                    </dxg:GridControl.View>
+                                    <dxg:GridColumn FieldName="ID" Header="ID" Width="*" x:Name="colMappingID1" Visible="False"/>
+
+                                    <dxg:GridColumn FieldName="ClassID" Header="Class ID" Width="100" x:Name="colClassID" IsSmart="False" AllowFocus="True" AllowEditing="True">
+                                        <dxg:GridColumn.EditSettings>
+                                            <dxg:LookUpEditSettings  x:Name="PART_Editor_C" ValueMember="ID" DisplayMember="ClassID" ImmediatePopup="True" AutoComplete="False" IsPopupAutoWidth="True" PreviewMouseLeftButtonDown="PART_Editor_C_PreviewMouseLeftButtonDown" >
+                                                <dxg:LookUpEditSettings.PopupContentTemplate>
+                                                    <ControlTemplate>
+                                                        <dxg:GridControl Style="{DynamicResource partGrd}" x:Name="PART_GridControl" EnableSmartColumnsGeneration="False" ShowBorder="False" BorderBrush="Black" VerticalAlignment="Stretch" VerticalContentAlignment="Stretch">
+
+
+                                                            <dxg:GridControl.View>
+
+                                                                <dxg:TableView x:Name="gridView2" AutoWidth="True" NavigationStyle="Row" Background="AliceBlue" ShowTotalSummary="false" AllowEditing="False" ShowIndicator="False" ShowFilterPanelMode="Never" ShowGroupPanel="False" FadeSelectionOnLostFocus="False" ShowVerticalLines="False" AllowResizing="False" ShowAutoFilterRow="False" AllowColumnFiltering="False" >
+
+                                                                </dxg:TableView>
+
+
+                                                            </dxg:GridControl.View>
+                                                            <dxg:GridControl.Columns>
+                                                                <dxg:GridColumn IsSmart="False" FieldName="ID" Header="ID" Visible="False" VisibleIndex="-1"   />
+                                                                <dxg:GridColumn FieldName="Image" Visible="False" VisibleIndex="-1" Width="*" AllowAutoFilter="False" Focusable="False">
+                                                                    <dxg:GridColumn.EditSettings>
+                                                                        <dxe:ImageEditSettings Stretch="UniformToFill"/>
+                                                                    </dxg:GridColumn.EditSettings>
+                                                                </dxg:GridColumn>
+                                                                <dxg:GridColumn IsSmart="False" FieldName="ClassID" Header="Class ID" Visible="True" VisibleIndex="1"/>
+                                                                <dxg:GridColumn IsSmart="False" FieldName="Description" Header="Description" Visible="True" VisibleIndex="2"/>
+                                                            </dxg:GridControl.Columns>
+                                                        </dxg:GridControl>
+                                                    </ControlTemplate>
+                                                </dxg:LookUpEditSettings.PopupContentTemplate>
+                                            </dxg:LookUpEditSettings>
+
+                                        </dxg:GridColumn.EditSettings>
+                                    </dxg:GridColumn>
+                                    <dxg:GridColumn FieldName="Description"  Width="200" x:Name="colClassName" AllowEditing="False" AllowFocus="False" AllowSorting="False" HorizontalHeaderContentAlignment="Right">
+                                        <dxg:GridColumn.Header>
+                                            <Grid Margin="0">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*"/>
+                                                    <ColumnDefinition Width="80"/>
+                                                </Grid.ColumnDefinitions>
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="25"></RowDefinition>
+                                                </Grid.RowDefinitions>
+                                                <TextBlock Grid.Column="0" Text="Name" Foreground="White" FontFamily="{DynamicResource OSSemiBold}" />
+                                                <Button Grid.Column="1" Style="{DynamicResource DeleteGridRowButton}" Margin="15,-9,20,-9" Background="Transparent" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" BorderBrush="Transparent" BorderThickness="0"   HorizontalAlignment="Right" x:Name="simpleButton2" Click="SimpleButton2_Click" Width="30" >
+
+                                                </Button>
+
+                                            </Grid>
+                                        </dxg:GridColumn.Header>
+                                    </dxg:GridColumn>
+                                </dxg:GridControl>
+
+                            </Grid>
+                        </Grid>
+                    </TabItem>
+
+                    <TabItem  Width="{Binding ElementName=c1, Path=ActualWidth}" x:Name="tpNotes"
+                         Style="{DynamicResource OuterPOSTabItemStyle}" PreviewMouseLeftButtonUp="TpNotes_PreviewMouseLeftButtonUp">
+                        <TabItem.Header>
+                            <TextBlock Text="Notes" Style="{DynamicResource TabItemText}"></TextBlock>
+                        </TabItem.Header>
+                        <Grid Margin="13,15">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="3"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="13"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="13"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <Button  Height="35" Width="90"  x:Name="btnAdd"
+                        Style="{DynamicResource AddButton}" Click="BtnAdd_Click"/>
+                                <Button  Height="35" Width="90" Grid.Column="2" x:Name="btnEdit"
+                        Style="{DynamicResource EditButton}" Click="BtnEdit_Click"/>
+                                <Grid Grid.Column="4">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="9"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Text="View Type" FontSize="12"/>
+                                    <dxe:ComboBoxEdit Grid.Column="2" Width="150" BorderTemplate="{DynamicResource CustomBorderTemplate}" x:Name="cmbView" ItemsSource="{Binding}" DisplayMember="DisplayText" ValueMember="FilterText" IsTextEditable="False" EditValueChanged="CmbView_EditValueChanged" PreviewMouseLeftButtonDown="LkupDiscount_PreviewMouseLeftButtonDown">
+                                    </dxe:ComboBoxEdit>
+                                </Grid>
+                                <Button  Height="35" Width="90" Grid.Column="6" x:Name="btnDelete"
+                        Style="{DynamicResource DeleteButton}" Click="BtnDelete_Click"/>
+                            </Grid>
+                            <Rectangle Grid.Row="1" Fill="#AE777777" Height="1" VerticalAlignment="Bottom" Margin="-5,0"/>
+                            <TabControl Grid.Row="2" Margin="0,0" Background="#364A5D" BorderBrush="#364A5D" x:Name="tcNotes">
+                                <TabItem MaxHeight="0" x:Name="tpGridNotes">
+                                    <dxg:GridControl Grid.Row="2" Margin="-3,0" ShowBorder="False" SelectionMode="Row" x:Name="grdNotes">
+                                        <dxg:GridControl.View>
+                                            <dxg:TableView AllowPerPixelScrolling="True" x:Name="gridView5" MouseDoubleClick="GridView5_MouseDoubleClick" CustomCellAppearance="GridView5_CustomCellAppearance"/>
+                                        </dxg:GridControl.View>
+                                        <dxg:GridColumn FieldName="ID" Header="ID" Width="*" x:Name="colID" Visible="False"/>
+                                        <dxg:GridColumn FieldName="Image" Visible="False" VisibleIndex="-1" Width="*" AllowAutoFilter="False" Focusable="False">
+                                            <dxg:GridColumn.EditSettings>
+                                                <dxe:ImageEditSettings Stretch="UniformToFill"/>
+                                            </dxg:GridColumn.EditSettings>
+                                        </dxg:GridColumn>
+                                        <dxg:GridColumn FieldName="AttachMark"  Header="Attach Mark" Width="90" x:Name="colAttachMark" Visible="True">
+                                            <dxg:GridColumn.EditSettings>
+                                                <dxe:ImageEditSettings Stretch="None"></dxe:ImageEditSettings>
+                                            </dxg:GridColumn.EditSettings>
+                                        </dxg:GridColumn>
+                                        <dxg:GridColumn FieldName="Note" Header="Note" Width="*" x:Name="colNote"/>
+                                        <dxg:GridColumn FieldName="DateTime" Header="Date/Time Entered" Width="*" x:Name="colDate"/>
+                                        <dxg:GridColumn FieldName="SpecialEvent" Header="Special Event ?" Width="*" x:Name="colEvent" Visible="False"/>
+                                        <dxg:GridColumn FieldName="SEDateTime" Header="Special Events Date/Time" Width="*" x:Name="gridColumn5" Visible="True"/>
+                                        <dxg:GridColumn FieldName="CommonDateTime" Header="colSortDate" Width="*" x:Name="colSortDate" Visible="False"/>
+                                    </dxg:GridControl>
+                                </TabItem>
+                                <TabItem MaxHeight="0" x:Name="tpCalendarNotes">
+                                    <Grid Margin="9">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="3"/>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="3"/>
+                                            <RowDefinition Height="Auto"/>
+                                        </Grid.RowDefinitions>
+
+                                        <Rectangle Grid.Row="1" Style="{DynamicResource DefaultLineStyle}" Height="2" VerticalAlignment="Center"  Margin="-9,0"/>
+                                        <Grid Grid.Row="2" Margin="0,0,0,0">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto"/>
+                                                <RowDefinition Height="3"/>
+                                                <RowDefinition Height="*"/>
+                                            </Grid.RowDefinitions>
+                                            <Grid>
+                                                <TextBlock Text="Calendar view for Special Events only" HorizontalAlignment="Left"
+                               x:Name="label1" FontSize="13"/>
+                                                <dxe:ComboBoxEdit HorizontalAlignment="Right" Width="150" BorderTemplate="{DynamicResource CustomBorderTemplate}" x:Name="cbView" Text="Month View" IsTextEditable="False" SelectedIndexChanged="CbView_SelectedIndexChanged" PreviewMouseLeftButtonDown="LkupDiscount_PreviewMouseLeftButtonDown">
+                                                    <dxe:ComboBoxEditItem>Day View</dxe:ComboBoxEditItem>
+                                                    <dxe:ComboBoxEditItem>Week View</dxe:ComboBoxEditItem>
+                                                    <dxe:ComboBoxEditItem>Month View</dxe:ComboBoxEditItem>
+                                                </dxe:ComboBoxEdit>
+                                            </Grid>
+
+                                            <Grid Grid.Row="2">
+                                                <dxsch:SchedulerControl x:Name="schedulerControl1" Grid.Row="2" Background="#364A5D" AllowAppointmentConflicts="True" AllowAppointmentEdit="False" AllowAppointmentDragBetweenResources="False" AllowAppointmentCreate="False" AllowAppointmentDelete="False" AllowAppointmentResize="False" AllowCellMultiSelect="False" AllowReminders="False" AllowInplaceEditor="False"   AllowAppointmentDrag="False" >
+                                                    <dxsch:SchedulerControl.OptionsWindows>
+                                                        <dxsch:OptionsWindows/>
+                                                    </dxsch:SchedulerControl.OptionsWindows>
+                                                    <dxsch:SchedulerControl.LabelItems>
+                                                        <dxsch:AppointmentLabelItem Id="11" Caption="1" Color="#364A5D"/>
+                                                        <dxsch:AppointmentLabelItem Id="12" Caption="2" Color="Lavender"/>
+                                                        <dxsch:AppointmentLabelItem Id="13" Caption="3" Color="SandyBrown"/>
+                                                        <dxsch:AppointmentLabelItem Id="14" Caption="4" Color="PaleGreen"/>
+                                                        <dxsch:AppointmentLabelItem Id="15" Caption="5" Color="Khaki"/>
+                                                        <dxsch:AppointmentLabelItem Id="16" Caption="6" Color="YellowGreen"/>
+                                                        <dxsch:AppointmentLabelItem Id="17" Caption="7" Color="Turquoise"/>
+                                                        <dxsch:AppointmentLabelItem Id="18" Caption="8" Color="Violet"/>
+                                                        <dxsch:AppointmentLabelItem Id="19" Caption="9" Color="Plum"/>
+                                                        <dxsch:AppointmentLabelItem Id="20" Caption="10" Color="LightPink"/>
+                                                    </dxsch:SchedulerControl.LabelItems>
+
+                                                    <dxsch:SchedulerControl.DataSource>
+                                                        <dxsch:DataSource>
+
+                                                            <dxsch:DataSource.ResourceMappings>
+                                                                <dxsch:ResourceMappings
+                                Id="NOTEID"
+                                Caption="CAPTION"
+                                ></dxsch:ResourceMappings>
+
+                                                            </dxsch:DataSource.ResourceMappings>
+                                                            <dxsch:DataSource.AppointmentMappings>
+
+                                                                <dxsch:AppointmentMappings 
+                                Subject="NOTES"
+                                Description="NOTESDTL"
+                                Start="SDATE"
+                                End="EDATE"                                    
+                                LabelId="LABEL"
+                                ResourceId="NOTEID"
+                                ></dxsch:AppointmentMappings>
+                                                            </dxsch:DataSource.AppointmentMappings>
+
+                                                            <dxsch:DataSource.AppointmentLabelsSource>
+                                                                <dxsch:AppointmentLabelItem Caption="11" Id="11" Color="#364A5D"></dxsch:AppointmentLabelItem>
+
+                                                            </dxsch:DataSource.AppointmentLabelsSource>
+                                                        </dxsch:DataSource>
+                                                    </dxsch:SchedulerControl.DataSource>
+                                                </dxsch:SchedulerControl>
+                                            </Grid>
+                                        </Grid>
+
+                                    </Grid>
+                                </TabItem>
+                            </TabControl>
+
+                        </Grid>
+                    </TabItem>
+
+                    <TabItem  Width="{Binding ElementName=c1, Path=ActualWidth}"  x:Name="tpPurchase"
+                         Style="{DynamicResource OuterPOSTabItemStyle}" PreviewMouseLeftButtonUp="TpPurchase_PreviewMouseLeftButtonUp">
+                        <TabItem.Header>
+                            <TextBlock Text="Purchase History" Style="{DynamicResource TabItemText}"></TextBlock>
+                        </TabItem.Header>
+                        <Grid Margin="13,15">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="9"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <dxe:ComboBoxEdit HorizontalAlignment="Right" Width="200" x:Name="cmbService1" BorderTemplate="{DynamicResource CustomBorderTemplate}" ItemsSource="{Binding}" DisplayMember="DisplayText" ValueMember="FilterText" IsTextEditable="False" EditValueChanged="CmbService1_EditValueChanged" PreviewMouseLeftButtonDown="LkupDiscount_PreviewMouseLeftButtonDown"/>
+                            <dxg:GridControl Grid.Row="4" ShowBorder="False" SelectionMode="Row" x:Name="grdPurchase">
+                                <dxg:GridControl.View>
+                                    <dxg:TableView x:Name="gridView1" ShowFilterPanelMode="Never" AllowColumnFiltering="False"/>
+                                </dxg:GridControl.View>
+                                <dxg:GridColumn FieldName="Image" Visible="False" VisibleIndex="-1" Width="*" AllowAutoFilter="False" Focusable="False">
+                                    <dxg:GridColumn.EditSettings>
+                                        <dxe:ImageEditSettings Stretch="UniformToFill"/>
+                                    </dxg:GridColumn.EditSettings>
+                                </dxg:GridColumn>
+                                <dxg:GridColumn FieldName="InvNo" Header="Invoice No." Width="*" x:Name="colInv"/>
+                                <dxg:GridColumn FieldName="TransDate" Header="Date" Width="*" x:Name="colInvDate"/>
+                                <dxg:GridColumn FieldName="SubTotal" Header="Sub Total" Width="*" x:Name="colInvST"  HorizontalHeaderContentAlignment="Right">
+                                    <dxg:GridColumn.EditSettings>
+                                        <dxe:TextEditSettings DisplayFormat="f" MaskType="Numeric" HorizontalContentAlignment="Right"/>
+                                    </dxg:GridColumn.EditSettings>
+                                </dxg:GridColumn>
+                                <dxg:GridColumn FieldName="Tax" Header="Tax" Width="*" x:Name="colInvTax"  HorizontalHeaderContentAlignment="Right">
+                                    <dxg:GridColumn.EditSettings>
+                                        <dxe:TextEditSettings DisplayFormat="f" MaskType="Numeric" HorizontalContentAlignment="Right"/>
+                                    </dxg:GridColumn.EditSettings>
+                                </dxg:GridColumn>
+                                <dxg:GridColumn FieldName="TotalSale" Header="Total Amt." Width="*" x:Name="colInvTS" HorizontalHeaderContentAlignment="Right">
+                                    <dxg:GridColumn.EditSettings>
+                                        <dxe:TextEditSettings DisplayFormat="f" MaskType="Numeric" HorizontalContentAlignment="Right"/>
+                                    </dxg:GridColumn.EditSettings>
+                                </dxg:GridColumn>
+                                <dxg:GridColumn FieldName="Employee" Header="Employee" Width="*" x:Name="colInvEmp"/>
+                            </dxg:GridControl>
+                        </Grid>
+                    </TabItem>
+
+                    <TabItem  Width="{Binding ElementName=c1, Path=ActualWidth}" x:Name="tpHouseAccount"
+                         Style="{DynamicResource OuterPOSTabItemStyle}" PreviewMouseLeftButtonUp="TpHouseAccount_PreviewMouseLeftButtonUp">
+                        <TabItem.Header>
+                            <TextBlock Text="House Account History" Style="{DynamicResource TabItemText}"></TextBlock>
+                        </TabItem.Header>
+
+                        <Grid Margin="13,15">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="21"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <dxg:GridControl Grid.Row="0" ShowBorder="False"  x:Name="grdHouseAccount">
+                                <dxg:GridControl.View>
+                                    <dxg:TableView x:Name="gridView7" ShowFilterPanelMode="Never" AllowColumnFiltering="False"/>
+                                </dxg:GridControl.View>
+                                <dxg:GridColumn FieldName="Image" Visible="False" VisibleIndex="-1" Width="*" AllowAutoFilter="False" Focusable="False">
+                                    <dxg:GridColumn.EditSettings>
+                                        <dxe:ImageEditSettings Stretch="UniformToFill"/>
+                                    </dxg:GridColumn.EditSettings>
+                                </dxg:GridColumn>
+                                <dxg:GridColumn FieldName="InvoiceNo" Header="Invoice No." Width="*" x:Name="colHAINV"/>
+                                <dxg:GridColumn FieldName="Date" Header="Date" Width="*" x:Name="gridColumn6"/>
+                                <dxg:GridColumn FieldName="Description" Header="Transaction Type" Width="*" x:Name="coltrantype"/>
+                                <dxg:GridColumn FieldName="Amount" Header="Amount     " Width="*" x:Name="colHA" HorizontalHeaderContentAlignment="Right">
+                                    <dxg:GridColumn.EditSettings>
+                                        <dxe:TextEditSettings DisplayFormat="f" MaskType="Numeric"/>
+                                    </dxg:GridColumn.EditSettings>
+                                    <dxg:GridColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <dxe:TextEdit Name="PART_Editor"  HorizontalContentAlignment="Right" Margin="0,0,15,0" FontSize="13" Style="{DynamicResource RightAligned}" Mask="f2" MaskType="Numeric" MaskUseAsDisplayFormat="True"/>
+                                        </DataTemplate>
+                                    </dxg:GridColumn.CellTemplate>
+                                </dxg:GridColumn>
+                            </dxg:GridControl>
+                            <ScrollViewer Grid.Row="2" VerticalScrollBarVisibility="Disabled" HorizontalScrollBarVisibility="Auto" PanningMode="Both" PanningRatio="1" PanningDeceleration="2" ManipulationBoundaryFeedback="ScrlViewer_ManipulationBoundaryFeedback">
+
+                                <Grid Grid.Row="2" >
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                        <RowDefinition Height="3"></RowDefinition>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="9"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="9"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="9"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Text="Account Limit" Grid.Row="0" Grid.Column="0"/>
+                                    <dxe:TextEdit Grid.Row="2" Grid.Column="0" x:Name="numAL" IsReadOnly="True" IsTabStop="False"/>
+
+                                    <TextBlock  Text="Last Payment" Grid.Row="0" Grid.Column="2"/>
+
+                                    <TextBlock Grid.Row="0" HorizontalAlignment="Right" Grid.Column="2" Text="Last Payment" x:Name="lbDate"/>
+                                    <dxe:TextEdit Grid.Row="2" Grid.Column="2" x:Name="numLP" IsReadOnly="True" IsTabStop="False"/>
+
+                                    <TextBlock Grid.Row="0" Grid.Column="4" Text="Current Balance"/>
+                                    <dxe:TextEdit Grid.Row="2" Grid.Column="4" x:Name="numB" IsReadOnly="True" IsTabStop="False"/>
+
+                                    <Button Grid.Row="2" Grid.Column="6" Content="ADJUSTMENT" Width="200" 
+                                        Style="{DynamicResource GeneralButtonStyle}" x:Name="btnAdjustment" Click="BtnAdjustment_Click"/>
+                                </Grid>
+                            </ScrollViewer>
+                        </Grid>
+
+                    </TabItem>
+                    <TabItem  x:Name="tpStoreCredit" Width="130"
+                         Style="{DynamicResource OuterPOSTabItemStyle}" PreviewMouseLeftButtonUp="TpStoreCredit_PreviewMouseLeftButtonUp">
+                        <TabItem.Header>
+                            <TextBlock Text="Store Credit History" Style="{DynamicResource TabItemText}"></TextBlock>
+                        </TabItem.Header>
+                        <Grid Margin="13,15">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="21"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Button Content="Add Credit" Width="120" HorizontalAlignment="Left" x:Name="btnAddCredit"
+                                    Style="{DynamicResource SaveButtonStyle}" Height="38" Click="BtnAddCredit_Click"/>
+
+                            <dxg:GridControl Grid.Row="4" ShowBorder="False" x:Name="grdStoreCredit">
+                                <dxg:GridControl.View>
+                                    <dxg:TableView x:Name="gridView11" NavigationStyle="Row" AllowPerPixelScrolling="True" ShowFilterPanelMode="Never" AllowColumnFiltering="False"/>
+                                </dxg:GridControl.View>
+                                <dxg:GridColumn FieldName="Image" Visible="False" VisibleIndex="-1" Width="*" AllowAutoFilter="False" Focusable="False">
+                                    <dxg:GridColumn.EditSettings>
+                                        <dxe:ImageEditSettings Stretch="UniformToFill"/>
+                                    </dxg:GridColumn.EditSettings>
+                                </dxg:GridColumn>
+                                <dxg:GridColumn FieldName="TranType" Header="Transaction Type" Width="*" x:Name="colSCtrantype" VisibleIndex="1"/>
+                                <dxg:GridColumn FieldName="TranDate" Header="Date" Width="*" x:Name="gridColumn10" VisibleIndex="2"/>
+                                <dxg:GridColumn FieldName="RefInvoice" Header="Ref. Invoice" Width="*" x:Name="gridColumn9" VisibleIndex="3"/>
+                                <dxg:GridColumn FieldName="TranAmount" Header="Amount     " Width="*" x:Name="gridColumn12" VisibleIndex="4" HorizontalHeaderContentAlignment="Right">
+                                    <dxg:GridColumn.EditSettings>
+                                        <dxe:TextEditSettings DisplayFormat="n2" MaskType="Numeric" MaskUseAsDisplayFormat="True" />
+                                    </dxg:GridColumn.EditSettings>
+                                    <dxg:GridColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <dxe:TextEdit Name="PART_Editor"  HorizontalContentAlignment="Right" Margin="0,0,15,0" FontSize="13" Style="{DynamicResource RightAligned}" Mask="f2" MaskType="Numeric" MaskUseAsDisplayFormat="True"/>
+                                        </DataTemplate>
+                                    </dxg:GridColumn.CellTemplate>
+                                </dxg:GridColumn>
+                            </dxg:GridControl>
+                        </Grid>
+                    </TabItem>
+                </TabControl>
+            </Grid>
+            <!--<Grid Grid.Row="4" VerticalAlignment="Bottom">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="9"/>
+                    <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition Width="9"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="9"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="9"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Button Grid.Column="0" Content="KEYBOARD" Height="46" FontFamily="{StaticResource OSSemiBold}" 
+                        Style="{DynamicResource GeneralButtonStyle}" x:Name="btnKeyboard"/>
+                <Border Grid.Column="2" BorderThickness="1" x:Name="grpHA" Visibility="Hidden">
+                    <Grid Grid.Column="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="9"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="9"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="From"/>
+                        <dxe:DateEdit Grid.Column="2" Width="85" x:Name="dtF" PreviewMouseLeftButtonDown="DtDOB_PreviewMouseLeftButtonDown"/>
+                        <TextBlock Grid.Column="4" Text="To"/>
+                        <dxe:DateEdit Grid.Column="6" Width="85" x:Name="dtT" PreviewMouseLeftButtonDown="DtDOB_PreviewMouseLeftButtonDown"/>
+                        <Button Grid.Column="8" Content="Statement" Height="46" FontFamily="{StaticResource OSSemiBold}" FontSize="16"
+                        Style="{DynamicResource GeneralButtonStyle}" x:Name="btnStatement"/>
+                    </Grid>
+                </Border>
+                <Button Grid.Column="4" Content="REPRINT" Height="46" FontFamily="{StaticResource OSSemiBold}" 
+                        Style="{DynamicResource PrintButtonStyle}" x:Name="btnPrint" Visibility="Hidden"/>
+                <Button Grid.Column="6" Content="CANCEL" Height="46" FontFamily="{StaticResource OSSemiBold}" 
+                        Style="{DynamicResource CancelButtonStyle}" x:Name="btnCancel" Click="BtnCancel_Click"/>
+                <Button Grid.Column="8" Content="SAVE" Height="46" FontFamily="{StaticResource OSSemiBold}" 
+                        Style="{DynamicResource SaveButtonStyle}" x:Name="btnLogin" Click="BtnLogin_Click"/>
+            </Grid>-->
+            <Grid Background="#3D000000" Margin="-15" Grid.RowSpan="5" x:Name="blurGrid" Visibility="Collapsed"/>
+        </Grid>
+    </cc:ModalWindow>
+</Window>

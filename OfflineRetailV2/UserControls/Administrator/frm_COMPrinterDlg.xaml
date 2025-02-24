@@ -1,0 +1,144 @@
+﻿<Window x:Class="OfflineRetailV2.UserControls.Administrator.frm_COMPrinterDlg"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:OfflineRetailV2.UserControls.Administrator"
+             xmlns:cc="clr-namespace:OfflineRetailV2.Controls"
+        xmlns:lm="clr-namespace:OfflineRetailV2.LayoutManager"
+        xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+        xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+        xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid" 
+        xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars"
+        AllowsTransparency="True" WindowStyle="None" Background="Transparent" WindowStartupLocation="CenterScreen"
+        Title="" Foreground="White" 
+        Width="800"  Loaded="Window_Loaded" Closing="Window_Closing">
+    <cc:ModalWindow  x:Name="ModalWindow">
+        <Grid Margin="9">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="9"/>
+                <RowDefinition Height="*"/>
+
+            </Grid.RowDefinitions>
+            
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="Printer Command"  x:Name="Title" VerticalAlignment="Center" Style="{DynamicResource BlueHeading}" />
+                <Grid Grid.Column="1" HorizontalAlignment="Right" Margin="0,0,20,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition Width="9"></ColumnDefinition>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <Button Grid.Column="0" Content="CANCEL" Height="35" Width="120" FontFamily="{StaticResource OSSemiBold}" 
+                        Style="{DynamicResource CancelButtonStyle}" x:Name="btnCancel" Click="BtnCancel_Click" />
+                    <Button Grid.Column="2" Content="DONE" Height="35" Width="120" FontFamily="{StaticResource OSSemiBold}" 
+                        Style="{DynamicResource SaveButtonStyle}" x:Name="btnOK" Click="BtnOK_Click"/>
+                </Grid>
+            </Grid>
+            <Rectangle Grid.Row="1" Style="{DynamicResource DefaultLineStyle}"  VerticalAlignment="Center"  Margin="-9,0"/>
+
+            <Grid Grid.Row="2" Margin="0,9,0,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="11"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="3"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="3"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="3"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="9"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="9"/>
+                        <ColumnDefinition Width="*"/>
+
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Row="0" Grid.Column="0" Text="Format No."/>
+                    <dxe:TextEdit Grid.Row="2" Grid.Column="0" x:Name="txtFNo" MaxLength="10" EditValueChanged="TxtFNo_EditValueChanged" GotFocus="Full_GotFocus" LostFocus="Full_LostFocus"/>
+                    <TextBlock Grid.Row="4" Grid.Column="0" Text="Format Name"/>
+                    <dxe:TextEdit Grid.Row="6" Grid.Column="0"  x:Name="txtFName" MaxLength="50" EditValueChanged="TxtFNo_EditValueChanged" GotFocus="Full_GotFocus" LostFocus="Full_LostFocus"/>
+                    
+                    <TextBlock Grid.Row="0" Grid.Column="2" Text="Port"/>
+                    <dxe:ComboBoxEdit Grid.Row="2" Grid.Column="2" x:Name="cmbPort" ItemsSource="{Binding}" IsTextEditable="False" EditValueChanged="TxtFNo_EditValueChanged" PreviewMouseLeftButtonDown="CmbPort_PreviewMouseLeftButtonDown"/>
+                    
+                    <TextBlock Grid.Row="4" Grid.Column="2" Text="Qty"/>
+                    <dxe:TextEdit Grid.Row="6" Grid.Column="2" Text="1" x:Name="numQty" Mask="N0" MaskType="Numeric" MaskUseAsDisplayFormat="True" EditValueChanged="TxtFNo_EditValueChanged" GotFocus="Num_GotFocus" LostFocus="Num_LostFocus"/>
+                    <TextBlock Grid.Row="0" Grid.Column="4" Text="Wrap Length"/>
+                    <dxe:TextEdit Grid.Row="2" Grid.Column="4" Text="0" x:Name="numWrap" Mask="N0" MaskType="Numeric" MaskUseAsDisplayFormat="True" EditValueChanged="TxtFNo_EditValueChanged"/>
+                    <TextBlock Grid.Row="4" Grid.Column="4" Text="Font"/>
+                    <dxe:ComboBoxEdit Grid.Row="6" Grid.Column="4" x:Name="cmbFont" IsTextEditable="False" EditValueChanged="TxtFNo_EditValueChanged" PreviewMouseLeftButtonDown="CmbPort_PreviewMouseLeftButtonDown">
+                        <dxe:ComboBoxEditItem>AA</dxe:ComboBoxEditItem>
+                        <dxe:ComboBoxEditItem>AB</dxe:ComboBoxEditItem>
+                        <dxe:ComboBoxEditItem>AC</dxe:ComboBoxEditItem>
+                        <dxe:ComboBoxEditItem>AD</dxe:ComboBoxEditItem>
+                        <dxe:ComboBoxEditItem>AE</dxe:ComboBoxEditItem>
+                        <dxe:ComboBoxEditItem>AF</dxe:ComboBoxEditItem>
+                        <dxe:ComboBoxEditItem>AG</dxe:ComboBoxEditItem>
+                        <dxe:ComboBoxEditItem>AH</dxe:ComboBoxEditItem>
+                        <dxe:ComboBoxEditItem></dxe:ComboBoxEditItem>
+                    </dxe:ComboBoxEdit>
+                </Grid>
+                <Grid Grid.Row="2">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="13"/>
+                        <ColumnDefinition Width="0.7*"/>
+                    </Grid.ColumnDefinitions>
+                    <Border Grid.Row="0" Grid.Column="0" Style="{DynamicResource PurpleBorder}">
+                        <TextBlock Style="{DynamicResource PurpleBorderInfo}" Text="Label Printer Command"/>
+                    </Border>
+                    
+                    <dxe:TextEdit Grid.Row="2" Height="Auto" x:Name="memTemplate"
+                                  VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Disabled" TextWrapping="Wrap" VerticalContentAlignment="Top" EditValueChanged="TxtFNo_EditValueChanged"/>
+                    
+                    <Border Grid.Row="0" Grid.Column="2" Style="{DynamicResource GreenBorder}">
+                        <TextBlock Style="{DynamicResource GreenBorderInfo}" Text="Replaceable Variables"/>
+                    </Border>
+
+                    <Border Grid.Row="2" Grid.Column="2" Style="{DynamicResource DummyBorder}" Padding="3">
+                        <ScrollViewer Padding="3"
+                                      VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Disabled" PanningMode="Both" PanningRatio="1" PanningDeceleration="2" ManipulationBoundaryFeedback="ScrlViewer_ManipulationBoundaryFeedback">
+                            <TextBlock Grid.Row="2" Grid.Column="2" Height="Auto"  x:Name="memHelp"
+                                  TextWrapping="Wrap" VerticalAlignment="Stretch" LineHeight="18" IsEnabled="False">
+                        &lt;SKU&gt;<LineBreak/>
+                        DESCRIPTION&gt;<LineBreak/>
+                                &lt;BARCODE&gt;<LineBreak/>
+                                    &lt;PRICE&gt;<LineBreak/>
+                                        &lt;QTY&gt;<LineBreak/>
+                                            &lt;VENDOR ID&gt;<LineBreak/>
+                                                &lt;VENDOR NAME&gt;<LineBreak/>
+                                                    &lt;VENDOR PART&gt;<LineBreak/>
+                                                        &lt;LABEL DESCRIPTION&gt;<LineBreak/>
+                                                            &lt;LABEL DESCRIPTION 2&gt;<LineBreak/>
+                                                                &lt;INGREDIENT TEXT&gt;<LineBreak/>
+                                                                    &lt;RECIPE&gt;<LineBreak/>
+                                                                        &lt;BY COUNT&gt;<LineBreak/>
+                                                                            &lt;PACKAGE WEIGHT&gt;
+                            </TextBlock>
+                        </ScrollViewer>
+                    </Border>
+                </Grid>
+            </Grid>
+            
+        </Grid>
+    </cc:ModalWindow>
+</Window>

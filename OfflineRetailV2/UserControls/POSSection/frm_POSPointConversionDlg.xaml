@@ -1,0 +1,113 @@
+﻿<Window x:Class="OfflineRetailV2.UserControls.POSSection.frm_POSPointConversionDlg"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:OfflineRetailV2.UserControls.POSSection"
+       xmlns:cc="clr-namespace:OfflineRetailV2.Controls"
+        xmlns:lm="clr-namespace:OfflineRetailV2.LayoutManager"
+        xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+        xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+        xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid" 
+        xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars"
+        AllowsTransparency="True" WindowStyle="None" Background="Transparent" WindowStartupLocation="CenterScreen"
+        Title="" Foreground="White"   
+        Width="900" Height="350">
+    <cc:ModalWindow  x:Name="ModalWindow">
+        <Grid Margin="9">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="9"/>
+                <RowDefinition Height="*"/>
+                
+            </Grid.RowDefinitions>
+            
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="Point to Store Credit Conversion"  x:Name="Title" VerticalAlignment="Center" Style="{DynamicResource BlueHeading}" />
+                <Grid Grid.Column="1" HorizontalAlignment="Right" Margin="0,0,20,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition Width="9"></ColumnDefinition>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition Width="9"></ColumnDefinition>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <Button Grid.Column="0" IsTabStop="False" Focusable="False" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Content="KEYBOARD" Visibility="Collapsed"
+                                 FontFamily="{StaticResource OSSemiBold}" Style="{DynamicResource GeneralButtonStyle}" Height="35" Width="120" x:Name="FullKbd" Click="FullKbd_Click"/>
+                    <Button IsTabStop="False" Focusable="False" Grid.Column="4"  VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Content="DONE"
+                                 FontFamily="{StaticResource OSSemiBold}" Style="{DynamicResource SaveButtonStyle}" x:Name="btnOK"  Height="35" Width="270" Click="btnOK_Click"/>
+
+                    <Button IsTabStop="False" Focusable="False" Grid.Column="2" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Content="CANCEL"
+                                 FontFamily="{StaticResource OSSemiBold}" Style="{DynamicResource CancelButtonStyle}" x:Name="btnCancel"  Height="35" Width="120" Click="BtnCancel_Click" />
+                </Grid>
+            </Grid>
+            <Rectangle Grid.Row="1" Style="{DynamicResource DefaultLineStyle}"  VerticalAlignment="Center"  Margin="-9,0"/>
+            <Grid Grid.Row="2" Margin="0,9,0,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="13"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="13"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="13"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="11"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="9"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Row="0" Grid.Column="0" Text="Customer" />
+                <TextBlock Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="3" Text="Payment" x:Name="lbCustomer"/>
+                <TextBlock Grid.Row="2" Grid.Column="0" Text="Accumulated Points"/>
+                <TextBlock Grid.Row="2" Grid.Column="2" Text="Payment" FontWeight="SemiBold" x:Name="lbPoints"/>
+                <TextBlock Grid.Row="4" Grid.Column="0" Text="1 Point  = "/>
+                <dxe:TextEdit Grid.Row="4" Grid.Column="2" InputScope="Number" Mask="f2" MaskType="Numeric" MaskUseAsDisplayFormat="True" Text="0" HorizontalContentAlignment="Right" x:Name="numC" EditValueChanged="numC_EditValueChanged" SelectAllOnGotFocus="True" GotFocus="Num_GotFocus" LostFocus="Num_LostFocus"/>
+                <TextBlock Grid.Row="4" Grid.Column="4" Text="Store Credit" x:Name="lbPrice"/>
+
+                <Grid Grid.Row="6" Grid.ColumnSpan="10" Margin="15">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="9"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="9"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="9"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="9"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Button Grid.Column="0" IsTabStop="False" Focusable="False" Content="0.25" Height="51" FontSize="16"
+                            Style="{DynamicResource GeneralButtonStyle}" Click="Button_Click"/>
+                    <Button Grid.Column="2" IsTabStop="False" Focusable="False" Content="0.5" Height="51" FontSize="16"
+                            Style="{DynamicResource GeneralButtonStyle}" Click="Button_Click"/>
+                    <Button Grid.Column="4" IsTabStop="False" Focusable="False" Content="1" Height="51" FontSize="16" x:Name="btn1"
+                            Style="{DynamicResource GeneralButtonStyle}" Click="Button_Click"/>
+                    <Button Grid.Column="6" IsTabStop="False" Focusable="False" Content="1.5" Height="51" FontSize="16"
+                            Style="{DynamicResource GeneralButtonStyle}" Click="Button_Click"/>
+                    <Button Grid.Column="8"  Content="2" Height="51" FontSize="16"
+                            Style="{DynamicResource GeneralButtonStyle}" Click="Button_Click"/>
+                </Grid>
+            </Grid>
+            <Grid Grid.Row="4" Margin="9">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1.5*"/>
+                    <ColumnDefinition Width="11"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="11"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="11"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                
+            </Grid>
+        </Grid>
+    </cc:ModalWindow>
+</Window>

@@ -1,0 +1,50 @@
+﻿<UserControl x:Class="OfflineRetailV2.UserControls.POSSection.frm_TagBrwUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:OfflineRetailV2.UserControls.POSSection"
+                 xmlns:cc="clr-namespace:OfflineRetailV2.Controls"
+        xmlns:lm="clr-namespace:OfflineRetailV2.LayoutManager"
+           xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+         xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+         xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid" 
+             mc:Ignorable="d"    
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid Grid.Row="2" Margin="3">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="21"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="7"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="21"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Button Content="Add" Height="47" Width="100"  x:Name="barButtonItem1"
+                        Style="{DynamicResource GeneralButtonStyle}"/>
+            <Button Content="Edit" Height="47" Width="100" Grid.Column="2" x:Name="barButtonItem2"
+                        Style="{DynamicResource GeneralButtonStyle}"/>
+
+            <Button Content="Delete" Height="47" Width="100" Grid.Column="6" x:Name="barButtonItem3"
+                        Style="{DynamicResource RedButtonStyle}"/>
+        </Grid>
+        <dxg:GridControl Grid.Row="4" ShowBorder="False" SelectionMode="Row" x:Name="grdTag">
+            <dxg:GridControl.View>
+                <dxg:TableView x:Name="gridView1"/>
+            </dxg:GridControl.View>
+            <dxg:GridColumn FieldName="ID" Header="ID" Width="*" x:Name="colID"/>
+            <dxg:GridColumn FieldName="TagID" Header="Tag ID" Width="*"  x:Name="colTagID"/>
+            <dxg:GridColumn FieldName="ItemID" Header="Item ID" Width="*"  x:Name="colItemID"/>
+            <dxg:GridColumn FieldName="ItemName" Header="Tagged Item" Width="*"  x:Name="colKitSKU"/>
+            <dxg:GridColumn FieldName="ItemQty" Header="Quantity" Width="*"  x:Name="colCount"/>
+            <dxg:GridColumn FieldName="ItemPrice" Header="Price" Width="*"  x:Name="gridColumn1"/>
+        </dxg:GridControl>
+    </Grid>
+</UserControl>

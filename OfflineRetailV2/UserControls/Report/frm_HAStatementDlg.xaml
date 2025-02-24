@@ -1,0 +1,128 @@
+﻿<Window x:Class="OfflineRetailV2.UserControls.Report.frm_HAStatementDlg"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:OfflineRetailV2.UserControls.Report"
+        mc:Ignorable="d"
+             xmlns:cc="clr-namespace:OfflineRetailV2.Controls"
+        xmlns:lm="clr-namespace:OfflineRetailV2.LayoutManager"
+        xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+        xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+        xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid" 
+        xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars"
+        AllowsTransparency="True" WindowStyle="None" Background="Transparent" WindowStartupLocation="CenterScreen"
+        Title="" Foreground="White"  Width="900" Height="500"  Loaded="Window_Loaded" >
+    <cc:ModalWindow  x:Name="ModalWindow">
+        <Grid Margin="9">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="9"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="House Account Statement"  x:Name="Title" VerticalAlignment="Center" Style="{DynamicResource BlueHeading}" />
+                <Grid Grid.Column="1" HorizontalAlignment="Right" Margin="0,0,20,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition Width="9"></ColumnDefinition>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition Width="9"></ColumnDefinition>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition Width="9"></ColumnDefinition>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <Button Grid.Column="0" Content="EMAIL" Height="35" Width="120" FontFamily="{StaticResource OSSemiBold}" 
+                        Style="{DynamicResource GeneralButtonStyle}" x:Name="btnEmail" Click="BtnEmail_Click" />
+
+                    <Button Grid.Column="2" Content="PREVIEW" Height="35" Width="120" FontFamily="{StaticResource OSSemiBold}" 
+                        Style="{DynamicResource GeneralButtonStyle}" x:Name="btnPreview" Click="BtnPreview_Click" />
+
+                    <Button Grid.Column="4" Content="CANCEL" Height="35" Width="120" FontFamily="{StaticResource OSSemiBold}" 
+                        Style="{DynamicResource CancelButtonStyle}" x:Name="btnCancel" Click="BtnCancel_Click" />
+                    <Button Grid.Column="6" Content="SAVE" Height="35" Width="120" FontFamily="{StaticResource OSSemiBold}" 
+                        Style="{DynamicResource PrintButtonStyle}" x:Name="btnPrint" Click="BtnPrint_Click"/>
+                </Grid>
+            </Grid>
+            <Rectangle Grid.Row="1" Style="{DynamicResource DefaultLineStyle}"  VerticalAlignment="Center"  Margin="-9,0"/>
+
+            <Grid Margin="5" Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="2"></ColumnDefinition>
+                    <ColumnDefinition Width="2*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <Grid Grid.Column="0" Margin="7,0,7,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="9"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="3"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="3"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="3"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    
+
+                    <Border Grid.Row="0" Grid.ColumnSpan="3" Style="{DynamicResource GreenBorder}">
+                        <TextBlock Style="{DynamicResource GreenBorderInfo}" Text="Date Range"></TextBlock>
+                    </Border>
+
+                    <TextBlock Text="From Date" Grid.Row="2"/>
+                    <dxe:DateEdit Grid.Row="4" x:Name="dtF" PreviewMouseLeftButtonDown="DtF_PreviewMouseLeftButtonDown"/>
+                    <TextBlock Grid.Row="6" Text="To Date"/>
+                    <dxe:DateEdit Grid.Row="8" x:Name="dtT" PreviewMouseLeftButtonDown="DtF_PreviewMouseLeftButtonDown"/>
+
+
+                </Grid>
+                
+                <Grid Grid.Column="2" Margin="7,0,7,0">
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="9"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="6"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Border Grid.Row="0" Grid.ColumnSpan="3" Style="{DynamicResource OrangeBorder}">
+                        <TextBlock Style="{DynamicResource OrangeBorderInfo}" Text="Customers"></TextBlock>
+                    </Border>
+
+                    <dxe:ToggleSwitch ContentPlacement="Far" HorizontalAlignment="Left" Grid.Row="2" UncheckedStateContent="Check All" CheckedStateContent="Uncheck All" x:Name="chkgrd" Checked="Chkgrd_Checked" Unchecked="Chkgrd_Checked"/>
+
+                    <dxg:GridControl Grid.Row="4" ShowBorder="True"  x:Name="grd">
+                        <dxg:GridControl.View>
+                            <dxg:TableView x:Name="gridView1" NavigationStyle="Cell"/>
+                        </dxg:GridControl.View>
+                        <dxg:GridColumn FieldName="ID" Header="ID" Width="*" x:Name="colID" Visible="False"/>
+                        <dxg:GridColumn FieldName="Image" Visible="False" VisibleIndex="-1" Width="*" AllowAutoFilter="False" Focusable="False">
+                            <dxg:GridColumn.EditSettings>
+                                <dxe:ImageEditSettings Stretch="UniformToFill"/>
+                            </dxg:GridColumn.EditSettings>
+                        </dxg:GridColumn>
+                        <dxg:GridColumn FieldName="CustomerID" Header="Customer ID" Width="0.5*" x:Name="colCustID" AllowEditing="False" AllowFocus="False"/>
+                        <dxg:GridColumn FieldName="Customer" Header="Customer" Width="*" x:Name="colDesc" AllowEditing="False" AllowFocus="False"/>
+                        <dxg:GridColumn FieldName="Check" Header=" " Width="0.5*" x:Name="colCheck" AllowEditing="True" AllowFocus="True">
+                            <dxg:GridColumn.EditSettings>
+                                <dxe:CheckEditSettings/>
+                            </dxg:GridColumn.EditSettings>
+                        </dxg:GridColumn>
+                    </dxg:GridControl>
+                    
+                </Grid>
+               
+            </Grid>
+
+
+        </Grid>
+    </cc:ModalWindow>
+</Window>

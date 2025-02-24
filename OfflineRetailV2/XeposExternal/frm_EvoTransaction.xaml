@@ -1,0 +1,100 @@
+﻿<Window x:Class="OfflineRetailV2.XeposExternal.frm_EvoTransaction"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+         xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid"
+         xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+         xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+        xmlns:local="clr-namespace:OfflineRetailV2.XeposExternal"
+        xmlns:cc="clr-namespace:OfflineRetailV2.Controls"
+        mc:Ignorable="d"
+        Title="frm_EvoTransaction" Height="200" Width="400" WindowStyle="None"  ResizeMode="NoResize" WindowStartupLocation="CenterScreen"
+        AllowsTransparency="True"  Background="Transparent" Loaded="Window_Loaded">
+    <cc:ModalWindowWC  x:Name="ModalWindowWC">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="7"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="15"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="9"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="9"/>
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Column="0" Grid.Row="0" x:Name="TitleTextBlock" TextWrapping="WrapWithOverflow" Style="{DynamicResource BlueHeading}"
+                   Text="Card payment" FontSize="15" FontFamily="{DynamicResource OSRegular}" 
+                   VerticalAlignment="Center" HorizontalAlignment="Left"/>
+            <Rectangle  Grid.Column="0" Grid.Row="1" Height="1" VerticalAlignment="Center" Fill="#6F889A" Margin="-5,0"/>
+            <TextBlock  Grid.Column="0"  Grid.Row="2" x:Name="ContentTextBlock"  VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <Button  Grid.Column="0"  Grid.Row="4" Height="42" x:Name="CloseButton" Margin="33,0" Style="{DynamicResource SaveButtonBoldStyle}" Content="Ok" Click="CloseButton_Click_1" />
+
+            <TextBlock Grid.Row="4" Grid.Column="0" Text="Sub total" FontFamily="{StaticResource OSSemiBold}" FontSize="18" x:Name="lbSubTotal" Visibility="Collapsed"/>
+            <TextBlock Grid.Row="4" Grid.Column="0" Text="£ 0.00" FontFamily="{StaticResource OSSemiBold}" FontSize="18" HorizontalAlignment="Right" x:Name="numSubtotal"  Visibility="Collapsed"/>
+            <TextBlock Grid.Row="4" Grid.Column="0" Text="Discount" FontSize="12" x:Name="lbDiscount"  Visibility="Collapsed"/>
+            <TextBlock Grid.Row="4" Grid.Column="0" Text="£ 0.00" FontSize="12" HorizontalAlignment="Right" x:Name="numDiscount"  Visibility="Collapsed"/>
+            <TextBlock Grid.Row="4" Grid.Column="0" Text="Tax" FontSize="12"  Visibility="Collapsed"/>
+            <TextBlock Grid.Row="4" Grid.Column="0" Text="£ 0.00" FontSize="12" HorizontalAlignment="Right" x:Name="numTax"  Visibility="Collapsed"/>
+
+            <TextBlock Grid.Row="4" Grid.Column="0" Text="Fees &amp; Charges" FontSize="12" x:Name="lbFee"  Visibility="Collapsed"/>
+            <TextBlock Grid.Row="4" Grid.Column="0" Text="£ 0.00" FontSize="12" HorizontalAlignment="Right" x:Name="numFee"  Visibility="Collapsed"/>
+
+            <TextBlock Grid.Row="4" Grid.Column="0" Text="Fees &amp; Charges Tax" FontSize="12" x:Name="lbFeeTax"  Visibility="Collapsed"/>
+            <TextBlock Grid.Row="4" Grid.Column="0" Text="£ 0.00" FontSize="12" HorizontalAlignment="Right" x:Name="numFeeTax"  Visibility="Collapsed"/>
+
+            <TextBlock Grid.Row="4" Grid.Column="0" Text="Discount on Ticket" FontSize="12" x:Name="lbCoupon"  Visibility="Collapsed"/>
+            <TextBlock Grid.Row="4" Grid.Column="0" Text="£ 0.00" FontSize="12" HorizontalAlignment="Right" x:Name="numCoupon"  Visibility="Collapsed"/>
+
+            <TextBlock Grid.Row="4" Grid.Column="0" Text="Total (Ex. Tax)" FontSize="12" x:Name="lbNewSubtotal"  Visibility="Collapsed"/>
+            <TextBlock Grid.Row="4" Grid.Column="0" Text="£ 0.00" FontSize="13" HorizontalAlignment="Right" x:Name="numNewSubtotal"  Visibility="Collapsed"/>
+
+            <TextBlock Grid.Row="4" Grid.Column="0" Text="Security Deposit" FontSize="12" x:Name="lbRepairAdvance"  Visibility="Collapsed"/>
+            <TextBlock Grid.Row="4" Grid.Column="0" Text="£ 0.00" FontSize="13" HorizontalAlignment="Right" x:Name="numRepairAdvance"  Visibility="Collapsed"/>
+
+            <TextBlock Grid.Row="4" Grid.Column="0" Text="Security Deposit" FontSize="12" x:Name="lbRentDeposit"  Visibility="Collapsed"/>
+            <TextBlock Grid.Row="4" Grid.Column="0" Text="£ 0.00" FontSize="12" HorizontalAlignment="Right" x:Name="numRentDeposit"  Visibility="Collapsed"/>
+
+            <TextBlock Grid.Row="4" Grid.Column="0" Text="Sub Total" FontFamily="{StaticResource OSSemiBold}" FontSize="18"  Visibility="Collapsed"/>
+            <TextBlock Grid.Row="4" Grid.Column="0" Text="£ 0.00" FontFamily="{StaticResource OSSemiBold}" FontSize="18" HorizontalAlignment="Right" x:Name="numTotalsale"  Visibility="Collapsed"/>
+
+            <TextBlock Grid.Row="4" Grid.Column="0" Text="Total Tendered" FontSize="12"  Visibility="Collapsed"/>
+            <TextBlock Grid.Row="4" Grid.Column="0" Text="£ 0.00" FontSize="12" HorizontalAlignment="Right" x:Name="numTender"  Visibility="Collapsed"/>
+            <TextBlock Grid.Row="4" Grid.Column="0" Text="Balance Due" FontSize="12"  Visibility="Collapsed"/>
+            <TextBlock Grid.Row="4" Grid.Column="0" Text="£ 0.00" FontSize="12" HorizontalAlignment="Right" x:Name="numBalanceDue"  Visibility="Collapsed"/>
+
+
+            <dxg:GridControl Grid.Row="4" Grid.Column="0" ShowBorder="False"  x:Name="grdTax" Visibility="Collapsed"
+                                         MinHeight="50" Background="#344458" AutoGenerateColumns="AddNew" EnableSmartColumnsGeneration="False"  >
+                <dxg:GridControl.View>
+                    <dxg:TableView x:Name="gridView3" NavigationStyle="Row" ShowTotalSummary="false" AllowEditing="False"  ShowIndicator="False" ShowFilterPanelMode="Never" ShowGroupPanel="False" FadeSelectionOnLostFocus="False" ShowVerticalLines="False" ShowColumnHeaders="False" Focusable="False"/>
+                </dxg:GridControl.View>
+                <dxg:GridColumn FieldName="TAXID" Header="TaxID" Width="*" x:Name="colTaxID" Visible="False"/>
+                <dxg:GridColumn FieldName="Tax" Header="Tax" Width="3*" x:Name="colTaxName"></dxg:GridColumn>
+                <dxg:GridColumn FieldName="Amount" Header="Amout" Width="*" x:Name="colTaxAmount">
+                    <dxg:GridColumn.EditSettings>
+                        <dxe:TextEditSettings HorizontalContentAlignment="Right" Mask="N2" MaskType="Numeric" MaskUseAsDisplayFormat="True" />
+                    </dxg:GridColumn.EditSettings>
+                    <dxg:GridColumn.CellTemplate>
+                        <DataTemplate>
+                            <dxe:TextEdit x:Name="PART_Editor" Mask="f2" MaskType="Numeric" MaskUseAsDisplayFormat="True"  HorizontalContentAlignment="Right" Margin="0,0,15,0" FontSize="13" Style="{DynamicResource RightAligned}" ></dxe:TextEdit>
+                        </DataTemplate>
+                    </dxg:GridColumn.CellTemplate>
+                </dxg:GridColumn>
+                <dxg:GridColumn FieldName="DTax" Header="DTax" Width="*" x:Name="colDTax" Visible="False"/>
+
+            </dxg:GridControl>
+            
+            <!--<Button Grid.Column="3" VerticalAlignment="Top" Width="36" Height="36" x:Name="CloseButton1" Margin="0,3,0,0" Padding="0,0,0,0" Click="CloseButton1_Click" 
+                                    Style="{DynamicResource CloseButtonStyle}"/>-->
+
+
+        </Grid>
+
+
+    </cc:ModalWindowWC>
+</Window>

@@ -1,0 +1,73 @@
+﻿<Window x:Class="OfflineRetailV2.UserControls.POSSection.frmPOSInvoicePrintDlg"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:OfflineRetailV2.UserControls.POSSection"
+          xmlns:cc="clr-namespace:OfflineRetailV2.Controls"
+        xmlns:lm="clr-namespace:OfflineRetailV2.LayoutManager"
+           xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+         xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+         xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid"
+        xmlns:sc="clr-namespace:System.Collections;assembly=System"
+        xmlns:prnt="clr-namespace:System.Drawing.Printing;assembly=System.Drawing"
+        xmlns:forms="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms"
+        AllowsTransparency="True" WindowStyle="None" Background="Transparent" WindowStartupLocation="CenterScreen"
+        Title="" Foreground="White" Width="600" Height="600"   
+        >
+    <cc:ModalWindow  x:Name="ModalWindow">
+        <Grid Margin="9">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="9"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="9"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <TextBlock Text="??" x:Name="Title" Style="{DynamicResource BlueHeading}"/>
+            <Rectangle Grid.Row="1" Style="{DynamicResource DefaultLineStyle}" Height="2" VerticalAlignment="Center"  Margin="-9,0"/>
+            <Grid Grid.Row="2" Margin="0,9,0,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="20"/>
+                    <RowDefinition Height="21"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <TextBlock Text="Printer not Present" HorizontalAlignment="Left" x:Name="lbNoPrinter" Visibility="Collapsed" />
+                
+
+
+
+                <FlowDocumentScrollViewer Grid.Row="2" x:Name="printPCtrl" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto"  Zoom="100">
+                    
+                </FlowDocumentScrollViewer>
+
+                <FlowDocumentScrollViewer Grid.Row="2" x:Name="printPCtrl1" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto"  Zoom="100" Visibility="Collapsed">
+
+                </FlowDocumentScrollViewer>
+
+            </Grid>
+            <Grid Grid.Row="4" Margin="9">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="0.5*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="9"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                
+                <Button Grid.Column="2" Content="CANCEL PRINT" Height="46" FontFamily="{StaticResource OSSemiBold}" 
+                        Style="{DynamicResource CancelButtonStyle}" x:Name="btnCancel" Click="btnCancel_Click"/>
+                <Button Grid.Column="4" Content="PRINT" Height="46" FontFamily="{StaticResource OSSemiBold}" 
+                        Style="{DynamicResource SaveButtonStyle}" x:Name="btnPrint" Click="btnPrint_Click"/>
+
+                <TextBlock x:Name="hdfont" Text="ABCDEFGH13245" HorizontalAlignment="Center"
+                           Visibility="Collapsed"/>
+
+                <dxe:BarCodeEdit Grid.Column="1" VerticalAlignment="Center" x:Name="barcd" Width="100" Height="60" EditValue="1" AutoModule="True" Visibility="Collapsed" >
+                    <dxe:BarCodeEdit.StyleSettings>
+                        <dxe:Code128StyleSettings></dxe:Code128StyleSettings>
+                    </dxe:BarCodeEdit.StyleSettings>
+                </dxe:BarCodeEdit>
+            </Grid>
+            
+        </Grid>
+    </cc:ModalWindow>
+</Window>

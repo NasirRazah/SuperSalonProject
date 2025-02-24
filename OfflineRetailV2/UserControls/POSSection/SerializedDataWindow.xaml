@@ -1,0 +1,66 @@
+﻿<Window x:Class="OfflineRetailV2.UserControls.POSSection.SerializedDataWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:OfflineRetailV2.UserControls.POSSection"
+        xmlns:cc="clr-namespace:OfflineRetailV2.Controls"
+        xmlns:lm="clr-namespace:OfflineRetailV2.LayoutManager"
+        xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"  
+             xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid" 
+        AllowsTransparency="True" WindowStyle="None" Background="Transparent" WindowStartupLocation="CenterScreen"
+        Title="" Foreground="White" Width="1024" Height="768">
+    <cc:ModalWindow x:Name="ModalWindow" Padding="0">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="0"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="9"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid Height="58" Margin="9,4">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="0"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="Serialized Data: Samsung" FontFamily="{StaticResource OSRegular}" FontSize="20"/>
+                <Button Grid.Column="2" Content="Add" Width="109" Height="49" FontFamily="{StaticResource OSSemiBold}" FontSize="16"
+                        Style="{DynamicResource SaveButtonStyle}"/>
+            </Grid>
+            <dxg:GridControl Grid.Row="2" ShowBorder="False" SelectionMode="Row">
+                <dxg:GridControl.View>
+                    <dxg:TableView AllowPerPixelScrolling="True" ShowTotalSummary="True"/>
+                </dxg:GridControl.View>
+                <dxg:GridColumn FieldName="Column1" Header="Primary Serial No." Width="*"/>
+                <dxg:GridColumn FieldName="Column2" Header="Secondary Serial No." Width="*"/>
+                <dxg:GridColumn FieldName="Column3" Header="Tertiary Serial No." Width="*"/>
+            </dxg:GridControl>
+            <Rectangle Grid.Row="3" Style="{DynamicResource DefaultLineStyle}" Height="2" VerticalAlignment="Center"/>
+            <Grid Grid.Row="4" Margin="9,4,9,9">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="9"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="9"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="9"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="9"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Button Grid.Column="2" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Width="105" Height="46"
+                                Style="{DynamicResource YellowButtonStyle}">
+                    <Image Source="{DynamicResource Arrow_U}" Width="21" Height="21"/>
+                </Button>
+                <Button Grid.Column="4" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Width="105" Height="46"
+                                Style="{DynamicResource YellowButtonStyle}">
+                    <Image Source="{DynamicResource Arrow_D}" Width="21" Height="21"/>
+                </Button>
+                <Button Grid.Column="6" Content="Cancel" Width="234" Height="49" FontFamily="{StaticResource OSSemiBold}" FontSize="16"
+                        Style="{DynamicResource CancelButtonStyle}"/>
+                <Button Grid.Column="8" Content="Select" Width="234" Height="49" FontFamily="{StaticResource OSSemiBold}" FontSize="16"
+                        Style="{DynamicResource SaveButtonStyle}"/>
+            </Grid>
+        </Grid>
+    </cc:ModalWindow>
+</Window>

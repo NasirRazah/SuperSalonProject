@@ -1,0 +1,132 @@
+﻿<UserControl x:Class="OfflineRetailV2.UserControls.POSSection.frm_CategoryBrwUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:OfflineRetailV2.UserControls.POSSection"
+              xmlns:cc="clr-namespace:OfflineRetailV2.Controls"
+        xmlns:lm="clr-namespace:OfflineRetailV2.LayoutManager"
+           xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+         xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+         xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid" 
+             xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="850"  >
+    <Grid Grid.Row="2" Margin="3">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid Margin="0,9,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="7"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="7"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="7"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="7"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="7"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="7"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Image Source="{DynamicResource Back}" Height="35" Width="35" x:Name="btnBack" PreviewMouseLeftButtonDown="Image_PreviewMouseLeftButtonDown"></Image>
+            <Button  Height="35" Width="85"  x:Name="btnAdd" Grid.Column="2"
+                        Style="{DynamicResource AddButton}" Click="BtnAdd_Click"/>
+            <Button  Height="35" Width="85" Grid.Column="4" x:Name="btnEdit"
+                        Style="{DynamicResource EditButton}" Click="BtnEdit_Click"/>
+            <Button  Height="35" Width="85" Grid.Column="6" x:Name="btnPrint"
+                        Style="{DynamicResource PrintButton}" Click="BtnPrint_Click"/>
+
+            <Button  Height="35" Width="125" Grid.Column="8" FontSize="10"  x:Name="btnReorderItem"
+                        Style="{DynamicResource ReorderButton}" Click="BtnReorderItem_Click">
+            </Button>
+
+
+            <Button  Height="35" Width="140" Grid.Column="10" x:Name="btnBatchPrint"
+                        Style="{DynamicResource BatchButtonStyleS}"  Click="BtnBatchPrint_Click" >
+                <TextBlock TextAlignment="Center" FontSize="10" Style="{DynamicResource DefaultText}">SEND TO BATCH PRINT</TextBlock>
+            </Button>
+
+            <Grid Grid.Column="12">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    <ColumnDefinition Width="7"></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    <ColumnDefinition Width="7"></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0" TextAlignment="Center"  Text="RE-ORDER"  FontSize="9" TextWrapping="WrapWithOverflow" HorizontalAlignment="Left" VerticalAlignment="Center" />
+                <Button Grid.Column="2"  x:Name="btnUP" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" HorizontalAlignment="Left" 
+                                Style="{DynamicResource UpDownButtonStyle}" Width="50" Height="35" >
+                    <Image Source="{DynamicResource UpGold}" Width="25" Height="15" Stretch="Fill" />
+                </Button>
+                
+                <Button Grid.Column="4"  x:Name="btnDown" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
+                                Style="{DynamicResource UpDownButtonStyle}" Width="50" Height="35" HorizontalAlignment="Left">
+                    <Image Source="{DynamicResource DownGold}" Width="25" Height="15" Stretch="Fill" />
+                </Button>
+
+            </Grid>
+            
+            
+
+
+            <Button  Height="35" Width="85" Grid.Column="14" x:Name="btnDelete"
+                        Style="{DynamicResource DeleteButton}" Click="BtnDelete_Click" />
+        </Grid>
+
+        <Rectangle Grid.Row="1" VerticalAlignment="Center" Height="1" Style="{DynamicResource DefaultLineStyle}" Margin="0,5" />
+
+        <Grid x:Name="bar2" Grid.Row="2" Margin="3,0,3,5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="69*"></ColumnDefinition>
+                <ColumnDefinition Width="227*"/>
+            </Grid.ColumnDefinitions>
+
+            <cc:CustomTextBox Grid.Column="0"   HorizontalAlignment="Stretch" Height="30"  BorderThickness="1"  CornerRadius="0"
+                                  InfoText="Search Categories"  Icon="{DynamicResource Search}" FontSize="13"  FontFamily="{DynamicResource OSSemiBold}"  x:Name="txtSearchGrdData" GotFocus="TxtSearchGrdData_GotFocus" LostFocus="TxtSearchGrdData_LostFocus" TextChanged="TxtSearchGrdData_TextChanged" PreviewMouseLeftButtonDown="TxtSearchGrdData_PreviewMouseLeftButtonDown" Grid.ColumnSpan="2" />
+        </Grid>
+
+
+        <dxg:GridControl Grid.Row="3" ShowBorder="False"  x:Name="grdCategory" MouseDoubleClick="GrdCategory_MouseDoubleClick">
+            <dxg:GridControl.View>
+                <dxg:TableView x:Name="gridView1" NavigationStyle="Cell" IncrementalSearchMode="Enabled" UseOnlyCurrentColumnInIncrementalSearch="True" IncrementalSearchClearDelay="3000" AllowPerPixelScrolling="True" ShowTotalSummary="False"  ShowFilterPanelMode="Never" AllowColumnFiltering="False"/>
+            </dxg:GridControl.View>
+            <dxg:GridColumn FieldName="ID" Header="ID" Width="*" x:Name="colID" Visible="False"/>
+            <dxg:GridColumn FieldName="Image" Visible="False" VisibleIndex="-1" Width="*" AllowAutoFilter="False" Focusable="False">
+                <dxg:GridColumn.EditSettings>
+                    <dxe:ImageEditSettings Stretch="UniformToFill"/>
+                </dxg:GridColumn.EditSettings>
+            </dxg:GridColumn>
+            <dxg:GridColumn FieldName="CategoryID" Header="Category ID" Width="*"  x:Name="colCategoryID"/>
+            <dxg:GridColumn FieldName="Description" Header="Description" Width="*"  x:Name="colDescription"/>
+            <dxg:GridColumn FieldName="FoodStampEligible" Header="Food Stamp Eligible?" Width="*"  x:Name="colFoodStampEligible" Visible="False"/>
+            <dxg:GridColumn FieldName="PosDisplayOrder" Header="POS Display Order" Width="*"  x:Name="colDisplay" HorizontalHeaderContentAlignment="Right" AllowIncrementalSearch="False">
+                <dxg:GridColumn.EditSettings>
+                    <dxe:TextEditSettings HorizontalContentAlignment="Right"></dxe:TextEditSettings>
+                </dxg:GridColumn.EditSettings>
+            </dxg:GridColumn>
+            <dxg:GridColumn FieldName="MaxItemsforPOS" Header="Max. Items for POS" Width="*"  x:Name="colItem" HorizontalHeaderContentAlignment="Center" AllowIncrementalSearch="False">
+                <dxg:GridColumn.EditSettings>
+                    <dxe:TextEditSettings HorizontalContentAlignment="Right"></dxe:TextEditSettings>
+                </dxg:GridColumn.EditSettings>
+            </dxg:GridColumn>
+            <dxg:GridColumn FieldName="POSStyle" Header="Style in POS" Width="*"  x:Name="colColor" Visible="False"/>
+            <dxg:GridColumn FieldName="AddToPOSScreen" Header="POS Display ?" Width="*"  x:Name="gridColumn1" HorizontalHeaderContentAlignment="Center" AllowIncrementalSearch="False">
+                <dxg:GridColumn.EditSettings>
+                    <dxe:TextEditSettings HorizontalContentAlignment="Center"></dxe:TextEditSettings>
+                </dxg:GridColumn.EditSettings>
+            </dxg:GridColumn>
+        </dxg:GridControl>
+
+    </Grid>
+</UserControl>

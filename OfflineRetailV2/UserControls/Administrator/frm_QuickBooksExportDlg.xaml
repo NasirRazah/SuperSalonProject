@@ -1,0 +1,222 @@
+﻿<Window x:Class="OfflineRetailV2.UserControls.Administrator.frm_QuickBooksExportDlg"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:OfflineRetailV2.UserControls.Administrator"
+             xmlns:cc="clr-namespace:OfflineRetailV2.Controls"
+        xmlns:lm="clr-namespace:OfflineRetailV2.LayoutManager"
+        xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+        xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+        xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid" 
+        xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars"
+        AllowsTransparency="True" WindowStyle="None" Background="Transparent" WindowStartupLocation="CenterScreen"
+        Title="" Foreground="White"   
+        Width="700" Height="380" Loaded="Window_Loaded">
+    <cc:ModalWindow  x:Name="ModalWindow">
+        <Grid Margin="9">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="9"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="Export Employee Hours"  x:Name="Title" VerticalAlignment="Center" Style="{DynamicResource BlueHeading}" />
+                <Grid Grid.Column="1" HorizontalAlignment="Right" Margin="0,0,20,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition Width="9"></ColumnDefinition>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <Button Grid.Column="0" Content="CANCEL" Height="35" Width="120" FontFamily="{StaticResource OSSemiBold}" 
+                        Style="{DynamicResource CancelButtonStyle}" x:Name="btnCancel" Click="BtnCancel_Click" />
+                    <Button Grid.Column="2" Content="EXPORT" Height="35" Width="120" FontFamily="{StaticResource OSSemiBold}" 
+                        Style="{DynamicResource SaveButtonStyle}" x:Name="btnOK" Click="BtnOK_Click"/>
+                </Grid>
+            </Grid>
+            <Rectangle Grid.Row="1" Style="{DynamicResource DefaultLineStyle}"  VerticalAlignment="Center"  Margin="-9,0"/>
+
+            <Grid Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="21"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <Grid Grid.Column="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="9"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="3"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="3"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="3"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="3"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="3"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="3"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="3"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="3"></RowDefinition>
+                    </Grid.RowDefinitions>
+
+                    <Border Style="{DynamicResource PurpleBorder}">
+                        <TextBlock Text="Export criteria" Style="{DynamicResource PurpleBorderInfo}"></TextBlock>
+                    </Border>
+
+                    <TextBlock Grid.Row="2" Text="Export Type"/>
+                    <dxe:ComboBoxEdit  Grid.Row="4" x:Name="cmbExport" SelectedIndex="1" IsTextEditable="False" SelectedIndexChanged="CmbExport_SelectedIndexChanged" PreviewMouseLeftButtonDown="CmbExport_PreviewMouseLeftButtonDown">
+                        <dxe:ComboBoxEditItem>Closeout</dxe:ComboBoxEditItem>
+                        <dxe:ComboBoxEditItem>Payroll</dxe:ComboBoxEditItem>
+                    </dxe:ComboBoxEdit>
+
+
+                    <TextBlock Grid.Row="6"  Text="Employee" x:Name="lbEmployee"/>
+                    <dxg:LookUpEdit Grid.Row="8"  x:Name="cmbEmployee" ItemsSource="{Binding}"
+                                        DisplayMember="Name"
+                                        ValueMember="ID"
+                                        AutoPopulateColumns="False"
+                                        AutoComplete="True"
+                                        IncrementalFiltering="True"
+                                        ImmediatePopup="True"
+                                        IsPopupAutoWidth="False"
+                                        PreviewMouseLeftButtonDown="CmbEmployee_PreviewMouseLeftButtonDown" PopupOpened="gen_PopupOpened">
+                        <dxg:LookUpEdit.PopupContentTemplate>
+                            <ControlTemplate>
+                                <dxg:GridControl Name="PART_GridControl" AutoGenerateColumns="None">
+                                    <dxg:GridControl.Columns>
+                                        <dxg:GridColumn FieldName="Image" Visible="False" VisibleIndex="-1" Width="*" AllowAutoFilter="False" Focusable="False">
+                                            <dxg:GridColumn.EditSettings>
+                                                <dxe:ImageEditSettings Stretch="UniformToFill"/>
+                                            </dxg:GridColumn.EditSettings>
+                                        </dxg:GridColumn>
+                                        <dxg:GridColumn FieldName="ID" Visible="False" />
+                                        <dxg:GridColumn FieldName="EmployeeID" Header="Emp. ID" VisibleIndex="1" />
+                                        <dxg:GridColumn FieldName="Name" Header="Name" VisibleIndex="2" />
+                                    </dxg:GridControl.Columns>
+                                    <dxg:GridControl.View>
+                                        <dxg:TableView AutoWidth="True" />
+                                    </dxg:GridControl.View>
+                                </dxg:GridControl>
+                            </ControlTemplate>
+                        </dxg:LookUpEdit.PopupContentTemplate>
+                    </dxg:LookUpEdit>
+
+                    <Grid Grid.Row="10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="15"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" Text="From Date"/>
+                        <TextBlock Grid.Column="2" Text="To Date"/>
+                    </Grid>
+
+                    <Grid Grid.Row="12">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="15"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <dxe:DateEdit Grid.Column="0" x:Name="dtFrom"  PreviewMouseLeftButtonDown="DtFrom_PreviewMouseLeftButtonDown"/>
+
+                        <dxe:DateEdit Grid.Column="2" x:Name="dtTo"  PreviewMouseLeftButtonDown="DtFrom_PreviewMouseLeftButtonDown"/>
+                    </Grid>
+
+
+
+                    <TextBlock Grid.Row="14" Grid.Column="0" Text="Export Path"/>
+
+                    <Grid Grid.Row="16">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="6"></ColumnDefinition>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <dxe:TextEdit Grid.Column="0" x:Name="mem_location" IsReadOnly="True"/>
+                        <Button Grid.Column="2" Content="BROWSE" Width="90"
+                        Style="{DynamicResource BrowseButtonStyle}" x:Name="btnBrowse" Click="BtnBrowse_Click"/>
+                    </Grid>
+
+
+
+
+                </Grid>
+
+
+                <Grid Grid.Column="2">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="9"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="3"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="3"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="3"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="3"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="3"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="3"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="3"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="3"></RowDefinition>
+                    </Grid.RowDefinitions>
+
+                    <Border Style="{DynamicResource OrangeBorder}">
+                        <TextBlock Text="Export option" Style="{DynamicResource OrangeBorderInfo}"></TextBlock>
+                    </Border>
+
+                    <dxe:ToggleSwitch ContentPlacement="Far" HorizontalAlignment="Left" Grid.Row="2" CheckedStateContent="Include column header" UncheckedStateContent="Include column header" x:Name="chkColumn"/>
+
+                    <TextBlock Grid.Row="4" Text="Separator" />
+
+                    <Grid Grid.Row="6">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="9"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <RadioButton Grid.Column="0" Content="Comma" x:Name="rbComma" Checked="RbComma_Checked" Unchecked="RbComma_Checked"/>
+                        <RadioButton Grid.Column="2" Content="Tab" x:Name="rbTab" Checked="RbComma_Checked" Unchecked="RbComma_Checked"/>
+                    </Grid>
+
+                    <Grid Grid.Row="8">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="6"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <RadioButton Grid.Column="0" Content="Space" x:Name="rbSpace" Checked="RbComma_Checked" Unchecked="RbComma_Checked"/>
+                        <RadioButton Grid.Column="2" Content="Custom Character" x:Name="rbCustom" Checked="RbComma_Checked" Unchecked="RbComma_Checked"/>
+                    </Grid>
+
+                    <Grid Grid.Row="10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="6"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <dxe:TextEdit Grid.Column="2" x:Name="txtChar" MaxLength="1" IsEnabled="False" GotFocus="Full_GotFocus" LostFocus="Full_LostFocus"/>
+                    </Grid>
+
+                </Grid>
+            </Grid>
+
+            <Grid Background="#3D000000" Grid.RowSpan="5" x:Name="blurGrid" Visibility="Collapsed"/>
+        </Grid>
+    </cc:ModalWindow>
+</Window>

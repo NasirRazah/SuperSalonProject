@@ -1,0 +1,78 @@
+﻿<Window x:Class="OfflineRetailV2.UserControls.POSSection.frm_POSPaidInDlg"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:OfflineRetailV2.UserControls.POSSection"
+       xmlns:cc="clr-namespace:OfflineRetailV2.Controls"
+        xmlns:lm="clr-namespace:OfflineRetailV2.LayoutManager"
+        xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+        xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+        xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid" 
+        xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars"
+        AllowsTransparency="True" WindowStyle="None" Background="Transparent" WindowStartupLocation="CenterScreen"
+        Title="" Foreground="White"   Width="600" Height="260">
+    <cc:ModalWindow  x:Name="ModalWindow">
+        <Grid Margin="9">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="9"/>
+                <RowDefinition Height="*"/>
+
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="Paid In"  x:Name="Title" VerticalAlignment="Center" Style="{DynamicResource BlueHeading}" />
+                <Grid Grid.Column="1" HorizontalAlignment="Right" Margin="0,0,20,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition Width="9"></ColumnDefinition>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition Width="9"></ColumnDefinition>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <Button IsTabStop="False" Focusable="False" Grid.Column="0" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Content="KEYBOARD"
+                                 FontFamily="{StaticResource OSSemiBold}" Style="{DynamicResource GeneralButtonStyle}" Height="35" Width="120" Visibility="Collapsed" x:Name="FullKbd" Click="FullKbd_Click"/>
+                    <Button IsTabStop="False" Focusable="False" Grid.Column="4" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Content="DONE"
+                                 FontFamily="{StaticResource OSSemiBold}" Style="{DynamicResource SaveButtonStyle}" x:Name="btnOK" Width="120" Height="35" Click="btnOK_Click"/>
+
+                    <Button IsTabStop="False" Focusable="False" Grid.Column="2" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Content="CANCEL"
+                                 FontFamily="{StaticResource OSSemiBold}" Style="{DynamicResource CancelButtonStyle}" x:Name="btnCancel"  Height="35" Width="120" Click="BtnCancel_Click" />
+                </Grid>
+            </Grid>
+            <Rectangle Grid.Row="1" Style="{DynamicResource DefaultLineStyle}"  VerticalAlignment="Center"  Margin="-9,0"/>
+            <Grid Grid.Row="2" Margin="0,9,0,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="6"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="6"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="6"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                
+                <TextBlock Grid.Row="0" Text="Paid In Explanation" />
+                <dxe:TextEdit Grid.Row="2" x:Name="txtExplanation" MaxLength="150" InputScope="Default" GotFocus="Full_GotFocus" LostFocus="Full_LostFocus" />
+
+                <TextBlock Grid.Row="4" Text="Paid In Amount"/>
+                <dxe:TextEdit Grid.Row="6"  x:Name="numAmount" Mask="f2" MaskType="Numeric" MaskUseAsDisplayFormat="True"  InputScope="Number"
+                                  Text="0.00"  SelectAllOnGotFocus="True" GotFocus="Num_GotFocus" LostFocus="Num_LostFocus" />
+            </Grid>
+            <Grid Grid.Row="4" Margin="9">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="11"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="11"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                
+            </Grid>
+        </Grid>
+    </cc:ModalWindow>
+</Window>

@@ -1,0 +1,296 @@
+﻿<UserControl x:Class="OfflineRetailV2.UserControls.frm_MainAdmin"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:custom="clr-namespace:OfflineRetailV2"
+             xmlns:local="clr-namespace:OfflineRetailV2.UserControls"
+             xmlns:administrator="clr-namespace:OfflineRetailV2.UserControls.Administrator"
+   xmlns:cc="clr-namespace:OfflineRetailV2.Controls"
+        xmlns:lm="clr-namespace:OfflineRetailV2.LayoutManager"
+         xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+          xmlns:dxn="http://schemas.devexpress.com/winfx/2008/xaml/navbar"
+
+             xmlns:posSection="clr-namespace:OfflineRetailV2.UserControls.POSSection"
+             xmlns:reportSection="clr-namespace:OfflineRetailV2.UserControls.Report"
+             xmlns:dxc="http://schemas.devexpress.com/winfx/2008/xaml/core"
+             xmlns:productslabel="clr-namespace:OfflineRetailV2.ProductsLabel"
+             mc:Ignorable="d"
+             d:DesignHeight="600" d:DesignWidth="800"
+       
+          MinWidth="600" MinHeight="400" >
+    
+    <Grid x:Name="Grid" Style="{DynamicResource GrdBkColor}"  >
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="3"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Column="1" Panel.ZIndex="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <DockPanel Grid.Column="0" Style="{DynamicResource AdminMenuHeaderMainBackground}" Panel.ZIndex="4" x:Name="pnlMenuHeader" >
+                <Grid Panel.ZIndex="5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <WrapPanel  Orientation="Vertical" Width="140" x:Name="MenuPanel" >
+                        
+                        <DockPanel Grid.Row="2" Style="{DynamicResource AdminMenuHeaderBackground}" Height="50"  VerticalAlignment="Bottom" x:Name="mnuCustomer" Tag="0" PreviewMouseLeftButtonDown="Grp_PreviewMouseLeftButtonDown" >
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="49"></RowDefinition>
+                                    <RowDefinition Height="1"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="40"></ColumnDefinition>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Image x:Name="imgMenu_C" Source="{DynamicResource CustomerMenu}" Width="21" Height="21" HorizontalAlignment="Center"></Image>
+                                <TextBlock Grid.Column="1" Text="Customers" VerticalAlignment="Center" FontFamily="{StaticResource OSBold}" Padding="10" Foreground="White" FontSize="12"></TextBlock>
+                                <Rectangle Grid.Row="1" Grid.ColumnSpan="2" Width="180" Height="1" Style="{DynamicResource AdminMenuSeparator}" VerticalAlignment="Bottom" ></Rectangle>
+                            </Grid>
+
+                        </DockPanel>
+
+                        <DockPanel Grid.Row="2" Style="{DynamicResource AdminMenuHeaderBackground}" Height="50"  VerticalAlignment="Bottom" x:Name="mnuItem" Tag="0" PreviewMouseLeftButtonDown="Grp_PreviewMouseLeftButtonDown" >
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="49"></RowDefinition>
+                                    <RowDefinition Height="1"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="40"></ColumnDefinition>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Image x:Name="imgMenu_P" Source="{DynamicResource ItemMenu}" Width="21" Height="21" HorizontalAlignment="Center"></Image>
+                                <TextBlock Grid.Column="1" Text="Items"  VerticalAlignment="Center" FontFamily="{StaticResource OSBold}" Padding="10" Foreground="White" FontSize="12"></TextBlock>
+                                <Rectangle Grid.Row="1" Grid.ColumnSpan="2" Width="180" Height="1" Style="{DynamicResource AdminMenuSeparator}" VerticalAlignment="Bottom" ></Rectangle>
+                            </Grid>
+
+                        </DockPanel>
+
+                        <DockPanel Grid.Row="2" Style="{DynamicResource AdminMenuHeaderBackground}" Height="50"  VerticalAlignment="Bottom" x:Name="mnuOrdering" Tag="0" PreviewMouseLeftButtonDown="Grp_PreviewMouseLeftButtonDown">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="49"></RowDefinition>
+                                    <RowDefinition Height="1"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="40"></ColumnDefinition>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Image x:Name="imgMenu_O" Source="{DynamicResource OrderingMenu}" Width="21" Height="21" HorizontalAlignment="Center"></Image>
+                                <TextBlock Grid.Column="1" Text="Ordering" VerticalAlignment="Center" FontFamily="{StaticResource OSBold}" Padding="10" Foreground="White" FontSize="12"></TextBlock>
+                                <Rectangle Grid.Row="1" Grid.ColumnSpan="2" Width="180" Height="1" Style="{DynamicResource AdminMenuSeparator}" VerticalAlignment="Bottom" ></Rectangle>
+                            </Grid>
+
+                        </DockPanel>
+
+                        <DockPanel Grid.Row="2" Style="{DynamicResource AdminMenuHeaderBackground}" Height="50"  VerticalAlignment="Bottom" x:Name="mnuReport" Tag="0" PreviewMouseLeftButtonDown="Grp_PreviewMouseLeftButtonDown">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="49"></RowDefinition>
+                                    <RowDefinition Height="1"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="40"></ColumnDefinition>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Image x:Name="imgMenu_R" Source="{DynamicResource ReportMenu}" Width="21" Height="21" HorizontalAlignment="Center"></Image>
+                                <TextBlock Grid.Column="1" Text="Reports" VerticalAlignment="Center" FontFamily="{StaticResource OSBold}" Padding="10" Foreground="White" FontSize="12"></TextBlock>
+                                <Rectangle Grid.Row="1" Grid.ColumnSpan="2" Width="180" Height="1" Style="{DynamicResource AdminMenuSeparator}" VerticalAlignment="Bottom" ></Rectangle>
+                            </Grid>
+
+                        </DockPanel>
+
+                        <DockPanel Grid.Row="2" Style="{DynamicResource AdminMenuHeaderBackground}" Height="50"  VerticalAlignment="Bottom" x:Name="mnuEmployee" Tag="0" PreviewMouseLeftButtonDown="Grp_PreviewMouseLeftButtonDown">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="49"></RowDefinition>
+                                    <RowDefinition Height="1"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="40"></ColumnDefinition>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Image x:Name="imgMenu_E" Source="{DynamicResource EmployeeMenu}" Width="21" Height="21" HorizontalAlignment="Center"></Image>
+                                <TextBlock Grid.Column="1" Text="Employee" VerticalAlignment="Center" FontFamily="{StaticResource OSBold}"  Padding="10" Foreground="White" FontSize="12"></TextBlock>
+                                <Rectangle Grid.Row="1" Grid.ColumnSpan="2" Width="180" Height="1" Style="{DynamicResource AdminMenuSeparator}" VerticalAlignment="Bottom" ></Rectangle>
+                            </Grid>
+
+                        </DockPanel>
+
+                        <DockPanel Grid.Row="2" Style="{DynamicResource AdminMenuHeaderBackground}" Height="50"  VerticalAlignment="Bottom" x:Name="mnuSettings" Tag="0" PreviewMouseLeftButtonDown="Grp_PreviewMouseLeftButtonDown">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="49"></RowDefinition>
+                                    <RowDefinition Height="1"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="40"></ColumnDefinition>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Image x:Name="imgMenu_S" Source="{DynamicResource SettingsMenu}" Width="21" Height="21" HorizontalAlignment="Center"></Image>
+                                <TextBlock Grid.Column="1" Text="Administrator" VerticalAlignment="Center" FontFamily="{StaticResource OSBold}" Padding="10" Foreground="White" FontSize="12"></TextBlock>
+                                <Rectangle Grid.Row="1" Grid.ColumnSpan="2" Width="180" Height="1" Style="{DynamicResource AdminMenuSeparator}" VerticalAlignment="Bottom" ></Rectangle>
+                            </Grid>
+
+                        </DockPanel>
+
+                        <DockPanel Grid.Row="2" Style="{DynamicResource AdminMenuHeaderBackground}" Height="50"  VerticalAlignment="Bottom" x:Name="mnuDiscounts" Tag="0" PreviewMouseLeftButtonDown="Grp_PreviewMouseLeftButtonDown">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="49"></RowDefinition>
+                                    <RowDefinition Height="1"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="40"></ColumnDefinition>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Image x:Name="imgMenu_D" Source="{DynamicResource DiscountMenu}" Width="21" Height="21" HorizontalAlignment="Center"></Image>
+                                <TextBlock Grid.Column="1" Text="Discounts" VerticalAlignment="Center" FontFamily="{StaticResource OSBold}" Padding="10" Foreground="White" FontSize="12"></TextBlock>
+                                <Rectangle Grid.Row="1" Grid.ColumnSpan="2" Width="180" Height="1" Style="{DynamicResource AdminMenuSeparator}" VerticalAlignment="Bottom" ></Rectangle>
+                            </Grid>
+
+                        </DockPanel>
+
+                        <DockPanel Grid.Row="2" Style="{DynamicResource AdminMenuHeaderBackground}" Height="50"  VerticalAlignment="Bottom" x:Name="mnuHost" Tag="0" PreviewMouseLeftButtonDown="Grp_PreviewMouseLeftButtonDown" >
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="49"></RowDefinition>
+                                    <RowDefinition Height="1"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="40"></ColumnDefinition>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Image x:Name="imgMenu_H" Source="{DynamicResource HostMenu}" Width="21" Height="21" HorizontalAlignment="Center"></Image>
+                                <TextBlock Grid.Column="1" Text="XEPOS Host" VerticalAlignment="Center" FontFamily="{StaticResource OSBold}" Padding="10" Foreground="White" FontSize="12"></TextBlock>
+                                <Rectangle Grid.Row="1" Grid.ColumnSpan="2" Width="180" Height="1" Style="{DynamicResource AdminMenuSeparator}" VerticalAlignment="Bottom" ></Rectangle>
+                            </Grid>
+
+
+                        </DockPanel>
+
+                        <!--<DockPanel Grid.Row="2" Style="{DynamicResource AdminMenuHeaderBackground}" Height="50"  VerticalAlignment="Bottom" x:Name="mnuLabelPrint" Tag="0" PreviewMouseLeftButtonDown="Grp_PreviewMouseLeftButtonDown" >
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="49"></RowDefinition>
+                                    <RowDefinition Height="1"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="40"></ColumnDefinition>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Image x:Name="imgMenu_H1" Source="{DynamicResource HostMenu}" Width="21" Height="21" HorizontalAlignment="Center"></Image>
+                                <TextBlock Grid.Column="1" Text="Label Print" VerticalAlignment="Center" FontFamily="{StaticResource OSBold}" Padding="10" Foreground="White" FontSize="12"></TextBlock>
+                                <Rectangle Grid.Row="1" Grid.ColumnSpan="2" Width="180" Height="1" Style="{DynamicResource AdminMenuSeparator}" VerticalAlignment="Bottom" ></Rectangle>
+                            </Grid>
+
+
+                        </DockPanel>-->
+
+                    </WrapPanel>
+                    <Grid Grid.Row="1" Panel.ZIndex="4">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="0"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Border BorderBrush="DarkBlue" BorderThickness="1" Background="DarkBlue"  PreviewMouseLeftButtonDown="BtnECHeader_PreviewMouseLeftButtonDown">
+                            <Canvas Height="30"  Panel.ZIndex="6">
+                                <cc:CustomButton Style="{DynamicResource MenuShowhidestyleNew}"   Width="30" Height="30" Canvas.Left="80" Canvas.Top="0" x:Name="btnECHeader" >
+                                    <Grid Margin="-30">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                            <ColumnDefinition Width="1"></ColumnDefinition>
+                                            <ColumnDefinition Width="*"></ColumnDefinition>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Text="Show" x:Name="lbShowHideH" FontFamily="{StaticResource OSRegular}" FontSize="12" Foreground="White" Margin="1,0,0,0"></TextBlock>
+                                        <Image Source="{StaticResource UpCyan}" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Right" Width="12" Height="12" Stretch="Uniform" Margin="0,21,6,23" x:Name="imgshow" Visibility="Collapsed" >
+                                            <Image.RenderTransform>
+                                                <TransformGroup>
+                                                    <ScaleTransform/>
+                                                    <SkewTransform/>
+                                                    <RotateTransform Angle="90"/>
+                                                    <TranslateTransform/>
+                                                </TransformGroup>
+                                            </Image.RenderTransform>
+                                        </Image>
+                                        <Image Source="{StaticResource DownArrowCyan}" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Right" Width="12" Height="12" Stretch="Uniform" Margin="0,21,9,23" x:Name="imghide" Visibility="Visible" >
+                                            <Image.RenderTransform>
+                                                <TransformGroup>
+                                                    <ScaleTransform/>
+                                                    <SkewTransform/>
+                                                    <RotateTransform Angle="90"/>
+                                                    <TranslateTransform/>
+                                                </TransformGroup>
+                                            </Image.RenderTransform>
+                                        </Image>
+                                    </Grid>
+                                </cc:CustomButton>
+
+
+                            </Canvas>
+                        </Border>
+
+                        <DockPanel Grid.Row="2" Background="#64343B" Height="50"  VerticalAlignment="Bottom" x:Name="mnuExit" PreviewMouseLeftButtonDown="NavGroupExit1_PreviewMouseLeftButtonDown" >
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="40"></ColumnDefinition>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Image Source="{DynamicResource ExitMenu}" Width="21" Height="21" HorizontalAlignment="Center"></Image>
+                                <TextBlock Grid.Column="1" Text="Exit" VerticalAlignment="Center" FontFamily="{StaticResource OSRegular}" Padding="10" Foreground="White" FontSize="12"></TextBlock>
+                            </Grid>
+
+                        </DockPanel>
+                    </Grid>
+                </Grid>
+            </DockPanel>
+
+            
+        </Grid>
+
+        
+
+
+        <Grid Grid.Column="3" Panel.ZIndex="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="0"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <TextBlock x:Name="lbHeading" Text="" HorizontalAlignment="Right" FontSize="15" Visibility="Collapsed"/>
+            <Grid Grid.Row="2" x:Name="pnlBody" Panel.ZIndex="1" >
+               
+                
+               
+                <posSection:frm_DummyBrwUC x:Name="frm_DummyBrwUC" Visibility="Collapsed" />
+                
+                <reportSection:frm_ReportsUC x:Name="frm_ReportsUC" Visibility="Collapsed" />
+
+                <administrator:frm_SMCustomerBrwUC x:Name="frm_SMCustomerBrwUC" Visibility="Collapsed" />
+                <administrator:frm_SMAdminBrwUC x:Name="frm_SMAdminBrwUC" Visibility="Collapsed" />
+                <administrator:frm_SMDiscountBrwUC x:Name="frm_SMDiscountBrwUC" Visibility="Collapsed" />
+                <administrator:frm_SMItemBrwUC x:Name="frm_SMItemBrwUC" Visibility="Collapsed"/>
+                <administrator:frm_SMHostBrwUC x:Name="frm_SMHostBrwUC" Visibility="Collapsed" />
+                <administrator:frm_SMEmployeeBrwUC x:Name="frm_SMEmployeeBrwUC" Visibility="Collapsed" />
+                <administrator:frm_SMOrderingBrwUC x:Name="frm_SMOrderingBrwUC" Visibility="Collapsed" />
+                
+                <!--<custom:CustomReportDesigner x:Name="CustomReportDesigner" Visibility="Collapsed" Grid.ColumnSpan="2" Grid.RowSpan="2"></custom:CustomReportDesigner>-->
+
+            </Grid>
+        </Grid>
+
+        <TextBlock Grid.Column="2" Text="lbMsg" TextAlignment="Center" VerticalAlignment="Center" FontSize="12" Visibility="Collapsed"/>
+
+    </Grid>
+</UserControl>
